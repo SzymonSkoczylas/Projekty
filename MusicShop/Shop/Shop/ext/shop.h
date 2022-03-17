@@ -4,6 +4,7 @@
 //Includes
 #include <iostream>
 #include <vector>
+#include <fstream>
 
 
 class AlbumScheme {						//Klasa przechowujaca informacje o albumie
@@ -36,6 +37,7 @@ public:
 
 
 enum class userPermission { USER = 0, ADMIN = 1 };
+
 class User {									//Klasa przechowujaca informacje o uzytkowniku
 private:
 	std::string m_Name;							//Login i nazwa
@@ -83,7 +85,11 @@ public:
 	* dla uzytkownikow oraz organizacja magazynem dla administratora
 	*/
 	static void LoggingSystem();
-
+	
+	/*
+	* Funkcja MenuInterface odpowiedzialna za wyswietlenie interfejsu dla danego 
+	* uzytkownika. Potrzebna do poruszania sie po programie w wygodny sposob
+	*/
 	static void MenuInterface(const User& user);
 };
 
