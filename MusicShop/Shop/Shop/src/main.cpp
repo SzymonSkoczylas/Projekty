@@ -2,5 +2,10 @@
 
 int main()
 {
-	Shop shop;
+	std::vector<User> users;
+
+	Shop::InitAlbums();
+	Shop::InitUsers(users);
+	Shop::InitLoggingSystem(users);
+
 }

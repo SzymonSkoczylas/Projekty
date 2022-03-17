@@ -49,18 +49,13 @@ public:
 
 class Shop {							//Klasa dzia³aj¹ca jak "silnik" programu
 private:
-	std::vector<User> users;
+	
 public:
-	Shop()
-	{
-		initAlbums();
-		initUsers();
-		loggingSystem();
-	}
+	Shop() = delete;
 
-	void initAlbums();
-	void initUsers();
-	void loggingSystem();
+	static void InitAlbums();
+	static void InitUsers(std::vector<User>& users);
+	static void InitLoggingSystem(const std::vector<User>& users);
 };
 
 

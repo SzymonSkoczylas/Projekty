@@ -13,27 +13,28 @@ void StockAlbum::sellAlbum()
 	}
 }
 
-void Shop::initAlbums()
+void Shop::InitAlbums()
 {
-	AlbumScheme("Nevermind", "Nirvana", "Grunge", 70);
+	AlbumScheme* album;
+	album = new AlbumScheme("Nevermind", "Nirvana", "Grunge", 70);
 }
 
-void Shop::initUsers()
+void Shop::InitUsers(std::vector<User>& users)
 {
 	User user("user", "user");
 	User admin("admin", "admin");
-	this->users.push_back(user);
-	this->users.push_back(admin);
+	users.push_back(user);
+	users.push_back(admin);
 }
 
-void Shop::loggingSystem()
+void Shop::InitLoggingSystem(const std::vector<User>& users)
 {
 	std::string login, password;
 	std::cout << "Login: ";
 	std::cin >> login;
 	std::cout << "Password: ";
 	std::cin >> password;
-	for (auto& u : this->users)
+	for (auto& u : users)
 	{
 		if (u.getName() == login && u.getPassword() == password)
 		{
