@@ -34,16 +34,22 @@ public:
 
 };
 
+
+enum class userPermission { USER = 0, ADMIN = 1 };
 class User {									//Klasa przechowujaca informacje o uzytkowniku
 private:
 	std::string m_Name;							//Login i nazwa
 	std::string m_Password;						//Haslo
 	std::vector<AlbumScheme> m_ownedAlbums;		//Kupione albumy
+	userPermission m_rights = userPermission::USER;
 public:
 	User(const std::string& username, const std::string& password)
 		: m_Name(username), m_Password(password) {}
 	const std::string getName() const { return this->m_Name; }
 	const std::string getPassword() const { return this->m_Password; }
+	const userPermission getPermission() const { return this->m_rights; }
+
+	void setPermission(bool rights);
 };
 
 
@@ -77,6 +83,8 @@ public:
 	* dla uzytkownikow oraz organizacja magazynem dla administratora
 	*/
 	static void LoggingSystem();
+
+	static void MenuInterface(const User& user);
 };
 
 
