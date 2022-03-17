@@ -13,13 +13,16 @@ void StockAlbum::sellAlbum()
 	}
 }
 
+//Deklaracja statycznej zmiennej
+std::vector<User> Shop::users;
+
 void Shop::InitAlbums()
 {
 	AlbumScheme* album;
 	album = new AlbumScheme("Nevermind", "Nirvana", "Grunge", 70);
 }
 
-void Shop::InitUsers(std::vector<User>& users)
+void Shop::InitUsers()
 {
 	User user("user", "user");
 	User admin("admin", "admin");
@@ -27,7 +30,7 @@ void Shop::InitUsers(std::vector<User>& users)
 	users.push_back(admin);
 }
 
-void Shop::InitLoggingSystem(const std::vector<User>& users)
+void Shop::LoggingSystem()
 {
 	std::string login, password;
 	std::cout << "Login: ";

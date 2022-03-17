@@ -6,10 +6,10 @@
 #include <vector>
 
 
-class AlbumScheme {						//Klasa przechowuj¹ca informacje o albumie
+class AlbumScheme {						//Klasa przechowujaca informacje o albumie
 protected:
 	std::string m_NameOfAlbum{};		//nazwa albumu
-	std::string m_NameOfArtist{};		//nazwa artysty/zespo³u
+	std::string m_NameOfArtist{};		//nazwa artysty/zespolu
 	std::string m_Genre{};				//Gatunek
 	float m_Prize{};					//Cena
 public:
@@ -17,16 +17,16 @@ public:
 		: m_NameOfAlbum(albumName), m_NameOfArtist(artistName), m_Genre(genre), m_Prize(prize) {}
 };
 
-class StockAlbum : public AlbumScheme {		//Klasa przechowuj¹ca informacje o albumie dostêpnym w magazynie
+class StockAlbum : public AlbumScheme {		//Klasa przechowujaca informacje o albumie dostepnym w magazynie
 private:
-	int m_InStock{};						//Iloœæ na magazynie
+	int m_InStock{};						//Ilosc na magazynie
 public:
 	void addToStock(const int& amount);
 	void sellAlbum();
 };
 
 
-class SoldAlbum : public AlbumScheme {			//Klasa przechowuj¹ca informacje o sprzedanym albumie
+class SoldAlbum : public AlbumScheme {			//Klasa przechowujaca informacje o sprzedanym albumie
 private:
 	std::string m_ownerName;
 	std::string m_dateOfPurchase;
@@ -34,10 +34,10 @@ public:
 
 };
 
-class User {									//Klasa przechowuj¹ca informacje o u¿ytkowniku
+class User {									//Klasa przechowujaca informacje o uzytkowniku
 private:
 	std::string m_Name;							//Login i nazwa
-	std::string m_Password;						//Has³o
+	std::string m_Password;						//Haslo
 	std::vector<AlbumScheme> m_ownedAlbums;		//Kupione albumy
 public:
 	User(const std::string& username, const std::string& password)
@@ -49,13 +49,34 @@ public:
 
 class Shop {							//Klasa dzia³aj¹ca jak "silnik" programu
 private:
-	
+	static std::vector<User> users;
 public:
 	Shop() = delete;
 
+	/*
+	* Funkcja InitAlbums inicjalizujaca albumy do programu.
+	* Wstepnie czyta wpisane "z palca" przez programiste wartosci
+	* w przyszlosci beda one zapisywane i wczytywane z odpowiedniego pliku
+	*/
 	static void InitAlbums();
-	static void InitUsers(std::vector<User>& users);
-	static void InitLoggingSystem(const std::vector<User>& users);
+
+	/*
+	* Funkcja InitUsers inicjalizujaca uzytkownikow do programu
+	* Wstepnie czyta wpisane "z palca" przez programiste konta
+	* w przyszlosci beda one zapisywane i wczytywane z odowiedniego pliku
+	*/
+	static void InitUsers();
+
+	/*
+	* Funkcja LoggingSystem wczytujaca ekran logowania
+	* system sprawdza czy dane konto istnieje
+	* w przyszlosci po zalogowaniu wyswietli sie odpowiedni interfejs
+	* dla kazdego konta, bedzie jedno konto admin administrujace zawartoscia
+	* magazynu oraz inne konta uzytkownikow, beda dostepne takie opcje
+	* jak historia zakupow, doladowanie salda, mozliwosc zakupow
+	* dla uzytkownikow oraz organizacja magazynem dla administratora
+	*/
+	static void LoggingSystem();
 };
 
 
