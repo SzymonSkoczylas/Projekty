@@ -60,7 +60,7 @@ public:
 
 
 	//Funkcja createUser ustawia login i haslo uzytkownikowi
-	void createUser(const std::string& username, const std::string& password);
+	void createUser(const std::string& username, const std::string& password, const userPermission& rights=userPermission::USER);
 
 	//Funkcja getName zwraca nazwe uzytkownika
 	const std::string getName() const { return this->m_Name; }
@@ -77,10 +77,13 @@ public:
 
 class Shop {							//Klasa dzia³aj¹ca jak "silnik" programu
 private:
-	static std::ifstream inUserFile;	//Kontrola wejscia z pliku uzykownikow
-	static std::ofstream outUserFile;	//Kontrola wyjscia z pliku uzytkownikow
+	static std::ifstream inUserFile;			//Kontrola wejscia z pliku uzykownikow
+	static std::ofstream outUserFile;			//Kontrola wyjscia z pliku uzytkownikow
+	static userPermission loggedUserRights;		//Sprawdzanie jakie sa uprawnienia usera, ktory aktualnie przeglada sklep
 public:
 	Shop() = delete;
+
+	static userPermission getCurrentUserPermission() { return loggedUserRights; }
 
 	/*
 	* Funkcja InitAlbums inicjalizujaca albumy do programu.
@@ -111,14 +114,13 @@ public:
 	* Funkcja MenuInterface odpowiedzialna za wyswietlenie interfejsu dla danego 
 	* uzytkownika. Potrzebna do poruszania sie po programie w wygodny sposob
 	*/
-	static void MenuInterface(const User& user);
+	static void MenuInterface(const userPermission& user);
 
 	/*
-	* Funkcja RegisterUser odpowiadajaca za tworzenie uzytkownika
-	* i dodanie go do "systemu". Za pomoca stworzonego uzytkownika
-	* bedzie mozna sie zalogowac do sklepu jako konsument
+	* Funkcja LookForUser sprawdzajaca czy w spisie uzykownikow
+	* istnieje uzytkownik o podanym loginie 
 	*/
-	static void RegisterUser(const std::string& login, const std::string& pass);
+	static bool LookForUser(const std::string& username, const std::string& password, userPermission& rights);
 };
 
 

@@ -7,6 +7,7 @@
 //Deklaracja statycznych zmiennych klasy Shop
 std::ifstream						Shop::inUserFile;
 std::ofstream						Shop::outUserFile;
+userPermission						Shop::loggedUserRights;
 
 //Zmienne globalne
 const std::string		userFileName = "data\\users_data.txt";
@@ -32,15 +33,13 @@ void Shop::InitAlbums()
 void Shop::InitUsers()
 {
 	user->createUser("user", "user");
-	user->setPermission(0);
-	user->createUser("admin", "admin");
-	user->setPermission(1);
+	user->createUser("admin", "admin", userPermission::ADMIN);
 }
 
-void Shop::MenuInterface(const User& user)
+void Shop::MenuInterface(const userPermission& user)
 {
 	clearScreen;
-	if (user.getPermission() == userPermission::ADMIN)
+	if (user == userPermission::ADMIN)
 	{
 		std::cout << "   Zalogowano na koncie admina!\n";
 		std::cout << "1. Przejrzyj zawartosc magazynu\n";
@@ -56,54 +55,54 @@ void Shop::MenuInterface(const User& user)
 	}
 }
 
-void Shop::RegisterUser(const std::string& login, const std::string& pass)
-{
-	std::string line;
-	std::stringstream ss;
-	char ph{};
-	std::string userName{};
 
+bool Shop::LookForUser(const std::string& username, const std::string& password, userPermission& rights)
+{
 	inUserFile.open(userFileName);
-	while (std::getline(inUserFile,line))
+	std::stringstream ss;
+	std::string line;
+	char ph{};
+	std::string name,pass,temp;
+
+	clearScreen;
+	while (std::getline(inUserFile, line))
 	{
 		ss.str(std::string());
 		ss << line;
-		if (line[0] == '[')
+		ss >> ph >> name;
+		if (username == name)
 		{
-			ss >> ph >> userName >> ph;
-			if (userName == login)
+			ss.str(std::string());
+			std::getline(inUserFile, line);
+			ss << line;
+			ss >> name >> pass >> temp;
+			if (pass == password)
 			{
-				std::cout << "Istnieje uzytkownik o podanym loginie!\n";
-				pressAnyKey;
+				std::cout << "Poprawnie zalogowano!\n";
+				if (temp == "ADMIN") 
+					rights = userPermission::ADMIN;
+				else 
+					rights = userPermission::USER;
 				inUserFile.close();
-				return;
+				return true;
+			}
+			else
+			{
+				std::cout << "Wprowadz poprawne haslo!\n";
+				inUserFile.close();
+				return false;
 			}
 		}
 	}
-	inUserFile.close();
 
-	outUserFile.open(userFileName, std::ios_base::app);
-	if (outUserFile.is_open())
-	{
-		outUserFile << "[ " << login << " ]\n";
-		outUserFile << login << " " << pass <<'\n';
-		outUserFile << "Purchase history:\n";
-		outUserFile.close();
-
-		user->createUser(login, pass);
-		user->setPermission(0);
-
-		std::cout << "Utworzono uzytkownika!\n";
-		outUserFile.close();
-	}
-	else
-		std::cout << "Blad odczytu pliku!\n";
-	system("pause");
+	std::cout << "Nie znaleziono usera!\n";
+	return false;
 }
 
 void Shop::LoggingSystem()
 {
 	bool logginInProccess = true;
+	bool userFound;
 	std::string login, password;
 	char symbol{};
 	while (logginInProccess) {
@@ -118,10 +117,10 @@ void Shop::LoggingSystem()
 			std::cin >> login;
 			std::cout << "Haslo: ";
 			std::cin >> password;
-			for (;;) //Sprawdzanie czy uzytkownik istnieje DO ZROBIENIA !!!
-			{
-			}
-			std::cout << "Nie znaleziono usera!\n";
+			userFound = LookForUser(login, password, loggedUserRights);
+			if(userFound) 
+				MenuInterface(loggedUserRights);
+			pressAnyKey;
 			break;
 		case '2':
 			clearScreen;
@@ -130,7 +129,8 @@ void Shop::LoggingSystem()
 			std::cout << "Wprowadz haslo: ";
 			std::cin >> password;
 			clearScreen;
-			RegisterUser(login, password);
+			user->createUser(login, password);
+			pressAnyKey;
 			break;
 		case '3':
 			return;
@@ -142,10 +142,56 @@ void Shop::LoggingSystem()
 	}
 }
 
-void User::createUser(const std::string& username, const std::string& password)
+void User::createUser(const std::string& username, const std::string& password, const userPermission& rights)
 {
 	this->m_Name = username;
 	this->m_Password = password;
+	this->m_rights = rights;
+
+
+	std::string line;
+	std::stringstream ss;
+	char ph{};
+	std::string name{};
+
+	std::ifstream inUserFile;
+
+	inUserFile.open(userFileName);
+	while (std::getline(inUserFile, line))
+	{
+		ss.str(std::string());
+		ss << line;
+		if (line[0] == '[')
+		{
+			ss >> ph >> name;
+			if (name == username)
+			{
+				inUserFile.close();
+				return;
+			}
+		}
+	}
+	inUserFile.close();
+
+	std::string srights;
+	std::ofstream outUserFile;
+
+	if (rights == userPermission::USER)  srights = "USER";
+	if (rights == userPermission::ADMIN) srights = "ADMIN";
+
+	outUserFile.open(userFileName, std::ios_base::app);
+	if (outUserFile.is_open())
+	{
+		outUserFile << "[ " << username << " ]\n";
+		outUserFile << username << " " << password << " " << srights << '\n';
+		outUserFile << "Purchase history:\n";
+		outUserFile.close();
+
+		std::cout << "Utworzono uzytkownika!\n";
+	}
+	else
+		std::cout << "Blad odczytu pliku!\n";
+	outUserFile.close();
 }
 
 void User::setPermission(bool rights)
