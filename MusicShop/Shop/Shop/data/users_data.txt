@@ -1,9 +1,6 @@
-[ user ]
-user user USER
-Purchase history:
 [ admin ]
 admin admin ADMIN
 Purchase history:
-[ user2 ]
-user2 user2 USER
+[ user ]
+user user USER
 Purchase history:
