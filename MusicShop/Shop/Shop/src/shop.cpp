@@ -1,6 +1,16 @@
 #include "shop.h"
 
-#define clear system("cls")
+//Macra dla systemowych komend
+#define clearScreen system("cls")
+#define pressAnyKey system("pause")
+
+//Deklaracja statycznych zmiennych klasy Shop
+std::ifstream						Shop::inUserFile;
+std::ofstream						Shop::outUserFile;
+
+//Zmienne globalne
+const std::string		userFileName = "data\\users_data.txt";
+std::unique_ptr<User>	user = std::make_unique<User>();
 
 void StockAlbum::addToStock(const int& amount)
 {
@@ -10,13 +20,8 @@ void StockAlbum::addToStock(const int& amount)
 void StockAlbum::sellAlbum()
 {
 	if (this->m_InStock > 0)
-	{
 		this->m_InStock -= 1;
-	}
 }
-
-//Deklaracja statycznej zmiennej
-std::vector<User> Shop::users;
 
 void Shop::InitAlbums()
 {
@@ -26,17 +31,15 @@ void Shop::InitAlbums()
 
 void Shop::InitUsers()
 {
-	User user("user", "user");
-	User admin("admin", "admin");
-	user.setPermission(0);
-	admin.setPermission(1);
-	users.push_back(user);
-	users.push_back(admin);
+	user->createUser("user", "user");
+	user->setPermission(0);
+	user->createUser("admin", "admin");
+	user->setPermission(1);
 }
 
 void Shop::MenuInterface(const User& user)
 {
-	clear;
+	clearScreen;
 	if (user.getPermission() == userPermission::ADMIN)
 	{
 		std::cout << "   Zalogowano na koncie admina!\n";
@@ -53,43 +56,96 @@ void Shop::MenuInterface(const User& user)
 	}
 }
 
-void Shop::LoggingSystem()
+void Shop::RegisterUser(const std::string& login, const std::string& pass)
 {
-	std::string login, password;
-	char symbol{};
-	std::cout << "1. Zaloguj\t2.Zarejestruj sie\n";
-	std::cin >> symbol;
-	switch (symbol)
+	std::string line;
+	std::stringstream ss;
+	char ph{};
+	std::string userName{};
+
+	inUserFile.open(userFileName);
+	while (std::getline(inUserFile,line))
 	{
-	case '1':
-		clear;
-		std::cout << "Login: ";
-		std::cin >> login;
-		std::cout << "Haslo: ";
-		std::cin >> password;
-		for (auto& u : users)
+		ss.str(std::string());
+		ss << line;
+		if (line[0] == '[')
 		{
-			if (u.getName() == login && u.getPassword() == password)
+			ss >> ph >> userName >> ph;
+			if (userName == login)
 			{
-				MenuInterface(u);
+				std::cout << "Istnieje uzytkownik o podanym loginie!\n";
+				pressAnyKey;
+				inUserFile.close();
 				return;
 			}
 		}
-		std::cout << "Nie znaleziono usera!\n";
-		break;
-	case '2':
-		clear;
-		std::cout << "Wprowadza login: ";
-		std::cin >> login;
-		std::cout << "Wprowadz haslo: ";
-		std::cin >> password;
-		clear;
-		break;
-	default:
-		clear;
-		std::cout << "Zly input";
-		break;
 	}
+	inUserFile.close();
+
+	outUserFile.open(userFileName, std::ios_base::app);
+	if (outUserFile.is_open())
+	{
+		outUserFile << "[ " << login << " ]\n";
+		outUserFile << login << " " << pass <<'\n';
+		outUserFile << "Purchase history:\n";
+		outUserFile.close();
+
+		user->createUser(login, pass);
+		user->setPermission(0);
+
+		std::cout << "Utworzono uzytkownika!\n";
+		outUserFile.close();
+	}
+	else
+		std::cout << "Blad odczytu pliku!\n";
+	system("pause");
+}
+
+void Shop::LoggingSystem()
+{
+	bool logginInProccess = true;
+	std::string login, password;
+	char symbol{};
+	while (logginInProccess) {
+		clearScreen;
+		std::cout << "1. Zaloguj\t2.Zarejestruj sie\t3.Zakoncz\n";
+		std::cin >> symbol;
+		switch (symbol)
+		{
+		case '1':
+			clearScreen;
+			std::cout << "Login: ";
+			std::cin >> login;
+			std::cout << "Haslo: ";
+			std::cin >> password;
+			for (;;) //Sprawdzanie czy uzytkownik istnieje DO ZROBIENIA !!!
+			{
+			}
+			std::cout << "Nie znaleziono usera!\n";
+			break;
+		case '2':
+			clearScreen;
+			std::cout << "Wprowadz login: ";
+			std::cin >> login;
+			std::cout << "Wprowadz haslo: ";
+			std::cin >> password;
+			clearScreen;
+			RegisterUser(login, password);
+			break;
+		case '3':
+			return;
+		default:
+			clearScreen;
+			std::cout << "Zly input";
+			break;
+		}
+	}
+}
+
+void User::createUser(const std::string& username, const std::string& password)
+{
+	this->m_Name = username;
+	this->m_Password = password;
 }
 
 void User::setPermission(bool rights)

@@ -161,6 +161,10 @@
   <ItemGroup>
     <ClInclude Include="ext\shop.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\purchase_history.txt" />
+    <Text Include="data\users_data.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
