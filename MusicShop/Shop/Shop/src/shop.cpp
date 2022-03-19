@@ -32,8 +32,8 @@ void Shop::InitAlbums()
 
 void Shop::InitUsers()
 {
-	user->createUser("user", "user");
 	user->createUser("admin", "admin", userPermission::ADMIN);
+	user->createUser("user", "user");
 }
 
 void Shop::MenuInterface(const userPermission& user)
