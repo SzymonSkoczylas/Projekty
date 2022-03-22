@@ -77,12 +77,12 @@ public:
 
 class Shop {									//Klasa dzia³aj¹ca jak "silnik" programu
 private:
-	static std::ifstream inUserFile;			//Kontrola wejscia z pliku uzykownikow
-	static std::ofstream outUserFile;			//Kontrola wyjscia z pliku uzytkownikow
 	static userPermission loggedUserRights;		//Sprawdzanie jakie sa uprawnienia usera, ktory aktualnie przeglada sklep
+	static bool isProgrammeRunning;
 public:
 	Shop() = delete;
 
+	// Funkcje dostepowe
 	static userPermission getCurrentUserPermission() { return loggedUserRights; }
 
 	/*

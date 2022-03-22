@@ -13,9 +13,8 @@
 //********************************************************************
 //*******  Deklaracja statycznych zmiennych klasy Shop    ************
 //********************************************************************
-std::ifstream						Shop::inUserFile;
-std::ofstream						Shop::outUserFile;
-userPermission						Shop::loggedUserRights;
+userPermission					Shop::loggedUserRights;
+bool							Shop::isProgrammeRunning;
 
 
 
@@ -24,6 +23,8 @@ userPermission						Shop::loggedUserRights;
 //*****************       Zmienne globalne      **********************
 //********************************************************************
 const std::string				userFileName = "data\\users_data.txt";
+const std::string				albumFileName = "data\\album_on_stock.txt";
+const std::string				purchaseFileName = "data\\purchase_history.txt";
 std::unique_ptr<User>			user = std::make_unique<User>();
 std::unique_ptr<AlbumScheme>	album = std::make_unique<AlbumScheme>();
 
@@ -44,7 +45,7 @@ void StockAlbum::sellAlbum()
 
 void Shop::InitAlbums()
 {
-	album->addAlbum("Nevermind", "Nirvana", "Grunge", 70);
+	album->addAlbum("Nevermind", "Nirvana", "Grunge", 70.00);
 }
 
 void Shop::InitUsers()
@@ -66,6 +67,7 @@ void Shop::MenuInterface(const userPermission& user)
 			std::cout << "1. Przejrzyj zawartosc magazynu\n";
 			std::cout << "2. Dodaj album do magazynu\n";
 			std::cout << "3. Przejrzyj historie zamowien\n";
+			std::cout << "4. Zakoncz\n";
 
 			std::cin >> input;
 			switch (input)
@@ -75,6 +77,10 @@ void Shop::MenuInterface(const userPermission& user)
 			case '2':
 				break;
 			case '3':
+				break;
+			case '4':
+				isProgrammeRunning = false;
+				return;
 				break;
 			default:
 				break;
@@ -87,6 +93,7 @@ void Shop::MenuInterface(const userPermission& user)
 			std::cout << "1. Zasil saldo\n";
 			std::cout << "2. Przegladaj albumy\n";
 			std::cout << "3. Przejrzyj swoja historie zamowien\n";
+			std::cout << "4. Zakoncz\n";
 
 			std::cin >> input;
 			switch (input)
@@ -96,6 +103,10 @@ void Shop::MenuInterface(const userPermission& user)
 			case '2':
 				break;
 			case '3':
+				break;
+			case '4':
+				isProgrammeRunning = false;
+				return;
 				break;
 			default:
 				break;
@@ -107,6 +118,7 @@ void Shop::MenuInterface(const userPermission& user)
 
 bool Shop::LookForUser(const std::string& username, const std::string& password, userPermission& rights)
 {
+	std::ifstream inUserFile;
 	inUserFile.open(userFileName);
 	std::stringstream ss;
 	std::string line;
@@ -154,8 +166,11 @@ void Shop::LoggingSystem()
 	bool userFound;
 	std::string login, password;
 	char symbol{};
+	isProgrammeRunning = true;
 	while (logginInProccess) {
 		clearScreen;
+		if (!isProgrammeRunning)
+			break;
 		std::cout << "1. Zaloguj\t2.Zarejestruj sie\t3.Zakoncz\n";
 		std::cin >> symbol;
 		switch (symbol)
@@ -196,10 +211,9 @@ void User::createUser(const std::string& username, const std::string& password, 
 	std::stringstream ss;
 	char ph{};
 	std::string name{};
-
 	std::ifstream inUserFile;
-
 	inUserFile.open(userFileName);
+
 	while (std::getline(inUserFile, line))
 	{
 		ss.str(std::string());
@@ -247,8 +261,24 @@ void User::setPermission(bool rights)
 
 void AlbumScheme::addAlbum(const std::string& albumName, const std::string& artistName, const std::string& genre, const float& prize)
 {
-	this->m_NameOfAlbum  = albumName;
-	this->m_NameOfArtist = artistName;
-	this->m_Genre        = genre;
-	this->m_Prize		 = prize;
+	std::ifstream inAlbumFile;
+	inAlbumFile.open(albumFileName);
+	std::string line{};
+	std::stringstream ss;
+	bool IsAlbumOnStock = false;
+
+	while (std::getline(inAlbumFile, line))
+	{
+		ss << line;
+		ss >> this->m_NameOfAlbum >> this->m_NameOfArtist >> this->m_Genre >> this->m_Prize;
+		if (this->m_NameOfAlbum == albumName && this->m_NameOfArtist == artistName)
+			IsAlbumOnStock = true;
+	}
+	inAlbumFile.close();
+
+	std::ofstream outAlbumFile;
+	outAlbumFile.open(albumFileName, std::ios_base::app);
+
+	if (IsAlbumOnStock == false)
+		outAlbumFile << albumName << " " << artistName << " " << genre << " " << prize << 'zl\n';
 }
