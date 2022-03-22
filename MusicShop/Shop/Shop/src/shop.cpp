@@ -1,18 +1,36 @@
 #include "shop.h"
 
-//Macra dla systemowych komend
+
+//********************************************************************
+//************     Macra dla systemowych komend     ******************
+//********************************************************************
 #define clearScreen system("cls")
 #define pressAnyKey system("pause")
 
-//Deklaracja statycznych zmiennych klasy Shop
+
+
+
+//********************************************************************
+//*******  Deklaracja statycznych zmiennych klasy Shop    ************
+//********************************************************************
 std::ifstream						Shop::inUserFile;
 std::ofstream						Shop::outUserFile;
 userPermission						Shop::loggedUserRights;
 
-//Zmienne globalne
-const std::string		userFileName = "data\\users_data.txt";
-std::unique_ptr<User>	user = std::make_unique<User>();
 
+
+
+//********************************************************************
+//*****************       Zmienne globalne      **********************
+//********************************************************************
+const std::string				userFileName = "data\\users_data.txt";
+std::unique_ptr<User>			user = std::make_unique<User>();
+std::unique_ptr<AlbumScheme>	album = std::make_unique<AlbumScheme>();
+
+
+//********************************************************************
+//******************         Funkcje            **********************
+//********************************************************************
 void StockAlbum::addToStock(const int& amount)
 {
 	this->m_InStock += amount;
@@ -26,8 +44,7 @@ void StockAlbum::sellAlbum()
 
 void Shop::InitAlbums()
 {
-	AlbumScheme* album;
-	album = new AlbumScheme("Nevermind", "Nirvana", "Grunge", 70);
+	album->addAlbum("Nevermind", "Nirvana", "Grunge", 70);
 }
 
 void Shop::InitUsers()
@@ -39,19 +56,51 @@ void Shop::InitUsers()
 void Shop::MenuInterface(const userPermission& user)
 {
 	clearScreen;
-	if (user == userPermission::ADMIN)
+	char input{};
+	while (true) 
 	{
-		std::cout << "   Zalogowano na koncie admina!\n";
-		std::cout << "1. Przejrzyj zawartosc magazynu\n";
-		std::cout << "2. Dodaj album do magazynu\n";
-		std::cout << "3. Przejrzyj historie zamowien\n";
-	}
-	else
-	{
-		std::cout << "   Zalogowano na koncie usera!\n";
-		std::cout << "1. Zasil saldo\n";
-		std::cout << "2. Przegladaj albumy\n";
-		std::cout << "3. Przejrzyj swoja historie zamowien\n";
+		if (user == userPermission::ADMIN)
+		{
+			clearScreen;
+			std::cout << "   Zalogowano na koncie admina!\n";
+			std::cout << "1. Przejrzyj zawartosc magazynu\n";
+			std::cout << "2. Dodaj album do magazynu\n";
+			std::cout << "3. Przejrzyj historie zamowien\n";
+
+			std::cin >> input;
+			switch (input)
+			{
+			case '1':
+				break;
+			case '2':
+				break;
+			case '3':
+				break;
+			default:
+				break;
+			}
+		}
+		else
+		{
+			clearScreen;
+			std::cout << "   Zalogowano na koncie usera!\n";
+			std::cout << "1. Zasil saldo\n";
+			std::cout << "2. Przegladaj albumy\n";
+			std::cout << "3. Przejrzyj swoja historie zamowien\n";
+
+			std::cin >> input;
+			switch (input)
+			{
+			case '1':
+				break;
+			case '2':
+				break;
+			case '3':
+				break;
+			default:
+				break;
+			}
+		}
 	}
 }
 
@@ -120,7 +169,6 @@ void Shop::LoggingSystem()
 			userFound = LookForUser(login, password, loggedUserRights);
 			if(userFound) 
 				MenuInterface(loggedUserRights);
-			pressAnyKey;
 			break;
 		case '2':
 			clearScreen;
@@ -144,11 +192,6 @@ void Shop::LoggingSystem()
 
 void User::createUser(const std::string& username, const std::string& password, const userPermission& rights)
 {
-	this->m_Name = username;
-	this->m_Password = password;
-	this->m_rights = rights;
-
-
 	std::string line;
 	std::stringstream ss;
 	char ph{};
@@ -200,4 +243,12 @@ void User::setPermission(bool rights)
 		this->m_rights = userPermission::ADMIN;
 	else
 		this->m_rights = userPermission::USER;
+}
+
+void AlbumScheme::addAlbum(const std::string& albumName, const std::string& artistName, const std::string& genre, const float& prize)
+{
+	this->m_NameOfAlbum  = albumName;
+	this->m_NameOfArtist = artistName;
+	this->m_Genre        = genre;
+	this->m_Prize		 = prize;
 }

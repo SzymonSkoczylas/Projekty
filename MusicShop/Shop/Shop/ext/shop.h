@@ -17,8 +17,8 @@ protected:
 	std::string m_Genre{};				//Gatunek
 	float m_Prize{};					//Cena
 public:
-	AlbumScheme(const std::string& albumName, const std::string& artistName, const std::string& genre, const float& prize)
-		: m_NameOfAlbum(albumName), m_NameOfArtist(artistName), m_Genre(genre), m_Prize(prize) {}
+	void addAlbum(const std::string& albumName, const std::string& artistName, const std::string& genre, const float& prize);
+
 };
 
 class StockAlbum : public AlbumScheme {		//Klasa przechowujaca informacje o albumie dostepnym w magazynie
@@ -75,7 +75,7 @@ public:
 	void setPermission(bool rights);
 };
 
-class Shop {							//Klasa dzia³aj¹ca jak "silnik" programu
+class Shop {									//Klasa dzia³aj¹ca jak "silnik" programu
 private:
 	static std::ifstream inUserFile;			//Kontrola wejscia z pliku uzykownikow
 	static std::ofstream outUserFile;			//Kontrola wyjscia z pliku uzytkownikow
@@ -116,10 +116,7 @@ public:
 	*/
 	static void MenuInterface(const userPermission& user);
 
-	/*
-	* Funkcja LookForUser sprawdzajaca czy w spisie uzykownikow
-	* istnieje uzytkownik o podanym loginie 
-	*/
+	// Funkcja LookForUser sprawdzajaca czy w spisie uzykownikow istnieje uzytkownik o podanym loginie 
 	static bool LookForUser(const std::string& username, const std::string& password, userPermission& rights);
 };
 
