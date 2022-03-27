@@ -30,6 +30,5 @@
   <ItemGroup>
     <Text Include="data\users_data.txt" />
     <Text Include="data\purchase_history.txt" />
-    <Text Include="data\album_on_stock.txt" />
   </ItemGroup>
 </Project>

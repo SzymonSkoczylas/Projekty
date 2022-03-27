@@ -15,6 +15,7 @@
 //********************************************************************
 userPermission					Shop::loggedUserRights;
 bool							Shop::isProgrammeRunning;
+std::vector<AlbumScheme>		Shop::albums;
 
 
 
@@ -45,7 +46,7 @@ void StockAlbum::sellAlbum()
 
 void Shop::InitAlbums()
 {
-	album->addAlbum("Nevermind", "Nirvana", "Grunge", 70.00);
+	AddAlbumScheme("Nevermind", "Nirvana", "Grunge", 70.00);
 }
 
 void Shop::InitUsers()
@@ -160,6 +161,17 @@ bool Shop::LookForUser(const std::string& username, const std::string& password,
 	return false;
 }
 
+bool Shop::LookForAlbum()
+{
+	for (auto& a : albums)
+	{
+		if (a.getName() == album->getName())
+			if (a.getArtist() == album->getArtist())
+				return true;
+	}
+	return false;
+}
+
 void Shop::LoggingSystem()
 {
 	bool logginInProccess = true;
@@ -259,26 +271,16 @@ void User::setPermission(bool rights)
 		this->m_rights = userPermission::USER;
 }
 
-void AlbumScheme::addAlbum(const std::string& albumName, const std::string& artistName, const std::string& genre, const float& prize)
+void Shop::AddAlbumScheme(const std::string& albumName, const std::string& artistName, const std::string& genre, const float& prize)
 {
-	std::ifstream inAlbumFile;
-	inAlbumFile.open(albumFileName);
-	std::string line{};
-	std::stringstream ss;
-	bool IsAlbumOnStock = false;
+	album->setName(albumName);
+	album->setArtist(artistName);
+	album->setGenre(genre);
+	album->setPrize(prize);
 
-	while (std::getline(inAlbumFile, line))
+	bool doAlbumExist = LookForAlbum();
+	if (!doAlbumExist)
 	{
-		ss << line;
-		ss >> this->m_NameOfAlbum >> this->m_NameOfArtist >> this->m_Genre >> this->m_Prize;
-		if (this->m_NameOfAlbum == albumName && this->m_NameOfArtist == artistName)
-			IsAlbumOnStock = true;
+		albums.push_back(*album);
 	}
-	inAlbumFile.close();
-
-	std::ofstream outAlbumFile;
-	outAlbumFile.open(albumFileName, std::ios_base::app);
-
-	if (IsAlbumOnStock == false)
-		outAlbumFile << albumName << " " << artistName << " " << genre << " " << prize << 'zl\n';
 }

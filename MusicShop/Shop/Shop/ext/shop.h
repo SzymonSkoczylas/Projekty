@@ -17,8 +17,18 @@ protected:
 	std::string m_Genre{};				//Gatunek
 	float m_Prize{};					//Cena
 public:
-	void addAlbum(const std::string& albumName, const std::string& artistName, const std::string& genre, const float& prize);
 
+	// Funkcje dostepu
+	const std::string getName()   const	{ return m_NameOfAlbum; }
+	const std::string getArtist() const { return m_NameOfArtist; }
+	const std::string getGenre()  const { return m_Genre; }
+	const float getPrize()		  const	{ return m_Prize; }
+
+	// Funkcje setujace
+	void setName(const std::string& name)	  { m_NameOfAlbum = name; }
+	void setArtist(const std::string& artist) { m_NameOfArtist = artist; }
+	void setGenre(const std::string& genre)   { m_Genre = genre; }
+	void setPrize(const float& prize)		  { m_Prize = prize; }
 };
 
 class StockAlbum : public AlbumScheme {		//Klasa przechowujaca informacje o albumie dostepnym w magazynie
@@ -79,6 +89,7 @@ class Shop {									//Klasa dzia³aj¹ca jak "silnik" programu
 private:
 	static userPermission loggedUserRights;		//Sprawdzanie jakie sa uprawnienia usera, ktory aktualnie przeglada sklep
 	static bool isProgrammeRunning;
+	static std::vector<AlbumScheme> albums;
 public:
 	Shop() = delete;
 
@@ -118,6 +129,11 @@ public:
 
 	// Funkcja LookForUser sprawdzajaca czy w spisie uzykownikow istnieje uzytkownik o podanym loginie 
 	static bool LookForUser(const std::string& username, const std::string& password, userPermission& rights);
+
+	// Funkcja LookForAlbum sprawdzajaca czy w vectorze albumow istnieje podany album
+	static bool LookForAlbum();
+	// Funkcja AddAlbumScheme dodaje schemat albumu do programu
+	static void AddAlbumScheme(const std::string& albumName, const std::string& artistName, const std::string& genre, const float& prize);
 };
 
 
