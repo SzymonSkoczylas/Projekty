@@ -23,9 +23,14 @@ std::vector<AlbumScheme>		Shop::albums;
 //********************************************************************
 //*****************       Zmienne globalne      **********************
 //********************************************************************
-const std::string				userFileName = "data\\users_data.txt";
-const std::string				albumFileName = "data\\album_on_stock.txt";
-const std::string				purchaseFileName = "data\\purchase_history.txt";
+
+//--------------------------- CONST -----------------------------------				
+const std::string				USER_FILE_NAME = "data\\users_data.txt";
+const std::string				ALBUM_STOCK_FILE_NAME = "data\\album_stock.txt";
+const std::string				ALBUM_LIST_FILE_NAME = "data\\album_list.txt";
+const std::string				PURCHASE_FILE_NAME = "data\\purchase_history.txt";
+
+//-------------------------- NON-CONST --------------------------------		
 std::unique_ptr<User>			user = std::make_unique<User>();
 std::unique_ptr<AlbumScheme>	album = std::make_unique<AlbumScheme>();
 
@@ -46,7 +51,31 @@ void StockAlbum::sellAlbum()
 
 void Shop::InitAlbums()
 {
-	AddAlbumScheme("Nevermind", "Nirvana", "Grunge", 70.00);
+	std::ifstream inAlbumListFile;
+	inAlbumListFile.open(ALBUM_LIST_FILE_NAME);
+
+	std::string line{};
+	std::stringstream ss;
+	std::string albumName{}, artist{}, genre{}, prizeS{};
+	float prize{};
+
+	while (std::getline(inAlbumListFile, line))
+	{
+		ss << line;
+		ss >> albumName >> artist >> genre >> prizeS;
+
+		prize = std::stof(prizeS);
+
+		album->setName(albumName);
+		album->setArtist(artist);
+		album->setGenre(genre);
+		album->setPrize(prize);
+
+		albums.push_back(*album);
+		ss.str(std::string());
+		ss.clear();
+	}
+	inAlbumListFile.close();
 }
 
 void Shop::InitUsers()
@@ -116,11 +145,10 @@ void Shop::MenuInterface(const userPermission& user)
 	}
 }
 
-
 bool Shop::LookForUser(const std::string& username, const std::string& password, userPermission& rights)
 {
 	std::ifstream inUserFile;
-	inUserFile.open(userFileName);
+	inUserFile.open(USER_FILE_NAME);
 	std::stringstream ss;
 	std::string line;
 	char ph{};
@@ -164,11 +192,9 @@ bool Shop::LookForUser(const std::string& username, const std::string& password,
 bool Shop::LookForAlbum()
 {
 	for (auto& a : albums)
-	{
 		if (a.getName() == album->getName())
 			if (a.getArtist() == album->getArtist())
 				return true;
-	}
 	return false;
 }
 
@@ -224,7 +250,7 @@ void User::createUser(const std::string& username, const std::string& password, 
 	char ph{};
 	std::string name{};
 	std::ifstream inUserFile;
-	inUserFile.open(userFileName);
+	inUserFile.open(USER_FILE_NAME);
 
 	while (std::getline(inUserFile, line))
 	{
@@ -248,7 +274,7 @@ void User::createUser(const std::string& username, const std::string& password, 
 	if (rights == userPermission::USER)  srights = "USER";
 	if (rights == userPermission::ADMIN) srights = "ADMIN";
 
-	outUserFile.open(userFileName, std::ios_base::app);
+	outUserFile.open(USER_FILE_NAME, std::ios_base::app);
 	if (outUserFile.is_open())
 	{
 		outUserFile << "[ " << username << " ]\n";
@@ -281,6 +307,22 @@ void Shop::AddAlbumScheme(const std::string& albumName, const std::string& artis
 	bool doAlbumExist = LookForAlbum();
 	if (!doAlbumExist)
 	{
-		albums.push_back(*album);
+		std::ofstream outAlbumListFile;
+		outAlbumListFile.open(ALBUM_LIST_FILE_NAME, std::ios_base::app);
+		if (outAlbumListFile.is_open())
+		{
+			outAlbumListFile << albumName << " " << artistName << " " << genre << " ";
+			outAlbumListFile.precision(2);
+			outAlbumListFile << std::to_string(prize);
+			
+			std::cout << albumName << " " << artistName << " " << genre << " ";
+			std::cout.precision(2);
+			std::cout << std::to_string(prize);
+
+			albums.push_back(*album);
+		}
+		else
+			std::cout << "Blad odczytu pliku!\n";
+		outAlbumListFile.close();
 	}
 }

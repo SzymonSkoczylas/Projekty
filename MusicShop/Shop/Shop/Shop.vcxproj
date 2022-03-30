@@ -162,6 +162,8 @@
     <ClInclude Include="ext\shop.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="data\album_list.txt" />
+    <Text Include="data\album_stock.txt" />
     <Text Include="data\purchase_history.txt" />
     <Text Include="data\users_data.txt" />
   </ItemGroup>
