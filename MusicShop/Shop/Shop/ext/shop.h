@@ -4,6 +4,10 @@
 //Includes
 #include <iostream>
 #include <vector>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <memory>
 
 
 class AlbumScheme {						//Klasa przechowujaca informacje o albumie
@@ -13,51 +17,84 @@ protected:
 	std::string m_Genre{};				//Gatunek
 	float m_Prize{};					//Cena
 public:
-	AlbumScheme(const std::string& albumName, const std::string& artistName, const std::string& genre, const float& prize)
-		: m_NameOfAlbum(albumName), m_NameOfArtist(artistName), m_Genre(genre), m_Prize(prize) {}
+
+	// Funkcje dostepu
+	const std::string getName()   const	{ return m_NameOfAlbum; }
+	const std::string getArtist() const { return m_NameOfArtist; }
+	const std::string getGenre()  const { return m_Genre; }
+	const float getPrize()		  const	{ return m_Prize; }
+
+	// Funkcje setujace
+	void setName(const std::string& name)	  { m_NameOfAlbum = name; }
+	void setArtist(const std::string& artist) { m_NameOfArtist = artist; }
+	void setGenre(const std::string& genre)   { m_Genre = genre; }
+	void setPrize(const float& prize)		  { m_Prize = prize; }
 };
 
 class StockAlbum : public AlbumScheme {		//Klasa przechowujaca informacje o albumie dostepnym w magazynie
 private:
 	int m_InStock{};						//Ilosc na magazynie
 public:
+
+	//Funkcja addToStock dodaje album do magazynu
 	void addToStock(const int& amount);
+
+	/*
+	* Funkcja sellAlbum usuwa album z magazynui dodaje go
+	* do listy zakupow uzytkownika, dbajac o takie rzeczy, jak
+	* usuniecie pieniedzy z salda uzytkownika oraz aktualizacje
+	* liczby albumow dostepnych na stanie i historii sprzedazy
+	*/
 	void sellAlbum();
 };
 
 
 class SoldAlbum : public AlbumScheme {			//Klasa przechowujaca informacje o sprzedanym albumie
 private:
-	std::string m_ownerName;
-	std::string m_dateOfPurchase;
+	std::string m_ownerName;					//Nazwa uzytkownika ktory kupil album
+	std::string m_dateOfPurchase;				//Data sprzedazy
 public:
 
 };
 
 
 enum class userPermission { USER = 0, ADMIN = 1 };
-class User {									//Klasa przechowujaca informacje o uzytkowniku
+
+class User {											//Klasa przechowujaca informacje o uzytkowniku
 private:
-	std::string m_Name;							//Login i nazwa
-	std::string m_Password;						//Haslo
-	std::vector<AlbumScheme> m_ownedAlbums;		//Kupione albumy
-	userPermission m_rights = userPermission::USER;
+	std::string m_Name;									//Login i nazwa
+	std::string m_Password;								//Haslo
+	std::vector<AlbumScheme> m_ownedAlbums;				//Kupione albumy
+	userPermission m_rights = userPermission::USER;		//Uprawnienia uzytkownika
 public:
-	User(const std::string& username, const std::string& password)
-		: m_Name(username), m_Password(password) {}
+
+
+	//Funkcja createUser ustawia login i haslo uzytkownikowi
+	void createUser(const std::string& username, const std::string& password, const userPermission& rights=userPermission::USER);
+
+	//Funkcja getName zwraca nazwe uzytkownika
 	const std::string getName() const { return this->m_Name; }
+
+	//Funkcja getPassword zwraca haslo uzytkownika
 	const std::string getPassword() const { return this->m_Password; }
+
+	//Funkcja getPermission zwraca uprawnienia uzytkownika
 	const userPermission getPermission() const { return this->m_rights; }
 
+	//Funkcja setPermisson zmienia uprawnienia uzytkownikowi
 	void setPermission(bool rights);
 };
 
-
-class Shop {							//Klasa dzia³aj¹ca jak "silnik" programu
+class Shop {									//Klasa dzia³aj¹ca jak "silnik" programu
 private:
-	static std::vector<User> users;
+	static userPermission loggedUserRights;		//Sprawdzanie jakie sa uprawnienia usera, ktory aktualnie przeglada sklep
+	static bool isProgrammeRunning;
+	static std::vector<AlbumScheme> albums;
 public:
 	Shop() = delete;
+
+	// Funkcje dostepowe
+	static userPermission getCurrentUserPermission() { return loggedUserRights; }
 
 	/*
 	* Funkcja InitAlbums inicjalizujaca albumy do programu.
@@ -83,8 +120,20 @@ public:
 	* dla uzytkownikow oraz organizacja magazynem dla administratora
 	*/
 	static void LoggingSystem();
+	
+	/*
+	* Funkcja MenuInterface odpowiedzialna za wyswietlenie interfejsu dla danego 
+	* uzytkownika. Potrzebna do poruszania sie po programie w wygodny sposob
+	*/
+	static void MenuInterface(const userPermission& user);
 
-	static void MenuInterface(const User& user);
+	// Funkcja LookForUser sprawdzajaca czy w spisie uzykownikow istnieje uzytkownik o podanym loginie 
+	static bool LookForUser(const std::string& username, const std::string& password, userPermission& rights);
+
+	// Funkcja LookForAlbum sprawdzajaca czy w vectorze albumow istnieje podany album
+	static bool LookForAlbum();
+	// Funkcja AddAlbumScheme dodaje schemat albumu do programu
+	static void AddAlbumScheme(const std::string& albumName, const std::string& artistName, const std::string& genre, const float& prize);
 };
 
 

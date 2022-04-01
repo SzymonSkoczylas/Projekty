@@ -1,0 +1,6 @@
+[ admin ]
+admin admin ADMIN
+Purchase history:
+[ user ]
+user user USER
+Purchase history:
