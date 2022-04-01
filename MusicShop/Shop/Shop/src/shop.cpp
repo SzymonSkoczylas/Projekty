@@ -38,10 +38,6 @@ std::unique_ptr<AlbumScheme>	album = std::make_unique<AlbumScheme>();
 //********************************************************************
 //******************         Funkcje            **********************
 //********************************************************************
-void StockAlbum::addToStock(const int& amount)
-{
-	this->m_InStock += amount;
-}
 
 void StockAlbum::sellAlbum()
 {
@@ -95,9 +91,10 @@ void Shop::MenuInterface(const userPermission& user)
 			clearScreen;
 			std::cout << "   Zalogowano na koncie admina!\n";
 			std::cout << "1. Przejrzyj zawartosc magazynu\n";
-			std::cout << "2. Dodaj album do magazynu\n";
-			std::cout << "3. Przejrzyj historie zamowien\n";
-			std::cout << "4. Zakoncz\n";
+			std::cout << "2. Dodaj album do systemu\n";
+			std::cout << "3. Dodaj album do magazynu\n";
+			std::cout << "4. Przejrzyj historie zamowien\n";
+			std::cout << "5. Zakoncz\n";
 
 			std::cin >> input;
 			switch (input)
@@ -105,10 +102,14 @@ void Shop::MenuInterface(const userPermission& user)
 			case '1':
 				break;
 			case '2':
+				AddAlbumToSystem();
 				break;
 			case '3':
+				AddAlbumToStock();
 				break;
 			case '4':
+				break;
+			case '5':
 				isProgrammeRunning = false;
 				return;
 				break;
@@ -311,18 +312,50 @@ void Shop::AddAlbumScheme(const std::string& albumName, const std::string& artis
 		outAlbumListFile.open(ALBUM_LIST_FILE_NAME, std::ios_base::app);
 		if (outAlbumListFile.is_open())
 		{
-			outAlbumListFile << albumName << " " << artistName << " " << genre << " ";
-			outAlbumListFile.precision(2);
-			outAlbumListFile << std::to_string(prize);
+			std::string temp;
+			std::stringstream stream;
+			outAlbumListFile << '\n' << albumName << " " << artistName << " " << genre << " ";
+			outAlbumListFile << std::fixed << std::setprecision(2) << std::to_string(prize);
 			
 			std::cout << albumName << " " << artistName << " " << genre << " ";
-			std::cout.precision(2);
-			std::cout << std::to_string(prize);
+			std::cout << std::fixed << std::setprecision(2) << std::to_string(prize) << '\n';
 
 			albums.push_back(*album);
+
+			std::cout << "Album dodany!\n";
 		}
 		else
 			std::cout << "Blad odczytu pliku!\n";
 		outAlbumListFile.close();
 	}
+
+	std::cout << "Podany album istnieje! ";
+}
+
+void Shop::AddAlbumToSystem()
+{
+	std::string name{};
+	std::string artist{};
+	std::string genre{};
+	std::string prize{};
+
+	clearScreen;
+	std::cout << "/ W miejscu spacji wpisz _ /\n";
+	std::cout << "Podaj nazwe albumu: ";
+	std::cin  >> name;
+	std::cout << "Podaj nazwe artysty: ";
+	std::cin  >> artist;
+	std::cout << "Podaj nazwe gatunku: ";
+	std::cin  >> genre;
+	std::cout << "Podaj cene albumu: ";
+	std::cin  >> prize;
+	
+	clearScreen;
+	AddAlbumScheme(name, artist, genre, std::stof(prize));
+	pressAnyKey;
+}
+
+void Shop::AddAlbumToStock()
+{
+	clearScreen;
 }
