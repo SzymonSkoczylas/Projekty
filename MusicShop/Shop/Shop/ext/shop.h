@@ -6,6 +6,7 @@
 #include <vector>
 #include <fstream>
 #include <string>
+#include <iomanip>
 #include <sstream>
 #include <memory>
 
@@ -35,9 +36,6 @@ class StockAlbum : public AlbumScheme {		//Klasa przechowujaca informacje o albu
 private:
 	int m_InStock{};						//Ilosc na magazynie
 public:
-
-	//Funkcja addToStock dodaje album do magazynu
-	void addToStock(const int& amount);
 
 	/*
 	* Funkcja sellAlbum usuwa album z magazynui dodaje go
@@ -90,6 +88,7 @@ private:
 	static userPermission loggedUserRights;		//Sprawdzanie jakie sa uprawnienia usera, ktory aktualnie przeglada sklep
 	static bool isProgrammeRunning;
 	static std::vector<AlbumScheme> albums;
+	static std::vector<StockAlbum> stockAlbums;
 public:
 	Shop() = delete;
 
@@ -134,6 +133,12 @@ public:
 	static bool LookForAlbum();
 	// Funkcja AddAlbumScheme dodaje schemat albumu do programu
 	static void AddAlbumScheme(const std::string& albumName, const std::string& artistName, const std::string& genre, const float& prize);
+
+	//Funckja AddoAlbumToSystem wyswietla interfejs dodawania albumu do systemu
+	static void AddAlbumToSystem();
+
+	//Funkcja AddAlbumToStock wyswietla interfejs dodawania albumu do magazynu
+	static void AddAlbumToStock();
 };
 
 
