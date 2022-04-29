@@ -11,7 +11,8 @@
 #include <memory>
 
 
-class AlbumScheme {						//Klasa przechowujaca informacje o albumie
+
+class AlbumScheme{	//Klasa przechowujaca informacje o albumie
 protected:
 	std::string m_NameOfAlbum{};		//nazwa albumu
 	std::string m_NameOfArtist{};		//nazwa artysty/zespolu
@@ -36,9 +37,9 @@ class StockAlbum : public AlbumScheme {		//Klasa przechowujaca informacje o albu
 private:
 	int m_InStock{};						//Ilosc na magazynie
 public:
-
+	void addAlbumCopies();
 	/*
-	* Funkcja sellAlbum usuwa album z magazynui dodaje go
+	* Funkcja sellAlbum usuwa album z magazynu i dodaje go
 	* do listy zakupow uzytkownika, dbajac o takie rzeczy, jak
 	* usuniecie pieniedzy z salda uzytkownika oraz aktualizacje
 	* liczby albumow dostepnych na stanie i historii sprzedazy

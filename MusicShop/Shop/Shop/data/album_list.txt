@@ -3,5 +3,4 @@ In_Utero Nirvana Grunge 50.50
 Ten Pearl_Jam Grunge 90.99
 Plastic_Hearts Miley_Cyrus Pop 100.20
 The_Wall Pink_Floyd Rock 60.67
-pierwszy_album Konrad_Kobielus hiphop 999.00
-x x x 23.430000
+pierwszy_album Konrad_Kobielus Hiphop 999.00

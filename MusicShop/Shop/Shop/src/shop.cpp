@@ -16,6 +16,7 @@
 userPermission					Shop::loggedUserRights;
 bool							Shop::isProgrammeRunning;
 std::vector<AlbumScheme>		Shop::albums;
+std::vector<StockAlbum>			Shop::stockAlbums;
 
 
 
@@ -38,6 +39,18 @@ std::unique_ptr<AlbumScheme>	album = std::make_unique<AlbumScheme>();
 //********************************************************************
 //******************         Funkcje            **********************
 //********************************************************************
+
+void StockAlbum::addAlbumCopies()
+{
+	clearScreen;
+	int x;
+	std::cout << "Ilosc kopii do dodania: ";
+	std::cin >> x;
+	this->m_InStock = x;
+	clearScreen;
+	std::cout << "Dodano " << x << " kopii!\n";
+	pressAnyKey;
+}
 
 void StockAlbum::sellAlbum()
 {
@@ -315,10 +328,10 @@ void Shop::AddAlbumScheme(const std::string& albumName, const std::string& artis
 			std::string temp;
 			std::stringstream stream;
 			outAlbumListFile << '\n' << albumName << " " << artistName << " " << genre << " ";
-			outAlbumListFile << std::fixed << std::setprecision(2) << std::to_string(prize);
+			outAlbumListFile << std::fixed << std::setprecision(2) << prize;
 			
 			std::cout << albumName << " " << artistName << " " << genre << " ";
-			std::cout << std::fixed << std::setprecision(2) << std::to_string(prize) << '\n';
+			std::cout << std::fixed << std::setprecision(2) << prize << '\n';
 
 			albums.push_back(*album);
 
@@ -350,12 +363,24 @@ void Shop::AddAlbumToSystem()
 	std::cout << "Podaj cene albumu: ";
 	std::cin  >> prize;
 	
+	float temp = std::stof(prize);
+
+
 	clearScreen;
-	AddAlbumScheme(name, artist, genre, std::stof(prize));
+	AddAlbumScheme(name, artist, genre, temp);
 	pressAnyKey;
 }
 
 void Shop::AddAlbumToStock()
 {
 	clearScreen;
+	int i = 0;
+	char ch{};
+	std::cout << "Wybierz album: \n";
+	for (auto& a : albums)
+		std::cout << i++ << ". " << a.getName() << " " << a.getArtist() << " " << a.getGenre() << "\n";
+	//std::cin >> ch;
+
+
+	pressAnyKey;
 }
