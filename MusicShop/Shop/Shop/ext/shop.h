@@ -47,16 +47,6 @@ public:
 	void sellAlbum();
 };
 
-
-class SoldAlbum : public AlbumScheme {			//Klasa przechowujaca informacje o sprzedanym albumie
-private:
-	std::string m_ownerName;					//Nazwa uzytkownika ktory kupil album
-	std::string m_dateOfPurchase;				//Data sprzedazy
-public:
-
-};
-
-
 enum class userPermission { USER = 0, ADMIN = 1 };
 
 class User {											//Klasa przechowujaca informacje o uzytkowniku
