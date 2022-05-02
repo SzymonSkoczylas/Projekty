@@ -37,6 +37,12 @@ class StockAlbum : public AlbumScheme {		//Klasa przechowujaca informacje o albu
 private:
 	int m_InStock{};						//Ilosc na magazynie
 public:
+	StockAlbum();
+
+	void makeAlbumStock(const AlbumScheme& scheme);
+
+	const int getAmount() const { return m_InStock; }
+
 	void addAlbumCopies();
 	/*
 	* Funkcja sellAlbum usuwa album z magazynu i dodaje go
@@ -130,6 +136,10 @@ public:
 
 	//Funkcja AddAlbumToStock wyswietla interfejs dodawania albumu do magazynu
 	static void AddAlbumToStock();
+
+	static bool LookForAlbumInStock(const AlbumScheme& scheme);
+
+	static void FillStockFile(const StockAlbum& scheme);
 };
 
 

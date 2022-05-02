@@ -40,16 +40,56 @@ std::unique_ptr<AlbumScheme>	album = std::make_unique<AlbumScheme>();
 //******************         Funkcje            **********************
 //********************************************************************
 
+void StockAlbum::makeAlbumStock(const AlbumScheme& scheme)
+{
+	this->setName(scheme.getName());
+	this->setArtist(scheme.getArtist());
+	this->setGenre(scheme.getGenre());
+	this->setPrize(scheme.getPrize());
+}
+
 void StockAlbum::addAlbumCopies()
 {
 	clearScreen;
 	int x;
 	std::cout << "Ilosc kopii do dodania: ";
 	std::cin >> x;
-	this->m_InStock = x;
+	this->m_InStock += x;
 	clearScreen;
+
+	std::fstream stockAlbumFile;
+	stockAlbumFile.open(ALBUM_STOCK_FILE_NAME, std::ios_base::in | std::ios_base::app);
+	std::string line;
+	std::string name{}, artist{}, temp;
+	size_t len;
+	temp = std::to_string(this->m_InStock - x);
+	len  = temp.length();
+	std::stringstream ss;
+	while (std::getline(stockAlbumFile, line))
+	{
+		ss.clear();
+		ss.str(std::string());
+		ss << line;
+		ss >> name >> artist;
+		if ((name == this->getName()) && artist == this->getArtist())
+		{
+			size_t pos = line.find(std::to_string(m_InStock - x));
+			if (pos != std::string::npos)
+				line.replace(pos, len, std::to_string(m_InStock));
+
+		}
+	}
+
 	std::cout << "Dodano " << x << " kopii!\n";
-	pressAnyKey;
+}
+
+StockAlbum::StockAlbum()
+{
+	this->m_NameOfArtist = "";
+	this->m_NameOfAlbum = "";
+	this->m_Genre = "";
+	this->m_Prize = 0.0;
+	this->m_InStock = 0;
 }
 
 void StockAlbum::sellAlbum()
@@ -325,8 +365,6 @@ void Shop::AddAlbumScheme(const std::string& albumName, const std::string& artis
 		outAlbumListFile.open(ALBUM_LIST_FILE_NAME, std::ios_base::app);
 		if (outAlbumListFile.is_open())
 		{
-			std::string temp;
-			std::stringstream stream;
 			outAlbumListFile << '\n' << albumName << " " << artistName << " " << genre << " ";
 			outAlbumListFile << std::fixed << std::setprecision(2) << prize;
 			
@@ -371,16 +409,66 @@ void Shop::AddAlbumToSystem()
 	pressAnyKey;
 }
 
+bool Shop::LookForAlbumInStock(const AlbumScheme& scheme)
+{
+	for (auto& sa : stockAlbums)
+	{
+		if (sa.getName() == scheme.getName())
+			if (sa.getArtist() == scheme.getArtist())
+				return true;
+	}
+	return false;
+}
+
+void Shop::FillStockFile(const StockAlbum& scheme)
+{
+	std::ofstream outAlbumStockFile;
+	outAlbumStockFile.open(ALBUM_STOCK_FILE_NAME, std::ios_base::app);
+	if (outAlbumStockFile.is_open())
+	{
+		outAlbumStockFile << scheme.getName() << " " << scheme.getArtist() << " " << scheme.getGenre() << " ";
+		outAlbumStockFile << std::fixed << std::setprecision(2) << scheme.getPrize() << " ";
+		outAlbumStockFile << scheme.getAmount() << '\n';
+	}
+	else
+		std::cout << "Blad odczytu pliku!\n";
+	outAlbumStockFile.close();
+}
+
 void Shop::AddAlbumToStock()
 {
 	clearScreen;
-	int i = 0;
-	char ch{};
+	unsigned int i{};
+	unsigned int ch{};
 	std::cout << "Wybierz album: \n";
 	for (auto& a : albums)
 		std::cout << i++ << ". " << a.getName() << " " << a.getArtist() << " " << a.getGenre() << "\n";
-	//std::cin >> ch;
-
-
+	std::cin >> ch;
+	while(ch >= i)
+	{
+		clearScreen;
+		i = 0;
+		std::cout << "Wybierz album: \n";
+		for (auto& a : albums)
+			std::cout << i++ << ". " << a.getName() << " " << a.getArtist() << " " << a.getGenre() << "\n";
+		std::cout << "\nWybierz numer z zakresu 0-" << (--i) << "!\n";
+		std::cin >> ch;
+	}
+	StockAlbum stAlbum;
+	bool doStockAlbumExist = LookForAlbumInStock(albums[ch]);
+	stAlbum.makeAlbumStock(albums[ch]);
+	if (!doStockAlbumExist) 
+	{
+		FillStockFile(stAlbum);
+		stAlbum.addAlbumCopies();
+		stockAlbums.push_back(stAlbum);
+	}
+	else
+	{
+		for (auto& sa : stockAlbums)
+			if (sa.getName() == stAlbum.getName())
+				if (sa.getArtist() == stAlbum.getArtist())
+					sa.addAlbumCopies();
+	}
 	pressAnyKey;
 }
