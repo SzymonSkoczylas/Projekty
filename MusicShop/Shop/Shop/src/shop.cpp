@@ -34,6 +34,7 @@ const std::string				PURCHASE_FILE_NAME = "data\\purchase_history.txt";
 //-------------------------- NON-CONST --------------------------------		
 std::unique_ptr<User>			user = std::make_unique<User>();
 std::unique_ptr<AlbumScheme>	album = std::make_unique<AlbumScheme>();
+std::unique_ptr<StockAlbum>		stockAlbum = std::make_unique<StockAlbum>();
 
 
 //********************************************************************
@@ -51,35 +52,55 @@ void StockAlbum::makeAlbumStock(const AlbumScheme& scheme)
 void StockAlbum::addAlbumCopies()
 {
 	clearScreen;
+	std::string prizeS = std::to_string(this->getPrize());
+	int counter{};
+	for (;counter < prizeS.length(); counter++)
+	{
+		if (prizeS[counter] == '.')
+		{
+			counter += 3;
+			break;
+		}
+	}
+	prizeS = prizeS.substr(0,counter);
+	counter = 0;
+
+	const std::string deleteline = this->getName() + " " + this->getArtist() + " " + this->getGenre() + " "
+		+ prizeS + " " + std::to_string(this->getAmount());
 	int x;
 	std::cout << "Ilosc kopii do dodania: ";
 	std::cin >> x;
 	this->m_InStock += x;
-	clearScreen;
-
-	std::fstream stockAlbumFile;
-	stockAlbumFile.open(ALBUM_STOCK_FILE_NAME, std::ios_base::in | std::ios_base::app);
-	std::string line;
-	std::string name{}, artist{}, temp;
-	size_t len;
-	temp = std::to_string(this->m_InStock - x);
-	len  = temp.length();
-	std::stringstream ss;
-	while (std::getline(stockAlbumFile, line))
+	prizeS = std::to_string(this->getPrize());
+	for (; counter < prizeS.length(); counter++)
 	{
-		ss.clear();
-		ss.str(std::string());
-		ss << line;
-		ss >> name >> artist;
-		if ((name == this->getName()) && artist == this->getArtist())
+		if (prizeS[counter] == '.')
 		{
-			size_t pos = line.find(std::to_string(m_InStock - x));
-			if (pos != std::string::npos)
-				line.replace(pos, len, std::to_string(m_InStock));
-
+			counter += 3;
+			break;
 		}
 	}
+	prizeS = prizeS.substr(0, counter);
+	const std::string replaceline = this->getName() + " " + this->getArtist() + " " + this->getGenre() + " "
+		+ prizeS + " " + std::to_string(this->getAmount());
+	clearScreen;
 
+	std::ifstream stockAlbumFile;
+	stockAlbumFile.open(ALBUM_STOCK_FILE_NAME, std::ios_base::in | std::ios_base::app);
+	std::ofstream temp;
+	temp.open("data\\temp.txt");
+	std::string line;
+	while (std::getline(stockAlbumFile, line))
+	{
+		if (line == deleteline)
+			temp << replaceline << '\n';
+		else
+			temp << line << '\n';
+	}
+	temp.close();
+	stockAlbumFile.close();
+	remove("data\\album_stock.txt");
+	rename("data\\temp.txt", "data\\album_stock.txt");
 	std::cout << "Dodano " << x << " kopii!\n";
 }
 
@@ -105,8 +126,9 @@ void Shop::InitAlbums()
 
 	std::string line{};
 	std::stringstream ss;
-	std::string albumName{}, artist{}, genre{}, prizeS{};
+	std::string albumName{}, artist{}, genre{}, prizeS{}, amountS{};
 	float prize{};
+	int amount{};
 
 	while (std::getline(inAlbumListFile, line))
 	{
@@ -125,12 +147,30 @@ void Shop::InitAlbums()
 		ss.clear();
 	}
 	inAlbumListFile.close();
-}
 
-void Shop::InitUsers()
-{
-	user->createUser("admin", "admin", userPermission::ADMIN);
-	user->createUser("user", "user");
+
+	std::ifstream inAlbumStockFile;
+	inAlbumStockFile.open(ALBUM_STOCK_FILE_NAME);
+
+	while (std::getline(inAlbumStockFile, line))
+	{
+		ss << line;
+		ss >> albumName >> artist >> genre >> prizeS >> amountS;
+
+		prize = std::stof(prizeS);
+		amount = std::stoi(amountS);
+
+		stockAlbum->setName(albumName);
+		stockAlbum->setArtist(artist);
+		stockAlbum->setGenre(genre);
+		stockAlbum->setPrize(prize);
+		stockAlbum->setAmount(amount);
+
+		stockAlbums.push_back(*stockAlbum);
+		ss.str(std::string());
+		ss.clear();
+	}
+	inAlbumStockFile.close();
 }
 
 void Shop::MenuInterface(const userPermission& user)
@@ -153,6 +193,8 @@ void Shop::MenuInterface(const userPermission& user)
 			switch (input)
 			{
 			case '1':
+				ViewStockContent();
+				pressAnyKey;
 				break;
 			case '2':
 				AddAlbumToSystem();
@@ -185,6 +227,8 @@ void Shop::MenuInterface(const userPermission& user)
 			case '1':
 				break;
 			case '2':
+				ViewStockContent();
+				pressAnyKey;
 				break;
 			case '3':
 				break;
@@ -276,7 +320,13 @@ void Shop::LoggingSystem()
 			userFound = LookForUser(login, password, loggedUserRights);
 			if(userFound) 
 				MenuInterface(loggedUserRights);
-			break;
+			else
+			{
+				clearScreen;
+				std::cout << "Nie znaleziono uzytkownika!\n";
+				pressAnyKey;
+				break;
+			}
 		case '2':
 			clearScreen;
 			std::cout << "Wprowadz login: ";
@@ -285,7 +335,6 @@ void Shop::LoggingSystem()
 			std::cin >> password;
 			clearScreen;
 			user->createUser(login, password);
-			pressAnyKey;
 			break;
 		case '3':
 			return;
@@ -315,7 +364,9 @@ void User::createUser(const std::string& username, const std::string& password, 
 			ss >> ph >> name;
 			if (name == username)
 			{
+				std::cout << "User o podanym loginie istnieje!\n";
 				inUserFile.close();
+				pressAnyKey;
 				return;
 			}
 		}
@@ -333,7 +384,7 @@ void User::createUser(const std::string& username, const std::string& password, 
 	{
 		outUserFile << "[ " << username << " ]\n";
 		outUserFile << username << " " << password << " " << srights << '\n';
-		outUserFile << "Purchase history:\n";
+		outUserFile << "Saldo: 0.00\n";
 		outUserFile.close();
 
 		std::cout << "Utworzono uzytkownika!\n";
@@ -341,6 +392,7 @@ void User::createUser(const std::string& username, const std::string& password, 
 	else
 		std::cout << "Blad odczytu pliku!\n";
 	outUserFile.close();
+	pressAnyKey;
 }
 
 void User::setPermission(bool rights)
@@ -407,6 +459,17 @@ void Shop::AddAlbumToSystem()
 	clearScreen;
 	AddAlbumScheme(name, artist, genre, temp);
 	pressAnyKey;
+}
+
+void Shop::ViewStockContent()
+{
+	clearScreen;
+	int i{};
+	for (auto& sa : stockAlbums)
+	{
+		std::cout << i++ << ". " << sa.getName() << " " << sa.getArtist() << " " 
+			<< sa.getGenre() << " Cena:" << sa.getPrize() << " Na stanie:" << sa.getAmount() << '\n';
+	}
 }
 
 bool Shop::LookForAlbumInStock(const AlbumScheme& scheme)

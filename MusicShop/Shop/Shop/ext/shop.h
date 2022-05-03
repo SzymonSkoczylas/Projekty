@@ -37,13 +37,30 @@ class StockAlbum : public AlbumScheme {		//Klasa przechowujaca informacje o albu
 private:
 	int m_InStock{};						//Ilosc na magazynie
 public:
+	//Konstruktory
 	StockAlbum();
 
-	void makeAlbumStock(const AlbumScheme& scheme);
-
+	// Funkcje dostepu
 	const int getAmount() const { return m_InStock; }
 
+	// Funkcje setujace
+	void setAmount(const int& amount) { m_InStock = amount; }
+
+	/*
+	* Funkcja makeAlbumStock ktora na podstawie danych
+	* z podanego obiektu AlbumScheme tworzy obiekt klasy StockAlbum.
+	*/
+	void makeAlbumStock(const AlbumScheme& scheme);
+
+
+	/*
+	* Funkcja addAlbumCopies ktora dodaje kopie albumu do magazynu
+	* funkcja sprawdza czy dany album jest juz na magazynie oraz
+	* modyfikuje zawartosc pliku przechowujacego dane o albumach
+	* znajdujacych sie na magazynie
+	*/
 	void addAlbumCopies();
+
 	/*
 	* Funkcja sellAlbum usuwa album z magazynu i dodaje go
 	* do listy zakupow uzytkownika, dbajac o takie rzeczy, jak
@@ -83,9 +100,9 @@ public:
 class Shop {									//Klasa dzia³aj¹ca jak "silnik" programu
 private:
 	static userPermission loggedUserRights;		//Sprawdzanie jakie sa uprawnienia usera, ktory aktualnie przeglada sklep
-	static bool isProgrammeRunning;
-	static std::vector<AlbumScheme> albums;
-	static std::vector<StockAlbum> stockAlbums;
+	static bool isProgrammeRunning;				//Bool sprawdzajacy czy program jest
+	static std::vector<AlbumScheme> albums;		//Lista albumow znajdujacych sie w systemie
+	static std::vector<StockAlbum> stockAlbums; //Lista albumow znajdujacych sie na magazynie
 public:
 	Shop() = delete;
 
@@ -99,12 +116,6 @@ public:
 	*/
 	static void InitAlbums();
 
-	/*
-	* Funkcja InitUsers inicjalizujaca uzytkownikow do programu
-	* Wstepnie czyta wpisane "z palca" przez programiste konta
-	* w przyszlosci beda one zapisywane i wczytywane z odowiedniego pliku
-	*/
-	static void InitUsers();
 
 	/*
 	* Funkcja LoggingSystem wczytujaca ekran logowania
@@ -131,15 +142,20 @@ public:
 	// Funkcja AddAlbumScheme dodaje schemat albumu do programu
 	static void AddAlbumScheme(const std::string& albumName, const std::string& artistName, const std::string& genre, const float& prize);
 
-	//Funckja AddoAlbumToSystem wyswietla interfejs dodawania albumu do systemu
+	//Funckja AddAlbumToSystem wyswietla interfejs dodawania albumu do systemu
 	static void AddAlbumToSystem();
 
 	//Funkcja AddAlbumToStock wyswietla interfejs dodawania albumu do magazynu
 	static void AddAlbumToStock();
 
+	//Funkcja LookForAlbumInStock sprawdzajaca czy podany album jest na magazynie
 	static bool LookForAlbumInStock(const AlbumScheme& scheme);
 
+	//Funkcja FillStockFile uzupelniajaca plik przechowujacy dane o albumach znajdujacych sie na magazynie
 	static void FillStockFile(const StockAlbum& scheme);
+
+	//Funkcja ViewStockContent wyswietlajaca w konsoli albumy znajdujace sie na magazynie
+	static void ViewStockContent();
 };
 
 

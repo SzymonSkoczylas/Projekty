@@ -1,6 +1,6 @@
 [ admin ]
 admin admin ADMIN
-Purchase history:
+Saldo: 0.00
 [ user ]
 user user USER
-Purchase history:
+Saldo: 0.00
