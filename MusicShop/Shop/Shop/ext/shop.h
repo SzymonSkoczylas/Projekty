@@ -70,7 +70,7 @@ public:
 	void sellAlbum();
 };
 
-enum class userPermission { USER = 0, ADMIN = 1 };
+enum class userPermission { USER, ADMIN };
 
 class User {											//Klasa przechowujaca informacje o uzytkowniku
 private:
@@ -80,21 +80,17 @@ private:
 	userPermission m_rights = userPermission::USER;		//Uprawnienia uzytkownika
 public:
 
-
-	//Funkcja createUser ustawia login i haslo uzytkownikowi
-	void createUser(const std::string& username, const std::string& password, const userPermission& rights=userPermission::USER);
-
-	//Funkcja getName zwraca nazwe uzytkownika
+	//Funkcje getujace
 	const std::string getName() const { return this->m_Name; }
-
-	//Funkcja getPassword zwraca haslo uzytkownika
 	const std::string getPassword() const { return this->m_Password; }
-
-	//Funkcja getPermission zwraca uprawnienia uzytkownika
 	const userPermission getPermission() const { return this->m_rights; }
 
-	//Funkcja setPermisson zmienia uprawnienia uzytkownikowi
+	//Funkcje setujace
 	void setPermission(bool rights);
+	void setPermission(const userPermission& permission) { this->m_rights = permission; }
+	void setName(const std::string& name)  { this->m_Name = name; }
+	void setPassword(const std::string& password) { this->m_Password = password; }
+
 };
 
 class Shop {									//Klasa dzia³aj¹ca jak "silnik" programu
@@ -127,6 +123,9 @@ public:
 	* dla uzytkownikow oraz organizacja magazynem dla administratora
 	*/
 	static void LoggingSystem();
+
+	//Funkcja createUser ustawia login i haslo uzytkownikowi
+	static void CreateUser(const std::string& username, const std::string& password, const userPermission& rights = userPermission::USER);
 	
 	/*
 	* Funkcja MenuInterface odpowiedzialna za wyswietlenie interfejsu dla danego 
@@ -156,6 +155,10 @@ public:
 
 	//Funkcja ViewStockContent wyswietlajaca w konsoli albumy znajdujace sie na magazynie
 	static void ViewStockContent();
+
+	//Funkcja AddToUserBalance dodajaca uzytkownikowi do salda wybrana kwote pieniedzy
+	static void AddToUserBalance();
+
 };
 
 

@@ -13,7 +13,7 @@
 //********************************************************************
 //*******  Deklaracja statycznych zmiennych klasy Shop    ************
 //********************************************************************
-userPermission					Shop::loggedUserRights;
+userPermission                  Shop::loggedUserRights;
 bool							Shop::isProgrammeRunning;
 std::vector<AlbumScheme>		Shop::albums;
 std::vector<StockAlbum>			Shop::stockAlbums;
@@ -32,7 +32,7 @@ const std::string				ALBUM_LIST_FILE_NAME = "data\\album_list.txt";
 const std::string				PURCHASE_FILE_NAME = "data\\purchase_history.txt";
 
 //-------------------------- NON-CONST --------------------------------		
-std::unique_ptr<User>			user = std::make_unique<User>();
+std::unique_ptr<User>			currentUser = std::make_unique<User>();
 std::unique_ptr<AlbumScheme>	album = std::make_unique<AlbumScheme>();
 std::unique_ptr<StockAlbum>		stockAlbum = std::make_unique<StockAlbum>();
 
@@ -225,6 +225,7 @@ void Shop::MenuInterface(const userPermission& user)
 			switch (input)
 			{
 			case '1':
+				AddToUserBalance();
 				break;
 			case '2':
 				ViewStockContent();
@@ -318,8 +319,13 @@ void Shop::LoggingSystem()
 			std::cout << "Haslo: ";
 			std::cin >> password;
 			userFound = LookForUser(login, password, loggedUserRights);
-			if(userFound) 
+			if (userFound)
+			{
+				currentUser->setName(login);
+				currentUser->setPassword(password);
+				currentUser->setPermission(loggedUserRights);
 				MenuInterface(loggedUserRights);
+			}
 			else
 			{
 				clearScreen;
@@ -334,7 +340,7 @@ void Shop::LoggingSystem()
 			std::cout << "Wprowadz haslo: ";
 			std::cin >> password;
 			clearScreen;
-			user->createUser(login, password);
+			CreateUser(login, password);
 			break;
 		case '3':
 			return;
@@ -346,7 +352,7 @@ void Shop::LoggingSystem()
 	}
 }
 
-void User::createUser(const std::string& username, const std::string& password, const userPermission& rights)
+void Shop::CreateUser(const std::string& username, const std::string& password, const userPermission& rights)
 {
 	std::string line;
 	std::stringstream ss;
@@ -459,6 +465,19 @@ void Shop::AddAlbumToSystem()
 	clearScreen;
 	AddAlbumScheme(name, artist, genre, temp);
 	pressAnyKey;
+}
+
+void Shop::AddToUserBalance()
+{
+	std::ifstream userFile;
+	userFile.open(USER_FILE_NAME);
+
+	std::string line, balance;
+	while (std::getline(userFile,line))
+	{
+
+	}
+	userFile.close();
 }
 
 void Shop::ViewStockContent()
