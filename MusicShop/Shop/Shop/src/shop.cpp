@@ -7,9 +7,6 @@
 #define clearScreen system("cls")
 #define pressAnyKey system("pause")
 
-
-
-
 //********************************************************************
 //*******  Deklaracja statycznych zmiennych klasy Shop    ************
 //********************************************************************
@@ -17,9 +14,6 @@ userPermission                  Shop::loggedUserRights;
 bool							Shop::isProgrammeRunning;
 std::vector<AlbumScheme>		Shop::albums;
 std::vector<StockAlbum>			Shop::stockAlbums;
-
-
-
 
 //********************************************************************
 //*****************       Zmienne globalne      **********************
@@ -36,7 +30,6 @@ std::unique_ptr<User>			currentUser = std::make_unique<User>();
 std::unique_ptr<AlbumScheme>	album = std::make_unique<AlbumScheme>();
 std::unique_ptr<StockAlbum>		stockAlbum = std::make_unique<StockAlbum>();
 
-
 //********************************************************************
 //******************         Funkcje            **********************
 //********************************************************************
@@ -49,10 +42,19 @@ void StockAlbum::makeAlbumStock(const AlbumScheme& scheme)
 	this->setPrize(scheme.getPrize());
 }
 
+double roundoff(const double& value,const unsigned char& prec)
+{
+	double pow_10 = pow(10.0f, (double)prec);
+	return round(value * pow_10) / pow_10;
+}
+
 void StockAlbum::addAlbumCopies()
 {
 	clearScreen;
-	std::string prizeS = std::to_string(this->getPrize());
+	double rounded = round(this->getPrize() * 100);
+	rounded /= 100;
+	std::string prizeS = std::to_string(rounded);
+
 	int counter{};
 	for (;counter < prizeS.length(); counter++)
 	{
@@ -71,16 +73,6 @@ void StockAlbum::addAlbumCopies()
 	std::cout << "Ilosc kopii do dodania: ";
 	std::cin >> x;
 	this->m_InStock += x;
-	prizeS = std::to_string(this->getPrize());
-	for (; counter < prizeS.length(); counter++)
-	{
-		if (prizeS[counter] == '.')
-		{
-			counter += 3;
-			break;
-		}
-	}
-	prizeS = prizeS.substr(0, counter);
 	const std::string replaceline = this->getName() + " " + this->getArtist() + " " + this->getGenre() + " "
 		+ prizeS + " " + std::to_string(this->getAmount());
 	clearScreen;
@@ -100,8 +92,10 @@ void StockAlbum::addAlbumCopies()
 	temp.close();
 	stockAlbumFile.close();
 	remove("data\\album_stock.txt");
-	rename("data\\temp.txt", "data\\album_stock.txt");
-	std::cout << "Dodano " << x << " kopii!\n";
+	if (rename("data\\temp.txt", "data\\album_stock.txt") == 0)
+		std::cout << "Udalo sie dodac! Dodano " << x << " kopii!\n";
+	else 
+		std::cout << "Nie udalo sie dodac kopii!\n";
 }
 
 StockAlbum::StockAlbum()
@@ -127,7 +121,7 @@ void Shop::InitAlbums()
 	std::string line{};
 	std::stringstream ss;
 	std::string albumName{}, artist{}, genre{}, prizeS{}, amountS{};
-	float prize{};
+	double prize{};
 	int amount{};
 
 	while (std::getline(inAlbumListFile, line))
@@ -409,7 +403,7 @@ void User::setPermission(bool rights)
 		this->m_rights = userPermission::USER;
 }
 
-void Shop::AddAlbumScheme(const std::string& albumName, const std::string& artistName, const std::string& genre, const float& prize)
+void Shop::AddAlbumScheme(const std::string& albumName, const std::string& artistName, const std::string& genre, const double& prize)
 {
 	album->setName(albumName);
 	album->setArtist(artistName);
@@ -459,7 +453,7 @@ void Shop::AddAlbumToSystem()
 	std::cout << "Podaj cene albumu: ";
 	std::cin  >> prize;
 	
-	float temp = std::stof(prize);
+	double temp = std::stof(prize);
 
 
 	clearScreen;

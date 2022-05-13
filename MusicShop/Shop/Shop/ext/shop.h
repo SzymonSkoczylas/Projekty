@@ -9,7 +9,7 @@
 #include <iomanip>
 #include <sstream>
 #include <memory>
-
+#include <cmath>
 
 
 class AlbumScheme{	//Klasa przechowujaca informacje o albumie
@@ -17,7 +17,7 @@ protected:
 	std::string m_NameOfAlbum{};		//nazwa albumu
 	std::string m_NameOfArtist{};		//nazwa artysty/zespolu
 	std::string m_Genre{};				//Gatunek
-	float m_Prize{};					//Cena
+	double m_Prize{};					//Cena
 public:
 
 	// Funkcje dostepu
@@ -76,7 +76,6 @@ class User {											//Klasa przechowujaca informacje o uzytkowniku
 private:
 	std::string m_Name;									//Login i nazwa
 	std::string m_Password;								//Haslo
-	std::vector<AlbumScheme> m_ownedAlbums;				//Kupione albumy
 	userPermission m_rights = userPermission::USER;		//Uprawnienia uzytkownika
 public:
 
@@ -139,7 +138,7 @@ public:
 	// Funkcja LookForAlbum sprawdzajaca czy w vectorze albumow istnieje podany album
 	static bool LookForAlbum();
 	// Funkcja AddAlbumScheme dodaje schemat albumu do programu
-	static void AddAlbumScheme(const std::string& albumName, const std::string& artistName, const std::string& genre, const float& prize);
+	static void AddAlbumScheme(const std::string& albumName, const std::string& artistName, const std::string& genre, const double& prize);
 
 	//Funckja AddAlbumToSystem wyswietla interfejs dodawania albumu do systemu
 	static void AddAlbumToSystem();
