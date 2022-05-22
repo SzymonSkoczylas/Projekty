@@ -24,13 +24,13 @@ public:
 	const std::string getName()   const	{ return m_NameOfAlbum; }
 	const std::string getArtist() const { return m_NameOfArtist; }
 	const std::string getGenre()  const { return m_Genre; }
-	const float getPrize()		  const	{ return m_Prize; }
+	const double getPrize()		  const	{ return m_Prize; }
 
 	// Funkcje setujace
 	void setName(const std::string& name)	  { m_NameOfAlbum = name; }
 	void setArtist(const std::string& artist) { m_NameOfArtist = artist; }
 	void setGenre(const std::string& genre)   { m_Genre = genre; }
-	void setPrize(const float& prize)		  { m_Prize = prize; }
+	void setPrize(const double& prize)		  { m_Prize = prize; }
 };
 
 class StockAlbum : public AlbumScheme {		//Klasa przechowujaca informacje o albumie dostepnym w magazynie
@@ -77,18 +77,22 @@ private:
 	std::string m_Name;									//Login i nazwa
 	std::string m_Password;								//Haslo
 	userPermission m_rights = userPermission::USER;		//Uprawnienia uzytkownika
+	double m_Balance;
 public:
 
 	//Funkcje getujace
 	const std::string getName() const { return this->m_Name; }
 	const std::string getPassword() const { return this->m_Password; }
 	const userPermission getPermission() const { return this->m_rights; }
+	const double getBalance() const { return this->m_Balance; }
+
 
 	//Funkcje setujace
 	void setPermission(bool rights);
 	void setPermission(const userPermission& permission) { this->m_rights = permission; }
 	void setName(const std::string& name)  { this->m_Name = name; }
 	void setPassword(const std::string& password) { this->m_Password = password; }
+	void setBalance(const double& balance) { this->m_Balance = balance; }
 
 };
 
@@ -158,6 +162,22 @@ public:
 	//Funkcja AddToUserBalance dodajaca uzytkownikowi do salda wybrana kwote pieniedzy
 	static void AddToUserBalance();
 
+
+	/*
+	* Funkcja UpdateUserBalance ustawia konkretna wybrana kwote uzytkownikowi.
+	* Uzywa sie jej do ustawienia salda po wykonaniu kupna albumu przez
+	* uzytkownika
+	*/
+	static void UpdateUserBalance(const double& balance);
+
+	//Funkcja LookForUserBalance zwraca ilosc pieniedzy przechowywanej na koncie usera
+	static double LookForUserBalance(const std::string& username, const std::string& password);
+
+	//Funkcja UpdatePurchaseHistory dodaje kupiony album do listy w pliku tekstowym
+	static void UpdatePurchaseHistory(const StockAlbum& album);
+
+	//Funkcja BuyAlbum wyswietla interfejs kupowania albumu dla usera
+	static void BuyAlbum();
 };
 
 

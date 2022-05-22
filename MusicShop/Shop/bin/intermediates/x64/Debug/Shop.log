@@ -1,9 +1,7 @@
-﻿  main.cpp
-C:\Users\Achim\Desktop\gitRepo\Projekty\MusicShop\Shop\Shop\ext\shop.h(27,43): warning C4244: "return": konwersja z "const double" do "const float", możliwa utrata danych
-  shop.cpp
-C:\Users\Achim\Desktop\gitRepo\Projekty\MusicShop\Shop\Shop\ext\shop.h(27,43): warning C4244: "return": konwersja z "const double" do "const float", możliwa utrata danych
-C:\Users\Achim\Desktop\gitRepo\Projekty\MusicShop\Shop\Shop\src\shop.cpp(137,19): warning C4244: "argument": konwersja z "double" do "const float", możliwa utrata danych
-C:\Users\Achim\Desktop\gitRepo\Projekty\MusicShop\Shop\Shop\src\shop.cpp(160,24): warning C4244: "argument": konwersja z "double" do "const float", możliwa utrata danych
-C:\Users\Achim\Desktop\gitRepo\Projekty\MusicShop\Shop\Shop\src\shop.cpp(411,18): warning C4244: "argument": konwersja z "const double" do "const float", możliwa utrata danych
-  Generowanie kodu...
-  Shop.vcxproj -> C:\Users\Achim\Desktop\gitRepo\Projekty\MusicShop\Shop\bin\x64\Debug\Shop.exe
+﻿  shop.cpp
+D:\repoGit\Projekty\MusicShop\Shop\Shop\src\shop.cpp(42,32): warning C4244: "argument": konwersja z "double" do "const float", możliwa utrata danych
+D:\repoGit\Projekty\MusicShop\Shop\Shop\src\shop.cpp(137,19): warning C4244: "argument": konwersja z "double" do "const float", możliwa utrata danych
+D:\repoGit\Projekty\MusicShop\Shop\Shop\src\shop.cpp(160,24): warning C4244: "argument": konwersja z "double" do "const float", możliwa utrata danych
+D:\repoGit\Projekty\MusicShop\Shop\Shop\src\shop.cpp(409,18): warning C4244: "argument": konwersja z "const double" do "const float", możliwa utrata danych
+D:\repoGit\Projekty\MusicShop\Shop\Shop\src\shop.cpp(610): warning C4715: "Shop::LookForUserBalance”: niewszystkie ścieżki kodu zwracają wartość
+  Shop.vcxproj -> D:\repoGit\Projekty\MusicShop\Shop\bin\x64\Debug\Shop.exe

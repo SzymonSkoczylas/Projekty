@@ -606,7 +606,40 @@ double Shop::LookForUserBalance(const std::string& username, const std::string& 
 			return std::stod(name);
 		}
 	}
+}
 
+void Shop::UpdateUserBalance(const double& balance)
+{
+	std::ifstream userFile;
+	std::ofstream temp;
+	userFile.open(USER_FILE_NAME);
+	temp.open("data\\temp.txt");
+
+	std::string line;
+	std::stringstream ss;
+	std::string name{}, ph{};
+	bool userFound = false;
+	while (std::getline(userFile, line))
+	{
+		ss.clear();
+		ss.str(std::string());
+		ss << line;
+		ss >> ph >> name;
+
+		if (name == currentUser->getName())
+			userFound = true;
+		if ((ph == "Saldo:") && (userFound))
+		{;
+			temp << ph << " " << std::fixed << std::setprecision(2) << balance << '\n';
+			userFound = false;
+		}
+		else
+			temp << line << '\n';
+	}
+	userFile.close();
+	temp.close();
+	remove("data\\users_data.txt");
+	rename("data\\temp.txt", "data\\users_data.txt");
 }
 
 void Shop::BuyAlbum()
@@ -620,8 +653,33 @@ void Shop::BuyAlbum()
 		std::cout << "Wybierz album: ";
 		std::cin >> temp;
 		if (temp < stockSize)
-			;
+		{
+			if (currentUser->getBalance() >= stockAlbums[temp].getPrize())
+			{
+				currentUser->setBalance(currentUser->getBalance() - stockAlbums[temp].getPrize());
+				UpdateUserBalance(currentUser->getBalance());
+				UpdatePurchaseHistory(stockAlbums[temp]);
+			}
+			else
+			{
+				clearScreen;
+				std::cout << "Nie masz wystarczajacej ilosci pieniedzy!\n";
+				pressAnyKey;
+				return;
+			}
+		}
 		else
 			std::cout << "Wybierz album z zakresu\n";
 	}
+}
+
+void Shop::UpdatePurchaseHistory(const StockAlbum& album)
+{
+	std::ofstream purchaseFile;
+	purchaseFile.open(PURCHASE_FILE_NAME, std::ios_base::app);
+	if (purchaseFile.good())
+	{
+		
+	}
+	purchaseFile.close();
 }
