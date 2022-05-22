@@ -2,6 +2,7 @@
 
 int main()
 {
+
 	Shop::InitAlbums();
 	Shop::LoggingSystem();
 }
