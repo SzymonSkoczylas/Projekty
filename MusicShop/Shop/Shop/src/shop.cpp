@@ -215,11 +215,11 @@ void Shop::MenuInterface(const userPermission& user)
 		else
 		{
 			clearScreen;
-			std::cout << "   Zalogowano na koncie usera!\n";
+			std::cout << "   Zalogowano na koncie usera!\t" << 
+				"Saldo: " << std::fixed <<std::setprecision(2) << currentUser->getBalance() << " zl\n";
 			std::cout << "1. Zasil saldo\n";
 			std::cout << "2. Przegladaj albumy\n";
-			std::cout << "3. Przejrzyj swoja historie zamowien\n";
-			std::cout << "4. Zakoncz\n";
+			std::cout << "3. Zakoncz\n";
 
 			std::cin >> input;
 			switch (input)
@@ -228,12 +228,9 @@ void Shop::MenuInterface(const userPermission& user)
 				AddToUserBalance();
 				break;
 			case '2':
-				ViewStockContent();
-				pressAnyKey;
+				BuyAlbum();
 				break;
 			case '3':
-				break;
-			case '4':
 				isProgrammeRunning = false;
 				return;
 				break;
@@ -324,6 +321,7 @@ void Shop::LoggingSystem()
 				currentUser->setName(login);
 				currentUser->setPassword(password);
 				currentUser->setPermission(loggedUserRights);
+				currentUser->setBalance(LookForUserBalance(login, password));
 				MenuInterface(loggedUserRights);
 			}
 			else
@@ -470,14 +468,51 @@ void Shop::AddAlbumToSystem()
 void Shop::AddToUserBalance()
 {
 	std::ifstream userFile;
+	std::ofstream temp;
 	userFile.open(USER_FILE_NAME);
+	temp.open("data\\temp.txt");
+
+	double addingValue{};
+
+	clearScreen;
+
+	std::cout << "Ile pieniedzy chcesz dodac?\n";
+	std::cin >> addingValue;
+	
 
 	std::string line, balance;
+	std::stringstream ss;
+	std::string name{}, ph{};
+	double tempBalance{};
+	bool userFound = false;
 	while (std::getline(userFile,line))
 	{
+		ss.clear();
+		ss.str(std::string());
+		ss << line;
+		ss >> ph >> name;
 
+		if(name == currentUser->getName())
+			userFound = true;
+		if ( (ph == "Saldo:") && (userFound) )
+		{
+			tempBalance = std::stod(name);
+			tempBalance += addingValue;
+			temp << ph << " " << std::fixed << std::setprecision(2) << tempBalance << '\n';
+			userFound = false;
+		}
+		else
+			temp << line <<'\n';
 	}
 	userFile.close();
+	temp.close();
+	remove("data\\users_data.txt");
+	rename("data\\temp.txt", "data\\users_data.txt");
+
+	clearScreen;
+	std::cout << "Dodano: " << addingValue <<" zl do konta\n";
+	std::cout << "Stan konta: " << std::fixed << std::setprecision(2) << tempBalance << " zl";
+	pressAnyKey;
 }
 
 void Shop::ViewStockContent()
@@ -553,4 +588,46 @@ void Shop::AddAlbumToStock()
 					sa.addAlbumCopies();
 	}
 	pressAnyKey;
+}
+
+double Shop::LookForUserBalance(const std::string& username, const std::string& password)
+{
+	std::ifstream userFile;
+	userFile.open(USER_FILE_NAME);
+	std::stringstream ss;
+	std::string ph{}, name{}, line{};
+	bool userFound = false;
+
+	while (std::getline(userFile, line))
+	{
+		ss.clear();
+		ss.str(std::string());
+		ss << line;
+		ss >> ph >> name;
+		if (name == username)
+			userFound = true;
+		if ((userFound) && (ph == "Saldo:"))
+		{
+			userFile.close();
+			return std::stod(name);
+		}
+	}
+
+}
+
+void Shop::BuyAlbum()
+{
+	size_t stockSize = stockAlbums.size();
+	size_t temp;
+	while (true)
+	{
+		clearScreen;
+		ViewStockContent();
+		std::cout << "Wybierz album: ";
+		std::cin >> temp;
+		if (temp < stockSize)
+			;
+		else
+			std::cout << "Wybierz album z zakresu\n";
+	}
 }

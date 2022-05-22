@@ -77,6 +77,7 @@ private:
 	std::string m_Name;									//Login i nazwa
 	std::string m_Password;								//Haslo
 	std::vector<AlbumScheme> m_ownedAlbums;				//Kupione albumy
+	double m_Balance;
 	userPermission m_rights = userPermission::USER;		//Uprawnienia uzytkownika
 public:
 
@@ -84,12 +85,14 @@ public:
 	const std::string getName() const { return this->m_Name; }
 	const std::string getPassword() const { return this->m_Password; }
 	const userPermission getPermission() const { return this->m_rights; }
+	const double getBalance() const { return this->m_Balance; }
 
 	//Funkcje setujace
 	void setPermission(bool rights);
 	void setPermission(const userPermission& permission) { this->m_rights = permission; }
 	void setName(const std::string& name)  { this->m_Name = name; }
 	void setPassword(const std::string& password) { this->m_Password = password; }
+	void setBalance(const double& balance) { this->m_Balance = balance; }
 
 };
 
@@ -127,6 +130,8 @@ public:
 	//Funkcja createUser ustawia login i haslo uzytkownikowi
 	static void CreateUser(const std::string& username, const std::string& password, const userPermission& rights = userPermission::USER);
 	
+	static double LookForUserBalance(const std::string& username, const std::string& password);
+
 	/*
 	* Funkcja MenuInterface odpowiedzialna za wyswietlenie interfejsu dla danego 
 	* uzytkownika. Potrzebna do poruszania sie po programie w wygodny sposob
@@ -138,6 +143,7 @@ public:
 
 	// Funkcja LookForAlbum sprawdzajaca czy w vectorze albumow istnieje podany album
 	static bool LookForAlbum();
+
 	// Funkcja AddAlbumScheme dodaje schemat albumu do programu
 	static void AddAlbumScheme(const std::string& albumName, const std::string& artistName, const std::string& genre, const float& prize);
 
@@ -159,6 +165,12 @@ public:
 	//Funkcja AddToUserBalance dodajaca uzytkownikowi do salda wybrana kwote pieniedzy
 	static void AddToUserBalance();
 
+	/*
+	* Funkcja BuyAlbum otwierajaca interfejs kupna albumu. Funkcja sprawdza
+	* czy uzytkownika ma wystarczajaco duzo pieniedzy na koncie
+	* modyfikuje saldo uzytkownika po zrealizowanym zakupie
+	*/
+	static void BuyAlbum();
 };
 
 
