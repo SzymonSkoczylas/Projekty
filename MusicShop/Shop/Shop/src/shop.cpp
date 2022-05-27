@@ -171,7 +171,7 @@ void Shop::MenuInterface(const userPermission& user)
 {
 	clearScreen;
 	char input{};
-	while (true) 
+	while (isProgrammeRunning) 
 	{
 		if (user == userPermission::ADMIN)
 		{
@@ -200,7 +200,6 @@ void Shop::MenuInterface(const userPermission& user)
 				break;
 			case '5':
 				isProgrammeRunning = false;
-				return;
 				break;
 			default:
 				break;
@@ -297,49 +296,54 @@ void Shop::LoggingSystem()
 	isProgrammeRunning = true;
 	while (logginInProccess) {
 		clearScreen;
-		if (!isProgrammeRunning)
-			break;
-		std::cout << "1. Zaloguj\t2.Zarejestruj sie\t3.Zakoncz\n";
-		std::cin >> symbol;
-		switch (symbol)
+		if (isProgrammeRunning)
 		{
-		case '1':
-			clearScreen;
-			std::cout << "Login: ";
-			std::cin >> login;
-			std::cout << "Haslo: ";
-			std::cin >> password;
-			userFound = LookForUser(login, password, loggedUserRights);
-			if (userFound)
+			std::cout << "1. Zaloguj\t2.Zarejestruj sie\t3.Zakoncz\n";
+			std::cin >> symbol;
+			switch (symbol)
 			{
-				currentUser->setName(login);
-				currentUser->setPassword(password);
-				currentUser->setPermission(loggedUserRights);
-				currentUser->setBalance(LookForUserBalance(login, password));
-				MenuInterface(loggedUserRights);
-			}
-			else
-			{
+			case '1':
 				clearScreen;
-				std::cout << "Nie znaleziono uzytkownika!\n";
-				pressAnyKey;
+				std::cout << "Login: ";
+				std::cin >> login;
+				std::cout << "Haslo: ";
+				std::cin >> password;
+				userFound = LookForUser(login, password, loggedUserRights);
+				if (userFound)
+				{
+					currentUser->setName(login);
+					currentUser->setPassword(password);
+					currentUser->setPermission(loggedUserRights);
+					currentUser->setBalance(LookForUserBalance(login, password));
+					MenuInterface(loggedUserRights);
+					break;
+				}
+				else
+				{
+					clearScreen;
+					std::cout << "Nie znaleziono uzytkownika!\n";
+					pressAnyKey;
+					break;
+				}
+			case '2':
+				clearScreen;
+				std::cout << "Wprowadz login: ";
+				std::cin >> login;
+				std::cout << "Wprowadz haslo: ";
+				std::cin >> password;
+				clearScreen;
+				CreateUser(login, password);
+				break;
+			case '3':
+				clearScreen;
+				std::cout << "Wylaczona aplikacje!\n";
+				logginInProccess = false;
+				break;
+			default:
+				clearScreen;
+				std::cout << "Zly input";
 				break;
 			}
-		case '2':
-			clearScreen;
-			std::cout << "Wprowadz login: ";
-			std::cin >> login;
-			std::cout << "Wprowadz haslo: ";
-			std::cin >> password;
-			clearScreen;
-			CreateUser(login, password);
-			break;
-		case '3':
-			return;
-		default:
-			clearScreen;
-			std::cout << "Zly input";
-			break;
 		}
 	}
 }
@@ -488,9 +492,9 @@ void Shop::AddToUserBalance()
 
 		if(name == currentUser->getName())
 			userFound = true;
-		if ( (ph == "Saldo:") && (userFound) )
+		if (ph == "Saldo:")
 		{
-			tempBalance = std::stod(name);
+			tempBalance = currentUser->getBalance();
 			tempBalance += addingValue;
 			temp << ph << " " << std::fixed << std::setprecision(2) << tempBalance << '\n';
 			userFound = false;
@@ -504,6 +508,7 @@ void Shop::AddToUserBalance()
 	rename("data\\temp.txt", "data\\users_data.txt");
 
 	clearScreen;
+	currentUser->setBalance(tempBalance);
 	std::cout << "Dodano: " << addingValue <<" zl do konta\n";
 	std::cout << "Stan konta: " << std::fixed << std::setprecision(2) << tempBalance << " zl";
 	pressAnyKey;
@@ -645,27 +650,42 @@ void Shop::UpdateUserBalance(const double& balance)
 void Shop::BuyAlbum()
 {
 	size_t stockSize = stockAlbums.size();
-	size_t temp;
+	size_t chosenAlbum;
 	while (true)
 	{
 		clearScreen;
 		ViewStockContent();
 		std::cout << "Wybierz album: ";
-		std::cin >> temp;
-		if (temp < stockSize)
+		std::cin >> chosenAlbum;
+		if (chosenAlbum < stockSize)
 		{
-			if (currentUser->getBalance() >= stockAlbums[temp].getPrize())
+			if (stockAlbums[chosenAlbum].getAmount())
 			{
-				currentUser->setBalance(currentUser->getBalance() - stockAlbums[temp].getPrize());
-				UpdateUserBalance(currentUser->getBalance());
-				UpdatePurchaseHistory(stockAlbums[temp]);
+				if (currentUser->getBalance() >= stockAlbums[chosenAlbum].getPrize())
+				{
+					currentUser->setBalance(currentUser->getBalance() - stockAlbums[chosenAlbum].getPrize());
+					UpdateUserBalance(currentUser->getBalance());
+					UpdatePurchaseHistory(stockAlbums[chosenAlbum]);
+					stockAlbums[chosenAlbum].setAmount(stockAlbums[chosenAlbum].getAmount() - 1);
+
+					clearScreen;
+					std::cout << "Album kupiony!\n";
+					pressAnyKey;
+					return;
+				}
+				else
+				{
+					clearScreen;
+					std::cout << "Nie masz wystarczajacej ilosci pieniedzy!\n";
+					pressAnyKey;
+					return;
+				}
 			}
 			else
 			{
 				clearScreen;
-				std::cout << "Nie masz wystarczajacej ilosci pieniedzy!\n";
+				std::cout << "Wybranego albumu nie ma na stanie!\n";
 				pressAnyKey;
-				return;
 			}
 		}
 		else
@@ -679,7 +699,14 @@ void Shop::UpdatePurchaseHistory(const StockAlbum& album)
 	purchaseFile.open(PURCHASE_FILE_NAME, std::ios_base::app);
 	if (purchaseFile.good())
 	{
-		
+		const std::chrono::time_point<std::chrono::system_clock> now{ std::chrono::system_clock::now() };
+		const std::chrono::year_month_day date{ std::chrono::floor<std::chrono::days>(now) };
+		const unsigned day = static_cast<unsigned>(date.day());
+		const unsigned month = static_cast<unsigned>(date.month());
+		const int year = static_cast<int>(date.year());
+
+		purchaseFile <<  currentUser->getName() <<" "<< album.getName() <<" "<< album.getArtist();
+		purchaseFile << " " << day <<'.'<<month<<'.'<<year << '\n';
 	}
 	purchaseFile.close();
 }

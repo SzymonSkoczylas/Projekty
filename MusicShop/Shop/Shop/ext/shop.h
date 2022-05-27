@@ -10,6 +10,7 @@
 #include <sstream>
 #include <memory>
 #include <cmath>
+#include <chrono>
 
 
 class AlbumScheme{	//Klasa przechowujaca informacje o albumie
@@ -77,7 +78,7 @@ private:
 	std::string m_Name;									//Login i nazwa
 	std::string m_Password;								//Haslo
 	userPermission m_rights = userPermission::USER;		//Uprawnienia uzytkownika
-	double m_Balance;
+	double m_Balance{};
 public:
 
 	//Funkcje getujace
