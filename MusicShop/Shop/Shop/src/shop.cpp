@@ -98,12 +98,6 @@ StockAlbum::StockAlbum()
 	this->m_InStock = 0;
 }
 
-void StockAlbum::sellAlbum()
-{
-	if (this->m_InStock > 0)
-		this->m_InStock -= 1;
-}
-
 void Shop::InitAlbums()
 {
 	std::ifstream inAlbumListFile;

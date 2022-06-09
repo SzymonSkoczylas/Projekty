@@ -61,14 +61,6 @@ public:
 	* znajdujacych sie na magazynie
 	*/
 	void addAlbumCopies();
-
-	/*
-	* Funkcja sellAlbum usuwa album z magazynu i dodaje go
-	* do listy zakupow uzytkownika, dbajac o takie rzeczy, jak
-	* usuniecie pieniedzy z salda uzytkownika oraz aktualizacje
-	* liczby albumow dostepnych na stanie i historii sprzedazy
-	*/
-	void sellAlbum();
 };
 
 enum class userPermission { USER, ADMIN };
@@ -78,23 +70,22 @@ private:
 	std::string m_Name;									//Login i nazwa
 	std::string m_Password;								//Haslo
 	userPermission m_rights = userPermission::USER;		//Uprawnienia uzytkownika
-	double m_Balance{};
+	double m_Balance{};									//Saldo uzytkownika
 public:
 
 	//Funkcje getujace
-	const std::string getName() const { return this->m_Name; }
-	const std::string getPassword() const { return this->m_Password; }
-	const userPermission getPermission() const { return this->m_rights; }
-	const double getBalance() const { return this->m_Balance; }
+	const std::string getName()				const { return this->m_Name; }
+	const std::string getPassword()			const { return this->m_Password; }
+	const userPermission getPermission()	const { return this->m_rights; }
+	const double getBalance()				const { return this->m_Balance; }
 
 
 	//Funkcje setujace
 	void setPermission(bool rights);
-	void setPermission(const userPermission& permission) { this->m_rights = permission; }
-	void setName(const std::string& name)  { this->m_Name = name; }
-	void setPassword(const std::string& password) { this->m_Password = password; }
-	void setBalance(const double& balance) { this->m_Balance = balance; }
-
+	void setPermission(const userPermission& permission)	{ this->m_rights = permission; }
+	void setName(const std::string& name)					{ this->m_Name = name; }
+	void setPassword(const std::string& password)			{ this->m_Password = password; }
+	void setBalance(const double& balance)					{ this->m_Balance = balance; }
 };
 
 class Shop {									//Klasa dzia³aj¹ca jak "silnik" programu
@@ -183,6 +174,7 @@ public:
 	//Funkcja UpdateAlbumQuantity aktualizuje plik przechowujacy informacje o stanie albumow w magazynie
 	static void UpdateAlbumQuantity(const StockAlbum& album);
 
+	//Funkcja DisplayPurchaseHistory wyswietla informacje z pliku przechowywujacego historie zamowien na ekran
 	static void DisplayPurchaseHistory();
 };
 
