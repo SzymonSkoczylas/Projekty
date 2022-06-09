@@ -14,7 +14,7 @@ userPermission                  Shop::loggedUserRights;
 bool							Shop::isProgrammeRunning;
 std::vector<AlbumScheme>		Shop::albums;
 std::vector<StockAlbum>			Shop::stockAlbums;
-
+bool							Shop::loggingInProcess;
 //********************************************************************
 //*****************       Zmienne globalne      **********************
 //********************************************************************
@@ -42,18 +42,10 @@ void StockAlbum::makeAlbumStock(const AlbumScheme& scheme)
 	this->setPrize(scheme.getPrize());
 }
 
-double roundoff(const double& value,const unsigned char& prec)
-{
-	double pow_10 = pow(10.0f, (double)prec);
-	return round(value * pow_10) / pow_10;
-}
-
 void StockAlbum::addAlbumCopies()
 {
 	clearScreen;
-	double rounded = round(this->getPrize() * 100);
-	rounded /= 100;
-	std::string prizeS = std::to_string(rounded);
+	std::string prizeS = std::to_string(this->getPrize());
 
 	int counter{};
 	for (;counter < prizeS.length(); counter++)
@@ -65,7 +57,6 @@ void StockAlbum::addAlbumCopies()
 		}
 	}
 	prizeS = prizeS.substr(0,counter);
-	counter = 0;
 
 	const std::string deleteline = this->getName() + " " + this->getArtist() + " " + this->getGenre() + " "
 		+ prizeS + " " + std::to_string(this->getAmount());
@@ -197,6 +188,7 @@ void Shop::MenuInterface(const userPermission& user)
 				AddAlbumToStock();
 				break;
 			case '4':
+				DisplayPurchaseHistory();
 				break;
 			case '5':
 				isProgrammeRunning = false;
@@ -205,7 +197,7 @@ void Shop::MenuInterface(const userPermission& user)
 				break;
 			}
 		}
-		else
+		else if (user == userPermission::USER)
 		{
 			clearScreen;
 			std::cout << "   Zalogowano na koncie usera!\t" << 
@@ -289,61 +281,58 @@ bool Shop::LookForAlbum()
 
 void Shop::LoggingSystem()
 {
-	bool logginInProccess = true;
+	loggingInProcess = true;
 	bool userFound;
 	std::string login, password;
 	char symbol{};
-	isProgrammeRunning = true;
-	while (logginInProccess) {
+	while (loggingInProcess) {
 		clearScreen;
-		if (isProgrammeRunning)
+		isProgrammeRunning = true;
+		std::cout << "1. Zaloguj\t2.Zarejestruj sie\t3.Zakoncz\n";
+		std::cin >> symbol;
+		switch (symbol)
 		{
-			std::cout << "1. Zaloguj\t2.Zarejestruj sie\t3.Zakoncz\n";
-			std::cin >> symbol;
-			switch (symbol)
+		case '1':
+			clearScreen;
+			std::cout << "Login: ";
+			std::cin >> login;
+			std::cout << "Haslo: ";
+			std::cin >> password;
+			userFound = LookForUser(login, password, loggedUserRights);
+			if (userFound)
 			{
-			case '1':
-				clearScreen;
-				std::cout << "Login: ";
-				std::cin >> login;
-				std::cout << "Haslo: ";
-				std::cin >> password;
-				userFound = LookForUser(login, password, loggedUserRights);
-				if (userFound)
-				{
-					currentUser->setName(login);
-					currentUser->setPassword(password);
-					currentUser->setPermission(loggedUserRights);
-					currentUser->setBalance(LookForUserBalance(login, password));
-					MenuInterface(loggedUserRights);
-					break;
-				}
-				else
-				{
-					clearScreen;
-					std::cout << "Nie znaleziono uzytkownika!\n";
-					pressAnyKey;
-					break;
-				}
-			case '2':
-				clearScreen;
-				std::cout << "Wprowadz login: ";
-				std::cin >> login;
-				std::cout << "Wprowadz haslo: ";
-				std::cin >> password;
-				clearScreen;
-				CreateUser(login, password);
-				break;
-			case '3':
-				clearScreen;
-				std::cout << "Wylaczona aplikacje!\n";
-				logginInProccess = false;
-				break;
-			default:
-				clearScreen;
-				std::cout << "Zly input";
+				currentUser->setName(login);
+				currentUser->setPassword(password);
+				currentUser->setPermission(loggedUserRights);
+				currentUser->setBalance(LookForUserBalance(login, password));
+				MenuInterface(loggedUserRights);
 				break;
 			}
+			else
+			{
+				clearScreen;
+				std::cout << "Nie znaleziono uzytkownika!\n";
+				pressAnyKey;
+				break;
+			}
+		case '2':
+			clearScreen;
+			std::cout << "Wprowadz login: ";
+			std::cin >> login;
+			std::cout << "Wprowadz haslo: ";
+			std::cin >> password;
+			clearScreen;
+			CreateUser(login, password);
+			break;
+		case '3':
+			clearScreen;
+			std::cout << "Wylaczona aplikacje!\n";
+			loggingInProcess = false;
+			break;
+		default:
+			clearScreen;
+			std::cout << "Zly input";
+			break;
 		}
 	}
 }
@@ -492,7 +481,7 @@ void Shop::AddToUserBalance()
 
 		if(name == currentUser->getName())
 			userFound = true;
-		if (ph == "Saldo:")
+		if (ph == "Saldo:" && userFound)
 		{
 			tempBalance = currentUser->getBalance();
 			tempBalance += addingValue;
@@ -647,6 +636,47 @@ void Shop::UpdateUserBalance(const double& balance)
 	rename("data\\temp.txt", "data\\users_data.txt");
 }
 
+void Shop::UpdateAlbumQuantity(const StockAlbum& album)
+{
+	std::ifstream stockAlbumFile;
+	stockAlbumFile.open(ALBUM_STOCK_FILE_NAME, std::ios_base::in | std::ios_base::app);
+	std::ofstream temp;
+	temp.open("data\\temp.txt");
+	std::stringstream ss;
+	std::string name, artist, line;
+	std::string prizeS = std::to_string(album.getPrize());
+
+	int counter{};
+	for (; counter < prizeS.length(); counter++)
+	{
+		if (prizeS[counter] == '.')
+		{
+			counter += 3;
+			break;
+		}
+	}
+	prizeS = prizeS.substr(0, counter);
+	const std::string replaceLine = album.getName() + " " + album.getArtist() + " " +
+		album.getGenre() + " " + prizeS + " " + std::to_string(album.getAmount());
+
+	while (std::getline(stockAlbumFile, line))
+	{
+		ss.clear();
+		ss.str(std::string());
+		ss << line;
+		ss >> name >> artist;
+		if (name == album.getName() && artist == album.getArtist())
+			temp << replaceLine <<'\n';
+		else
+			temp << line <<'\n';
+	}
+
+	stockAlbumFile.close();
+	temp.close();
+	remove("data\\album_stock.txt");
+	rename("data\\temp.txt", "data\\album_stock.txt");
+}
+
 void Shop::BuyAlbum()
 {
 	size_t stockSize = stockAlbums.size();
@@ -667,6 +697,7 @@ void Shop::BuyAlbum()
 					UpdateUserBalance(currentUser->getBalance());
 					UpdatePurchaseHistory(stockAlbums[chosenAlbum]);
 					stockAlbums[chosenAlbum].setAmount(stockAlbums[chosenAlbum].getAmount() - 1);
+					UpdateAlbumQuantity(stockAlbums[chosenAlbum]);
 
 					clearScreen;
 					std::cout << "Album kupiony!\n";
@@ -704,9 +735,33 @@ void Shop::UpdatePurchaseHistory(const StockAlbum& album)
 		const unsigned day = static_cast<unsigned>(date.day());
 		const unsigned month = static_cast<unsigned>(date.month());
 		const int year = static_cast<int>(date.year());
+		std::string dayS, monthS;
+		if (day < 10)
+			dayS = '0' + std::to_string(day);
+		else
+			dayS = std::to_string(day);
+		if (month < 10)
+			monthS = '0' + std::to_string(month);
+		else
+			monthS = std::to_string(month);
 
 		purchaseFile <<  currentUser->getName() <<" "<< album.getName() <<" "<< album.getArtist();
-		purchaseFile << " " << day <<'.'<<month<<'.'<<year << '\n';
+		purchaseFile << " " << dayS <<'.'<<monthS<<'.'<<year << '\n';
 	}
 	purchaseFile.close();
+}
+
+void Shop::DisplayPurchaseHistory()
+{
+	clearScreen;
+	std::ifstream purchaseFile;
+	purchaseFile.open(PURCHASE_FILE_NAME);
+	std::stringstream ss;
+	std::string line;
+	while (std::getline(purchaseFile, line))
+	{
+		std::cout << line << '\n';
+	}
+	purchaseFile.close();
+	pressAnyKey;
 }

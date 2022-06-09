@@ -1,3 +1,5 @@
-﻿  shop.cpp
-C:\Users\Achim\Desktop\gitRepo\Projekty\MusicShop\Shop\Shop\src\shop.cpp(614): warning C4715: "Shop::LookForUserBalance”: niewszystkie ścieżki kodu zwracają wartość
-  Shop.vcxproj -> C:\Users\Achim\Desktop\gitRepo\Projekty\MusicShop\Shop\bin\x64\Debug\Shop.exe
+﻿  main.cpp
+  shop.cpp
+  Generowanie kodu...
+D:\repoGit\Projekty\MusicShop\Shop\Shop\src\shop.cpp(603): warning C4715: "Shop::LookForUserBalance”: niewszystkie ścieżki kodu zwracają wartość
+  Shop.vcxproj -> D:\repoGit\Projekty\MusicShop\Shop\bin\x64\Debug\Shop.exe

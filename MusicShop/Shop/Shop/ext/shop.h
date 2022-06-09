@@ -100,7 +100,8 @@ public:
 class Shop {									//Klasa dzia³aj¹ca jak "silnik" programu
 private:
 	static userPermission loggedUserRights;		//Sprawdzanie jakie sa uprawnienia usera, ktory aktualnie przeglada sklep
-	static bool isProgrammeRunning;				//Bool sprawdzajacy czy program jest
+	static bool isProgrammeRunning;				//Bool sprawdzajacy czy program jest wlaczony
+	static bool loggingInProcess;				//Bool sprawdzajacy czy aktualnie trwa logowanie
 	static std::vector<AlbumScheme> albums;		//Lista albumow znajdujacych sie w systemie
 	static std::vector<StockAlbum> stockAlbums; //Lista albumow znajdujacych sie na magazynie
 public:
@@ -163,7 +164,6 @@ public:
 	//Funkcja AddToUserBalance dodajaca uzytkownikowi do salda wybrana kwote pieniedzy
 	static void AddToUserBalance();
 
-
 	/*
 	* Funkcja UpdateUserBalance ustawia konkretna wybrana kwote uzytkownikowi.
 	* Uzywa sie jej do ustawienia salda po wykonaniu kupna albumu przez
@@ -179,6 +179,11 @@ public:
 
 	//Funkcja BuyAlbum wyswietla interfejs kupowania albumu dla usera
 	static void BuyAlbum();
+
+	//Funkcja UpdateAlbumQuantity aktualizuje plik przechowujacy informacje o stanie albumow w magazynie
+	static void UpdateAlbumQuantity(const StockAlbum& album);
+
+	static void DisplayPurchaseHistory();
 };
 
 

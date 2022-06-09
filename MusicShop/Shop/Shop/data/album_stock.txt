@@ -1,5 +1,5 @@
-Nevermind Nirvana Grunge 70.00 20
-pierwszy_album Konrad_Kobielus Hiphop 999.00 12
-Nie Ja Chill_hop 68.99 15
-The_Wall Pink_Floyd Rock 60.67 20
-Album Artysta Gatunek 120.00 50
+Nevermind Nirvana Grunge 70.00 16
+pierwszy_album Konrad_Kobielus Hiphop 999.00 10
+Nie Ja Chill_hop 68.98 13
+The_Wall Pink_Floyd Rock 60.66 19
+Album Artysta Gatunek 120.00 49
