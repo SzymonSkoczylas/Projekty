@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_main_8cpp" xml:lang="pl">
+<title>Dokumentacja pliku Project/Project/src/main.cpp</title>
+<indexterm><primary>Project/Project/src/main.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;functions.h&quot;
+</programlisting>Wykres zależności załączania dla main.cpp:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../da/dce/main_8cpp__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Funkcje    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Dokumentacja funkcji</title>
+<anchor xml:id="_main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>main.cpp</secondary></indexterm>
+<indexterm><primary>main.cpp</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para>
+<para>&lt; Plik rozkładu jazdy</para>
+
+<para>&lt; Plik z drogami, które chcemy znaleźć</para>
+
+<para>&lt; Plik wyjściowy</para>
+
+<para>&lt; Vector ze zinterpretowanymi liniami pliku rozkładu jazdy</para>
+
+<para>&lt; Vector wszystkich miast i ich połączeń</para>
+
+<para>&lt; szukanie wszystkich dróg</para>
+
+<para>&lt; korekta wyników funkcji FindRoute</para>
+
+<para>&lt; najszybsza trasa</para>
+
+<para>&lt; łączny czas podróży</para>
+<para>
+Definicja w linii <link linkend="_main_8cpp_source_1l00003">3</link> pliku <link linkend="_main_8cpp_source">main.cpp</link>.</para>
+Oto graf wywołań dla tej funkcji:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../df/d0a/main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+</section>

@@ -1,0 +1,250 @@
+\hypertarget{functions_8cpp_source}{}\doxysection{functions.\+cpp}
+\label{functions_8cpp_source}\index{Project/headers/functions.cpp@{Project/headers/functions.cpp}}
+\mbox{\hyperlink{functions_8cpp}{Idź do dokumentacji tego pliku.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{functions_8h}{functions.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00003}\mbox{\hyperlink{functions_8cpp_aa288b29498fa054951dbdca37510664b}{00003}} \textcolor{preprocessor}{\#define MINUMUM\_TIME\_FOR\_CHANGE 5}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00005}\mbox{\hyperlink{functions_8cpp_abae79917897174a3c69842beba6fb335}{00005}} std::vector<City> \mbox{\hyperlink{functions_8cpp_abae79917897174a3c69842beba6fb335}{FillCityVec}}(std::vector<FileLine> \& timetable)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00006}00006 \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00007}00007     std::vector<City> vec;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00008}00008     std::string temp;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00009}00009     \textcolor{keywordtype}{bool} cond = 0;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00010}00010     std::unique\_ptr<City> city = std::make\_unique<City>();}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00011}00011     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} it = timetable.begin(); it != timetable.end(); it++)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00012}00012     \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00013}00013         temp = it-\/>GetCityName(\textcolor{stringliteral}{"{}departure"{}});}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00014}00014         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jt = vec.begin(); jt != vec.end(); jt++)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00015}00015         \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00016}00016             \textcolor{keywordflow}{if} (jt-\/>m\_name == temp)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00017}00017                 cond = 1;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00018}00018         \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00019}00019         \textcolor{keywordflow}{if} (cond == 0)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00020}00020         \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00021}00021             city-\/>SetName(temp);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00022}00022             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jt = timetable.begin(); jt != timetable.end(); jt++)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00023}00023             \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00024}00024                 \textcolor{keywordflow}{if} (jt-\/>GetCityName(\textcolor{stringliteral}{"{}departure"{}}) == temp)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00025}00025                     city-\/>CanTravel(jt-\/>GetCityName(\textcolor{stringliteral}{"{}arrival"{}}));}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00026}00026             \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00027}00027             vec.push\_back(*city);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00028}00028             city-\/>ClearVec();}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00029}00029         \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00030}00030         cond = 0;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00031}00031     \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00032}00032     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} it = timetable.begin(); it != timetable.end(); it++)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00033}00033     \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00034}00034         cond = 1;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00035}00035         temp = it-\/>GetCityName(\textcolor{stringliteral}{"{}arrival"{}});}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00036}00036         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jt = vec.begin(); jt != vec.end(); jt++)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00037}00037         \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00038}00038             \textcolor{keywordflow}{if} (jt-\/>m\_name == temp)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00039}00039                 cond = 0;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00040}00040         \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00041}00041         \textcolor{keywordflow}{if} (cond)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00042}00042         \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00043}00043             city-\/>SetName(temp);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00044}00044             vec.push\_back(*city);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00045}00045         \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00046}00046     \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00047}00047     \textcolor{keywordflow}{return} vec;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00048}00048 \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00054}\mbox{\hyperlink{functions_8cpp_a6523726a3e2822d792e823e8f11e45b3}{00054}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{functions_8cpp_a6523726a3e2822d792e823e8f11e45b3}{IfDuplicates}}(\textcolor{keyword}{const} std::vector<std::string>\& vec, \textcolor{keyword}{const} std::string\& city)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00055}00055 \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00056}00056     std::string str;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00057}00057     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} it = vec.begin(); it != vec.end(); it++)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00058}00058     \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00059}00059         str = *it;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00060}00060         \textcolor{keywordflow}{if} (str == city) \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00061}00061     \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00062}00062     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00063}00063 \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00065}\mbox{\hyperlink{functions_8cpp_aac008d0a41a438a256294eec5c711e58}{00065}} \textcolor{keywordtype}{void} \mbox{\hyperlink{functions_8cpp_aac008d0a41a438a256294eec5c711e58}{Correction}}(std::vector<std::vector<std::string>> \& roads, \textcolor{keyword}{const} std::string \& goal)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00066}00066 \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00067}00067     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=0;i<roads.size();i++)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00068}00068     \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00069}00069         std::reverse(roads[i].begin(), roads[i].end());}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00070}00070         \textcolor{keywordflow}{if} (roads[i].back() != goal)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00071}00071             roads[i].clear();}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00072}00072     \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00074}00074     \textcolor{keyword}{auto} end = roads.end();}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00075}00075     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} it = roads.begin(); it != end; it++)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00076}00076         end = std::remove(it + 1, end, *it);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00077}00077     roads.erase(end, roads.end());}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00079}00079     \textcolor{keyword}{auto} it = roads.begin();}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00080}00080     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < roads.size(); i++)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00081}00081     \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00082}00082         \textcolor{keywordflow}{if} (roads[i].empty() == \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00083}00083         \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00084}00084             it += i;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00085}00085             roads.erase(it);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00086}00086         \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00087}00087     \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00088}00088 \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00089}\mbox{\hyperlink{functions_8cpp_adff9f42478e20c2c819d66a7cf15d65e}{00089}} \textcolor{keywordtype}{void} \mbox{\hyperlink{functions_8cpp_adff9f42478e20c2c819d66a7cf15d65e}{FindRoute}}(std::string goal, \textcolor{keyword}{const} std::string \& from,\textcolor{keyword}{const} std::vector<City>\& cities, std::vector<std::string>\& solution, std::vector<std::vector<std::string>>\& solutions)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00090}00090 \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00091}00091     \textcolor{keywordflow}{if} (goal == from)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00092}00092     \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00093}00093         solution.push\_back(from);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00094}00094         \textcolor{keywordflow}{if} (!solution.empty()) solutions.push\_back(solution);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00095}00095         solution.clear();}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00096}00096         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00097}00097     \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00098}00098     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} it = cities.begin(); it != cities.end(); it++)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00099}00099     \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00100}00100         \textcolor{keywordtype}{bool} condition = \mbox{\hyperlink{functions_8cpp_a6523726a3e2822d792e823e8f11e45b3}{IfDuplicates}}(solution, it-\/>m\_name);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00101}00101         \textcolor{keywordflow}{if} (!condition)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00102}00102         \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00103}00103             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jt = it-\/>m\_canTravelTo.begin(); jt != it-\/>m\_canTravelTo.end(); jt++)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00104}00104             \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00105}00105                 \textcolor{keywordflow}{if} (*jt == goal)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00106}00106                 \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00107}00107                     condition = \mbox{\hyperlink{functions_8cpp_a6523726a3e2822d792e823e8f11e45b3}{IfDuplicates}}(solution, *jt);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00108}00108                     \textcolor{keywordflow}{if} (!condition)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00109}00109                     \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00110}00110                         solution.push\_back(goal);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00111}00111                         \mbox{\hyperlink{functions_8cpp_adff9f42478e20c2c819d66a7cf15d65e}{FindRoute}}(it-\/>m\_name, from, cities, solution, solutions);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00112}00112                     \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00113}00113                 \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00114}00114             \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00115}00115         \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00116}00116     \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00117}00117     solution.clear();}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00118}00118 \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00119}00119 }
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00120}\mbox{\hyperlink{functions_8cpp_af03ece043d7189a2c9822bdb042deb5b}{00120}} std::vector<std::string> \mbox{\hyperlink{functions_8cpp_af03ece043d7189a2c9822bdb042deb5b}{FastestRoad}}(\textcolor{keyword}{const} std::vector<std::vector<std::string>>\& roads,\textcolor{keyword}{const} std::vector<FileLine> \& timetable)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00121}00121 \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00122}00122     std::vector<std::string> temp;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00123}00123     std::vector<std::string> sol;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00124}00124     std::vector<FileLine>::iterator ptr;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00125}00125     \textcolor{keywordtype}{bool} FirstCity = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00126}00126     \textcolor{keywordtype}{int} hourOfDepartFromLastCity;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00127}00127     \textcolor{keywordtype}{int} time\{\};}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00128}00128     \textcolor{keywordtype}{int} tempTime = 1441;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00129}00129     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} it = roads.begin(); it != roads.end(); it++)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00130}00130     \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00131}00131         time = 0;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00132}00132         temp = *it;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00133}00133         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < temp.size() -\/ 1; i++)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00134}00134         \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00135}00135             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jt = timetable.begin(); jt != timetable.end(); jt++)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00136}00136             \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00137}00137                 \textcolor{keywordflow}{if} ((jt-\/>GetCityName(\textcolor{stringliteral}{"{}departure"{}}) == temp[i]) \&\& (jt-\/>GetCityName(\textcolor{stringliteral}{"{}arrival"{}}) == temp[i + 1]))}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00138}00138                 \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00139}00139                     time += jt-\/>GetDuration();}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00140}00140                     \textcolor{keywordflow}{if} (FirstCity)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00141}00141                     \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00142}00142                         hourOfDepartFromLastCity = jt-\/>GetHour(0);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00143}00143                         hourOfDepartFromLastCity += jt-\/>GetDuration();}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00144}00144                         FirstCity = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00145}00145                     \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00146}00146                     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00147}00147                     \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00148}00148                         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < jt-\/>GetNumberOfHoursOfDepartures(); i++)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00149}00149                         \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00150}00150                             \textcolor{keywordflow}{if} (jt-\/>GetHour(i) > (hourOfDepartFromLastCity+\mbox{\hyperlink{functions_8cpp_aa288b29498fa054951dbdca37510664b}{MINUMUM\_TIME\_FOR\_CHANGE}}))}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00151}00151                             \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00152}00152                                 time += jt-\/>GetHour(i) -\/ hourOfDepartFromLastCity;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00153}00153                                 hourOfDepartFromLastCity = jt-\/>GetHour(i);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00154}00154                                 hourOfDepartFromLastCity += jt-\/>GetDuration();}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00155}00155                                 \textcolor{keywordflow}{goto} foundNextHour;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00156}00156                             \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00157}00157                         \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00158}00158                     \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00159}00159                 \}foundNextHour:;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00160}00160             \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00161}00161         \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00162}00162         \textcolor{keywordflow}{if} (time < tempTime)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00163}00163             sol = temp;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00164}00164         tempTime = time;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00165}00165         FirstCity = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00166}00166     \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00167}00167     \textcolor{keywordflow}{return} sol;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00168}00168 \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00169}00169 }
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00170}\mbox{\hyperlink{functions_8cpp_a14e1ef21104a6ad48c88f21480f1310d}{00170}} std::string \mbox{\hyperlink{functions_8cpp_a14e1ef21104a6ad48c88f21480f1310d}{ConvertMinutesToHour}}(\textcolor{keywordtype}{int} \& minutes)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00171}00171 \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00172}00172     std::string hours;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00173}00173     \textcolor{keywordtype}{int} temp = minutes \% 60;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00174}00174     minutes -\/= temp;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00175}00175     minutes /= 60;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00176}00176     hours = std::to\_string(minutes);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00177}00177     hours += \textcolor{charliteral}{':'};}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00178}00178     \textcolor{keywordflow}{if} (temp < 10) hours+=\textcolor{charliteral}{'0'};}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00179}00179     hours += std::to\_string(temp);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00180}00180     \textcolor{keywordflow}{return} hours;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00181}00181 \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00182}00182 }
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00183}\mbox{\hyperlink{functions_8cpp_ad7aebb26f6e8258f90fcfc49b6b1127e}{00183}} \textcolor{keywordtype}{int} \mbox{\hyperlink{functions_8cpp_ad7aebb26f6e8258f90fcfc49b6b1127e}{LookForNextDepart}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} \& lastHour, \textcolor{keyword}{const} std::string \& departCity, \textcolor{keyword}{const} std::string \& arriveCity,\textcolor{keyword}{const} std::vector<FileLine> \& timetable)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00184}00184 \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00185}00185     \textcolor{keywordtype}{bool} cond=\textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00186}00186     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} it = timetable.begin(); it != timetable.end(); it++)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00187}00187     \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00188}00188         \textcolor{keywordflow}{if} ((it-\/>GetCityName(\textcolor{stringliteral}{"{}departure"{}}) == departCity) \&\& (it-\/>GetCityName(\textcolor{stringliteral}{"{}arrival"{}}) == arriveCity))}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00189}00189         \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00190}00190             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < it-\/>GetNumberOfHoursOfDepartures(); i++)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00191}00191             \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00192}00192                 cond = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00193}00193                 \textcolor{keywordflow}{if} (lastHour < (it-\/>GetHour(i) -\/ \mbox{\hyperlink{functions_8cpp_aa288b29498fa054951dbdca37510664b}{MINUMUM\_TIME\_FOR\_CHANGE}}))}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00194}00194                     \textcolor{keywordflow}{return} it-\/>GetHour(i);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00195}00195             \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00196}00196             \textcolor{keywordflow}{if} (cond == \textcolor{keyword}{true}) \textcolor{keywordflow}{return} it-\/>GetHour(0);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00197}00197         \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00198}00198     \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00199}00199 \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00200}00200 }
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00201}\mbox{\hyperlink{functions_8cpp_a520caa7ab9758f319fc4fd17b3d4792f}{00201}} \textcolor{keywordtype}{int} \mbox{\hyperlink{functions_8cpp_a520caa7ab9758f319fc4fd17b3d4792f}{GetTotalTime}}(\textcolor{keyword}{const} std::vector<std::string>\& road, \textcolor{keyword}{const} std::vector<FileLine>\& timetable)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00202}00202 \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00203}00203     \textcolor{keywordtype}{int} departHour\{\};}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00204}00204     \textcolor{keywordtype}{int} arriveHour\{\};}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00205}00205     \textcolor{keywordtype}{int} changeTimeMinutes\{\};}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00206}00206 }
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00207}00207     \textcolor{keywordtype}{int} totalTime\{\};}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00208}00208 }
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00209}00209     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} it = road.begin(); it != road.end() -\/ 1; it++)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00210}00210     \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00211}00211         \textcolor{keywordflow}{if} (it != road.end() -\/ 2)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00212}00212         \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00213}00213             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jt = timetable.begin(); jt != timetable.end(); jt++)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00214}00214             \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00215}00215                 \textcolor{keywordflow}{if} ((jt-\/>GetCityName(\textcolor{stringliteral}{"{}departure"{}}) == *it) \&\& (jt-\/>GetCityName(\textcolor{stringliteral}{"{}arrival"{}}) == *(it + 1)))}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00216}00216                 \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00217}00217                     \textcolor{keywordflow}{if} (it == road.begin())}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00218}00218                         departHour = jt-\/>GetHour(0);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00219}00219                     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00220}00220                         departHour = \mbox{\hyperlink{functions_8cpp_ad7aebb26f6e8258f90fcfc49b6b1127e}{LookForNextDepart}}(arriveHour, *it, *(it + 1), timetable);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00221}00221                     arriveHour = departHour + jt-\/>GetDuration();}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00222}00222                     changeTimeMinutes = \mbox{\hyperlink{functions_8cpp_ad7aebb26f6e8258f90fcfc49b6b1127e}{LookForNextDepart}}(arriveHour, *(it + 1), *(it + 2), timetable) -\/ arriveHour;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00223}00223                     \textcolor{keywordflow}{if} (changeTimeMinutes < 0)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00224}00224                     \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00225}00225                         \textcolor{keyword}{auto} temp = \mbox{\hyperlink{functions_8cpp_ad7aebb26f6e8258f90fcfc49b6b1127e}{LookForNextDepart}}(arriveHour, *(it + 1), *(it + 2), timetable);}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00226}00226                         \textcolor{keywordtype}{int} minutesInDay = 1440;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00227}00227                         changeTimeMinutes = minutesInDay -\/ arriveHour + temp;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00228}00228                     \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00229}00229                     totalTime += jt-\/>GetDuration() + changeTimeMinutes;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00230}00230 }
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00231}00231 }
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00232}00232                     \textcolor{keywordflow}{goto} foundCity;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00233}00233                 \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00234}00234             \}foundCity:;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00235}00235         \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00236}00236         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (it == road.end() -\/ 2)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00237}00237         \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00238}00238             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jt = timetable.begin(); jt != timetable.end(); jt++)}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00239}00239             \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00240}00240                 \textcolor{keywordflow}{if} ((jt-\/>GetCityName(\textcolor{stringliteral}{"{}departure"{}}) == *it) \&\& (jt-\/>GetCityName(\textcolor{stringliteral}{"{}arrival"{}}) == *(it + 1)))}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00241}00241                 \{}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00242}00242                     totalTime += jt-\/>GetDuration();}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00243}00243                     \textcolor{keywordflow}{return} totalTime;}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00244}00244                 \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00245}00245             \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00246}00246         \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00247}00247     \}}
+\DoxyCodeLine{\Hypertarget{functions_8cpp_source_l00248}00248 \}}
+
+\end{DoxyCode}

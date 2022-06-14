@@ -1,0 +1,97 @@
+\hypertarget{functions_8h_source}{}\doxysection{functions.\+h}
+\label{functions_8h_source}\index{Project/headers/functions.h@{Project/headers/functions.h}}
+\mbox{\hyperlink{functions_8h}{Idź do dokumentacji tego pliku.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00001}00001 \textcolor{preprocessor}{\#ifndef FUNCTIONS\_H}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00002}00002 \textcolor{preprocessor}{\#define FUNCTIONS\_H}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00004}00004 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00005}00005 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00006}00006 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00007}00007 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00008}00008 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00009}00009 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00010}00010 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00011}00011 \textcolor{preprocessor}{\#include <array>}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00014}\mbox{\hyperlink{class_file_line}{00014}} \textcolor{keyword}{class }\mbox{\hyperlink{class_file_line}{FileLine}} }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00015}00015 \{}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00016}00016 \textcolor{keyword}{private}:    }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00017}\mbox{\hyperlink{class_file_line_a6e45a4449005fd6224882d0fb72f1ef5}{00017}}     std::string \mbox{\hyperlink{class_file_line_a6e45a4449005fd6224882d0fb72f1ef5}{m\_departure}};         }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00018}\mbox{\hyperlink{class_file_line_a7b357ffea550d4fab5b1680769ec0093}{00018}}     std::string \mbox{\hyperlink{class_file_line_a7b357ffea550d4fab5b1680769ec0093}{m\_arrival}};             }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00019}\mbox{\hyperlink{class_file_line_a0872898a7a5e9af66b27f40d41758c81}{00019}}     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_file_line_a0872898a7a5e9af66b27f40d41758c81}{m\_duration}}\{\};                 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00020}\mbox{\hyperlink{class_file_line_a03c84f745fd92ec3fb2a0a881fe0d56d}{00020}}     std::array<std::string,3> \mbox{\hyperlink{class_file_line_a03c84f745fd92ec3fb2a0a881fe0d56d}{m\_time}}; }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00021}00021 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00026}\mbox{\hyperlink{class_file_line_ae39a890c2d0614babc8c410a8b18a46e}{00026}}     std::string \mbox{\hyperlink{class_file_line_ae39a890c2d0614babc8c410a8b18a46e}{GetCityName}}(\textcolor{keyword}{const} std::string \& \textcolor{keywordtype}{boolean})\textcolor{keyword}{ const }}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00027}00027 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00028}00028         std::string city = \textcolor{keywordtype}{boolean}==\textcolor{stringliteral}{"{}arrival"{}}? \mbox{\hyperlink{class_file_line_a7b357ffea550d4fab5b1680769ec0093}{m\_arrival}} : \mbox{\hyperlink{class_file_line_a6e45a4449005fd6224882d0fb72f1ef5}{m\_departure}};}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00029}00029         \textcolor{keywordflow}{return} city;}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00030}00030     \}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00033}\mbox{\hyperlink{class_file_line_af9ab22eb596aa17e7a952777986e2000}{00033}}     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_file_line_af9ab22eb596aa17e7a952777986e2000}{GetDuration}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_file_line_a0872898a7a5e9af66b27f40d41758c81}{m\_duration}}; \}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00036}\mbox{\hyperlink{class_file_line_a3782624c3311a5964bb0b9104673ac7c}{00036}}     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_file_line_a3782624c3311a5964bb0b9104673ac7c}{GetNumberOfHoursOfDepartures}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_file_line_a03c84f745fd92ec3fb2a0a881fe0d56d}{m\_time}}.size(); \}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00040}\mbox{\hyperlink{class_file_line_a8805d148e89dc8fca5b3d6b922f7aa77}{00040}}     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_file_line_a8805d148e89dc8fca5b3d6b922f7aa77}{GetHour}}(\textcolor{keywordtype}{short} n)\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_file_line_af2923f728d370baad627563af13cc729}{ConvertHour}}(n); \}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00044}\mbox{\hyperlink{class_file_line_a377aa60cc56cb0c5e1d0e65340198cc0}{00044}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_file_line_a377aa60cc56cb0c5e1d0e65340198cc0}{GetFileLine}}(\textcolor{keyword}{const} std::string\& str) }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00045}00045     \{}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00046}00046         std::stringstream ss;}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00047}00047         ss << str;}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00048}00048         ss >> \mbox{\hyperlink{class_file_line_a6e45a4449005fd6224882d0fb72f1ef5}{m\_departure}} >> \mbox{\hyperlink{class_file_line_a7b357ffea550d4fab5b1680769ec0093}{m\_arrival}} >> \mbox{\hyperlink{class_file_line_a0872898a7a5e9af66b27f40d41758c81}{m\_duration}} >> \mbox{\hyperlink{class_file_line_a03c84f745fd92ec3fb2a0a881fe0d56d}{m\_time}}[0] >> \mbox{\hyperlink{class_file_line_a03c84f745fd92ec3fb2a0a881fe0d56d}{m\_time}}[1] >> \mbox{\hyperlink{class_file_line_a03c84f745fd92ec3fb2a0a881fe0d56d}{m\_time}}[2];}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00049}00049     \}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00050}00050 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00053}\mbox{\hyperlink{class_file_line_af2923f728d370baad627563af13cc729}{00053}}     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_file_line_af2923f728d370baad627563af13cc729}{ConvertHour}} (\textcolor{keyword}{const} \textcolor{keywordtype}{short} \& n)\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00054}00054 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00055}00055         std::string hours;}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00056}00056         std::string minutes;}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00057}00057         \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_file_line_a03c84f745fd92ec3fb2a0a881fe0d56d}{m\_time}}[n].size() == 5) }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00058}00058         \{}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00059}00059             hours = \mbox{\hyperlink{class_file_line_a03c84f745fd92ec3fb2a0a881fe0d56d}{m\_time}}[n].substr(0, 2);}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00060}00060             minutes = \mbox{\hyperlink{class_file_line_a03c84f745fd92ec3fb2a0a881fe0d56d}{m\_time}}[n].substr(3, 2);}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00061}00061         \}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00062}00062         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00063}00063         \{}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00064}00064             hours = \mbox{\hyperlink{class_file_line_a03c84f745fd92ec3fb2a0a881fe0d56d}{m\_time}}[n].substr(0, 1);}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00065}00065             minutes = \mbox{\hyperlink{class_file_line_a03c84f745fd92ec3fb2a0a881fe0d56d}{m\_time}}[n].substr(2, 2);}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00066}00066         \}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00067}00067         \textcolor{keywordtype}{int} h = std::stoi(hours);}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00068}00068         \textcolor{keywordtype}{int} m = std::stoi(minutes);}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00069}00069         h *= 60;}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00070}00070         \textcolor{keywordflow}{return} h + m;}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00071}00071     \}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00072}00072 \};}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00075}\mbox{\hyperlink{class_city}{00075}} \textcolor{keyword}{class }\mbox{\hyperlink{class_city}{City}}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00076}00076 \{}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00077}00077 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00078}\mbox{\hyperlink{class_city_ab99cdf24006dfd8fa7d570c961c56e03}{00078}}     std::string \mbox{\hyperlink{class_city_ab99cdf24006dfd8fa7d570c961c56e03}{m\_name}};                           }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00079}\mbox{\hyperlink{class_city_ac55e9659d8402b1d648bca9103b4edaf}{00079}}     std::vector<std::string> \mbox{\hyperlink{class_city_ac55e9659d8402b1d648bca9103b4edaf}{m\_canTravelTo}};        }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00080}00080 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00084}\mbox{\hyperlink{class_city_ac7a6911d993a817e57fa63a330cb1fb5}{00084}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_city_ac7a6911d993a817e57fa63a330cb1fb5}{SetName}}(\textcolor{keyword}{const} std::string \& str) \{ \mbox{\hyperlink{class_city_ab99cdf24006dfd8fa7d570c961c56e03}{m\_name}} = str; \}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00088}\mbox{\hyperlink{class_city_a49bd317d61b097c4b806d15b2c6b83d8}{00088}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_city_a49bd317d61b097c4b806d15b2c6b83d8}{CanTravel}}(\textcolor{keyword}{const} std::string \& str) \{ \mbox{\hyperlink{class_city_ac55e9659d8402b1d648bca9103b4edaf}{m\_canTravelTo}}.push\_back(str); \}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00091}\mbox{\hyperlink{class_city_a98b82853a2675ef3009cc594c46344d0}{00091}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_city_a98b82853a2675ef3009cc594c46344d0}{ClearVec}}() \{ \mbox{\hyperlink{class_city_ac55e9659d8402b1d648bca9103b4edaf}{m\_canTravelTo}}.clear(); \}}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00092}00092 \};}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00097}00097 std::vector<City> \mbox{\hyperlink{functions_8h_abae79917897174a3c69842beba6fb335}{FillCityVec}}(std::vector<FileLine> \& timetable);}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00138}00138 \textcolor{keywordtype}{void} \mbox{\hyperlink{functions_8h_adff9f42478e20c2c819d66a7cf15d65e}{FindRoute}}(std::string goal, \textcolor{keyword}{const} std::string\& from,\textcolor{keyword}{const} std::vector<City>\& cities, std::vector<std::string>\& solution, std::vector<std::vector<std::string>>\& solutions);}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00139}00139 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00164}00164 \textcolor{keywordtype}{void} \mbox{\hyperlink{functions_8h_aac008d0a41a438a256294eec5c711e58}{Correction}}(std::vector<std::vector<std::string>>\& roads, \textcolor{keyword}{const} std::string\& goal);}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00165}00165 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00166}00166 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00213}00213 std::vector<std::string> \mbox{\hyperlink{functions_8h_af03ece043d7189a2c9822bdb042deb5b}{FastestRoad}}(\textcolor{keyword}{const} std::vector<std::vector<std::string>>\& roads, \textcolor{keyword}{const} std::vector<FileLine>\& timetable);}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00214}00214 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00218}00218 std::string \mbox{\hyperlink{functions_8h_a14e1ef21104a6ad48c88f21480f1310d}{ConvertMinutesToHour}}(\textcolor{keywordtype}{int}\& minutes);}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00219}00219 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00242}00242 \textcolor{keywordtype}{int} \mbox{\hyperlink{functions_8h_ad7aebb26f6e8258f90fcfc49b6b1127e}{LookForNextDepart}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} \& lastHour, \textcolor{keyword}{const} std::string\& departCity, \textcolor{keyword}{const} std::string\& arriveCity,\textcolor{keyword}{const} std::vector<FileLine>\& timetable);}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00243}00243 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00247}00247 \textcolor{keywordtype}{int} \mbox{\hyperlink{functions_8h_a520caa7ab9758f319fc4fd17b3d4792f}{GetTotalTime}}(\textcolor{keyword}{const} std::vector<std::string>\& road, \textcolor{keyword}{const} std::vector<FileLine>\& timetable);}
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00248}00248 }
+\DoxyCodeLine{\Hypertarget{functions_8h_source_l00249}00249 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//FUNCTIONS\_H}}
+
+\end{DoxyCode}

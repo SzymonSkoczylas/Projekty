@@ -1,0 +1,125 @@
+\hypertarget{main_8cpp_source}{}\doxysection{main.\+cpp}
+\label{main_8cpp_source}\index{Project/Project/src/main.cpp@{Project/Project/src/main.cpp}}
+\mbox{\hyperlink{main_8cpp}{Idź do dokumentacji tego pliku.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{functions_8h}{functions.h}}"{}} }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00003}\mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00003}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00004}00004 \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00005}00005     std::ifstream inFileTimetable(\textcolor{stringliteral}{"{}..\(\backslash\)\(\backslash\)data\(\backslash\)\(\backslash\)timetable.txt"{}}); }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00006}00006     std::ifstream inFileTravel(\textcolor{stringliteral}{"{}..\(\backslash\)\(\backslash\)data\(\backslash\)\(\backslash\)travel.txt"{}});       }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00007}00007     std::ofstream toSolutionFile(\textcolor{stringliteral}{"{}..\(\backslash\)\(\backslash\)data\(\backslash\)\(\backslash\)solution.txt"{}});   }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00008}00008     std::string line;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00009}00009     \mbox{\hyperlink{class_file_line}{FileLine}} fline;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00010}00010     std::vector<FileLine> timetable;                          }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00011}00011     std::vector<City> cities;                                 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00012}00012     std::vector<City> tempCities;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00014}00014     \textcolor{keywordflow}{while} (std::getline(inFileTimetable, line))}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00015}00015     \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00016}00016         fline.\mbox{\hyperlink{class_file_line_a377aa60cc56cb0c5e1d0e65340198cc0}{GetFileLine}}(line);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00017}00017         timetable.push\_back(fline);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00018}00018     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00019}00019     }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00021}00021     \textcolor{keyword}{struct }\{ std::string a; std::string b; \} traveler;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00022}00022     \textcolor{keyword}{auto}\& [departCity, arriveCity] = traveler;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00024}00024     std::stringstream ss;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00025}00025     std::vector<std::string> temp;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00026}00026     std::vector<std::string> fastest;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00027}00027     std::vector<std::vector<std::string>> roads;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00028}00028     \textcolor{keywordtype}{int} time\{\};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00029}00029     \textcolor{keywordtype}{int} totalTime\{\};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00030}00030     \textcolor{keywordtype}{int} departHour\{\};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00031}00031     \textcolor{keywordtype}{int} arriveHour\{\};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00032}00032     \textcolor{keywordtype}{int} changeTimeMinutes\{\};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00033}00033     std::string changeTime\{\};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00035}00035     \textcolor{keywordflow}{while} (std::getline(inFileTravel, line))}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00036}00036     \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00037}00037         ss << line;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00038}00038         ss >> departCity >> arriveCity;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00039}00039         cities = \mbox{\hyperlink{functions_8cpp_abae79917897174a3c69842beba6fb335}{FillCityVec}}(timetable);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00040}00040         \mbox{\hyperlink{functions_8cpp_adff9f42478e20c2c819d66a7cf15d65e}{FindRoute}}(arriveCity, departCity, cities, temp, roads); }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00041}00041         \mbox{\hyperlink{functions_8cpp_aac008d0a41a438a256294eec5c711e58}{Correction}}(roads, arriveCity); }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00042}00042         \textcolor{keywordflow}{if} (!roads.empty())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00043}00043         \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00044}00044             fastest = \mbox{\hyperlink{functions_8cpp_af03ece043d7189a2c9822bdb042deb5b}{FastestRoad}}(roads, timetable); }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00045}00045             totalTime = \mbox{\hyperlink{functions_8cpp_a520caa7ab9758f319fc4fd17b3d4792f}{GetTotalTime}}(fastest, timetable); }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00046}00046             }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00048}00048             toSolutionFile << departCity << \textcolor{stringliteral}{"{} -\/-\/> "{}} << arriveCity << \textcolor{stringliteral}{"{} (czas: "{}} <<}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00049}00049                 \mbox{\hyperlink{functions_8cpp_a14e1ef21104a6ad48c88f21480f1310d}{ConvertMinutesToHour}}(totalTime) << \textcolor{stringliteral}{"{}, przesiadki: "{}} << fastest.size() -\/ 2 << \textcolor{stringliteral}{"{})\(\backslash\)n"{}} <<}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00050}00050                 \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00052}00052                 \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} it = fastest.begin(); it != fastest.end() -\/ 1; it++)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00053}00053                 \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00054}00054                     \textcolor{keywordflow}{if} (fastest.size() != 2)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00055}00055                     \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00056}00056                         \textcolor{keywordflow}{if} (it != fastest.end() -\/ 2)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00057}00057                         \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00058}00058                             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jt = timetable.begin(); jt != timetable.end(); jt++)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00059}00059                             \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00060}00060                                 \textcolor{keywordflow}{if} ((jt-\/>GetCityName(\textcolor{stringliteral}{"{}departure"{}}) == *it) \&\& (jt-\/>GetCityName(\textcolor{stringliteral}{"{}arrival"{}}) == *(it + 1)))}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00061}00061                                 \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00062}00062                                     \textcolor{keywordflow}{if} (it == fastest.begin())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00063}00063                                         departHour = jt-\/>GetHour(0);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00064}00064                                     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00065}00065                                         departHour = \mbox{\hyperlink{functions_8cpp_ad7aebb26f6e8258f90fcfc49b6b1127e}{LookForNextDepart}}(arriveHour, *it, *(it + 1), timetable);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00066}00066                                     arriveHour = departHour + jt-\/>GetDuration();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00067}00067                                     changeTimeMinutes = \mbox{\hyperlink{functions_8cpp_ad7aebb26f6e8258f90fcfc49b6b1127e}{LookForNextDepart}}(arriveHour, *(it + 1), *(it + 2), timetable) -\/ arriveHour;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00069}00069                                     \textcolor{keyword}{auto} temp1 = arriveHour;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00070}00070                                     \textcolor{keyword}{auto} temp2 = departHour;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00071}00071                                     \textcolor{keyword}{auto} temp3 = changeTimeMinutes;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00072}00072                                     \textcolor{keywordflow}{if} (temp3 < 0) temp3 *= -\/1;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00073}00073                                     changeTime = \mbox{\hyperlink{functions_8cpp_a14e1ef21104a6ad48c88f21480f1310d}{ConvertMinutesToHour}}(temp3);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00075}00075                                     toSolutionFile << jt-\/>GetCityName(\textcolor{stringliteral}{"{}departure"{}}) << \textcolor{stringliteral}{"{} ("{}} << \mbox{\hyperlink{functions_8cpp_a14e1ef21104a6ad48c88f21480f1310d}{ConvertMinutesToHour}}(temp2) <<}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00076}00076                                         \textcolor{stringliteral}{"{}) -\/-\/> "{}} << jt-\/>GetCityName(\textcolor{stringliteral}{"{}arrival"{}}) << \textcolor{stringliteral}{"{} ("{}} << \mbox{\hyperlink{functions_8cpp_a14e1ef21104a6ad48c88f21480f1310d}{ConvertMinutesToHour}}(temp1) <<}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00077}00077                                         \textcolor{stringliteral}{"{}), przesiadka za "{}} << changeTime << \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00078}00078                                     \textcolor{keywordflow}{goto} foundCity;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00079}00079                                 \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00080}00080                             \}foundCity:;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00081}00081                         \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00082}00082                         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (it == fastest.end() -\/ 2)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00083}00083                         \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00084}00084                             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jt = timetable.begin(); jt != timetable.end(); jt++)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00085}00085                             \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00086}00086                                 \textcolor{keywordflow}{if} ((jt-\/>GetCityName(\textcolor{stringliteral}{"{}departure"{}}) == *it) \&\& (jt-\/>GetCityName(\textcolor{stringliteral}{"{}arrival"{}}) == *(it + 1)))}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00087}00087                                 \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00088}00088                                     departHour = changeTimeMinutes + arriveHour;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00089}00089                                     arriveHour = departHour + jt-\/>GetDuration();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00091}00091                                     toSolutionFile << jt-\/>GetCityName(\textcolor{stringliteral}{"{}departure"{}}) << \textcolor{stringliteral}{"{} ("{}} << \mbox{\hyperlink{functions_8cpp_a14e1ef21104a6ad48c88f21480f1310d}{ConvertMinutesToHour}}(departHour) <<}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00092}00092                                         \textcolor{stringliteral}{"{}) -\/-\/> "{}} << jt-\/>GetCityName(\textcolor{stringliteral}{"{}arrival"{}}) << \textcolor{stringliteral}{"{} ("{}} << \mbox{\hyperlink{functions_8cpp_a14e1ef21104a6ad48c88f21480f1310d}{ConvertMinutesToHour}}(arriveHour) << \textcolor{stringliteral}{"{})\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00093}00093                                     \textcolor{keywordflow}{goto} loopEnd;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00094}00094                                 \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00095}00095                             \}loopEnd:;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00096}00096                         \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00097}00097                     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00098}00098                     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00099}00099                     \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00100}00100                         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jt = timetable.begin(); jt != timetable.end(); jt++)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00101}00101                         \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00102}00102                             \textcolor{keywordflow}{if} ((jt-\/>GetCityName(\textcolor{stringliteral}{"{}departure"{}}) == *it) \&\& (jt-\/>GetCityName(\textcolor{stringliteral}{"{}arrival"{}}) == *(it + 1)))}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00103}00103                             \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00104}00104                                 departHour = jt-\/>GetHour(0);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00105}00105                                 arriveHour = departHour + jt-\/>GetDuration();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00107}00107                                 toSolutionFile << jt-\/>GetCityName(\textcolor{stringliteral}{"{}departure"{}}) << \textcolor{stringliteral}{"{} ("{}} << \mbox{\hyperlink{functions_8cpp_a14e1ef21104a6ad48c88f21480f1310d}{ConvertMinutesToHour}}(departHour) <<}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00108}00108                                     \textcolor{stringliteral}{"{}) -\/-\/> "{}} << jt-\/>GetCityName(\textcolor{stringliteral}{"{}arrival"{}}) << \textcolor{stringliteral}{"{} ("{}} << \mbox{\hyperlink{functions_8cpp_a14e1ef21104a6ad48c88f21480f1310d}{ConvertMinutesToHour}}(arriveHour) << \textcolor{stringliteral}{"{})\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00109}00109                             \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00110}00110                         \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00111}00111                     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00112}00112                 \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00113}00113             roads.clear();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00114}00114         \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00115}00115         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00116}00116             toSolutionFile << departCity << \textcolor{stringliteral}{"{} -\/-\/> "{}} << arriveCity << \textcolor{stringliteral}{"{} -\/ DROGA NIE ISTNIEJE\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00117}00117         ss.clear();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00118}00118     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00119}00119 \}}
+
+\end{DoxyCode}

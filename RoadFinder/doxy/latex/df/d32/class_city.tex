@@ -1,0 +1,125 @@
+\hypertarget{class_city}{}\doxysection{Dokumentacja klasy City}
+\label{class_city}\index{City@{City}}
+
+
+Klasa zawierająca informację o nazwie miasta oraz wszystkich miast do których możemy z tego miasta dojechać  
+
+
+
+
+{\ttfamily \#include $<$functions.\+h$>$}
+
+\doxysubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_city_ac7a6911d993a817e57fa63a330cb1fb5}{Set\+Name}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Funkcja ustawiająca nazwę miasta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_a49bd317d61b097c4b806d15b2c6b83d8}{Can\+Travel}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Funkcja, która dopisuje do vectora zawierającego informację o miastach, do których możemy dojechać kolejne z miast. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_a98b82853a2675ef3009cc594c46344d0}{Clear\+Vec}} ()
+\begin{DoxyCompactList}\small\item\em Funkcja usuwająca wartości w vectorze m\+\_\+can\+Travel\+To. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_city_ab99cdf24006dfd8fa7d570c961c56e03}{m\+\_\+name}}
+\begin{DoxyCompactList}\small\item\em nazwa miasta \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_city_ac55e9659d8402b1d648bca9103b4edaf}{m\+\_\+can\+Travel\+To}}
+\begin{DoxyCompactList}\small\item\em miasta, do których możemy z tego miasta dojechać \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa zawierająca informację o nazwie miasta oraz wszystkich miast do których możemy z tego miasta dojechać 
+
+Definicja w linii \mbox{\hyperlink{functions_8h_source_l00075}{75}} pliku \mbox{\hyperlink{functions_8h_source}{functions.\+h}}.
+
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\mbox{\Hypertarget{class_city_a49bd317d61b097c4b806d15b2c6b83d8}\label{class_city_a49bd317d61b097c4b806d15b2c6b83d8}} 
+\index{City@{City}!CanTravel@{CanTravel}}
+\index{CanTravel@{CanTravel}!City@{City}}
+\doxysubsubsection{\texorpdfstring{CanTravel()}{CanTravel()}}
+{\footnotesize\ttfamily void City\+::\+Can\+Travel (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Funkcja, która dopisuje do vectora zawierającego informację o miastach, do których możemy dojechać kolejne z miast. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em str} & zmienna zawierające nazwę miasta, do którego możemy dojechać \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{functions_8h_source_l00088}{88}} pliku \mbox{\hyperlink{functions_8h_source}{functions.\+h}}.
+
+\mbox{\Hypertarget{class_city_a98b82853a2675ef3009cc594c46344d0}\label{class_city_a98b82853a2675ef3009cc594c46344d0}} 
+\index{City@{City}!ClearVec@{ClearVec}}
+\index{ClearVec@{ClearVec}!City@{City}}
+\doxysubsubsection{\texorpdfstring{ClearVec()}{ClearVec()}}
+{\footnotesize\ttfamily void City\+::\+Clear\+Vec (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Funkcja usuwająca wartości w vectorze m\+\_\+can\+Travel\+To. 
+
+
+
+Definicja w linii \mbox{\hyperlink{functions_8h_source_l00091}{91}} pliku \mbox{\hyperlink{functions_8h_source}{functions.\+h}}.
+
+\mbox{\Hypertarget{class_city_ac7a6911d993a817e57fa63a330cb1fb5}\label{class_city_ac7a6911d993a817e57fa63a330cb1fb5}} 
+\index{City@{City}!SetName@{SetName}}
+\index{SetName@{SetName}!City@{City}}
+\doxysubsubsection{\texorpdfstring{SetName()}{SetName()}}
+{\footnotesize\ttfamily void City\+::\+Set\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Funkcja ustawiająca nazwę miasta. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em str} & zmienna która zawiera nazwę miasta \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{functions_8h_source_l00084}{84}} pliku \mbox{\hyperlink{functions_8h_source}{functions.\+h}}.
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\mbox{\Hypertarget{class_city_ac55e9659d8402b1d648bca9103b4edaf}\label{class_city_ac55e9659d8402b1d648bca9103b4edaf}} 
+\index{City@{City}!m\_canTravelTo@{m\_canTravelTo}}
+\index{m\_canTravelTo@{m\_canTravelTo}!City@{City}}
+\doxysubsubsection{\texorpdfstring{m\_canTravelTo}{m\_canTravelTo}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ City\+::m\+\_\+can\+Travel\+To}
+
+
+
+miasta, do których możemy z tego miasta dojechać 
+
+
+
+Definicja w linii \mbox{\hyperlink{functions_8h_source_l00079}{79}} pliku \mbox{\hyperlink{functions_8h_source}{functions.\+h}}.
+
+\mbox{\Hypertarget{class_city_ab99cdf24006dfd8fa7d570c961c56e03}\label{class_city_ab99cdf24006dfd8fa7d570c961c56e03}} 
+\index{City@{City}!m\_name@{m\_name}}
+\index{m\_name@{m\_name}!City@{City}}
+\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
+{\footnotesize\ttfamily std\+::string City\+::m\+\_\+name}
+
+
+
+nazwa miasta 
+
+
+
+Definicja w linii \mbox{\hyperlink{functions_8h_source_l00078}{78}} pliku \mbox{\hyperlink{functions_8h_source}{functions.\+h}}.
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Project/headers/\mbox{\hyperlink{functions_8h}{functions.\+h}}\end{DoxyCompactItemize}

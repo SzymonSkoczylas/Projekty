@@ -1,0 +1,4 @@
+<map id="FileLine::ConvertHour" name="FileLine::ConvertHour">
+<area shape="rect" id="node1" title="Funkcja, która zwraca daną godzinę w postaci liczby minut w godzinie (np. 1:20 to 80)" alt="" coords="176,5,321,32"/>
+<area shape="rect" id="node2" href="$de/dc2/class_file_line.html#a8805d148e89dc8fca5b3d6b922f7aa77" title="Funkcja zwracająca jedną z godzin, o której możemy rozpocząó podróż" alt="" coords="5,5,128,32"/>
+</map>

@@ -1,0 +1,11 @@
+Katowice Krakow 70 10:15 14:20 16:25
+Krakow Tarnow 80 11:20 13:30 18:00
+Tarnow Jaslo 60 12:30 15:00 20:00
+Katowice Gliwice 30 9:15 12:30 15:45
+Lodz Poznan 160 7:00 12:10 15:15
+Gliwice Katowice 30 8:30 12:00 17:00
+Katowice Czestochowa 70 9:50 14:00 20:00
+Czestochowa Lodz 100 7:25 12:35 17:20
+Lodz Torun 130 9:30 14:20 21:00
+Krakow Katowice 70 7:30 11:00 14:25
+Gliwice Wroclaw 130 8:00 14:00 18:00

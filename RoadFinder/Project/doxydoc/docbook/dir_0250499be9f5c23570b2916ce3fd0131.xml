@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_0250499be9f5c23570b2916ce3fd0131" xml:lang="pl">
+<title>Dokumentacja katalogu Project/Project</title>
+<indexterm><primary>Dokumentacja katalogu Project/Project</primary></indexterm>
+Wykres zależności katalogu dla Project:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_0250499be9f5c23570b2916ce3fd0131_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Katalogi    </title>
+        <itemizedlist>
+            <listitem><para>katalog <link linkend="_dir_4d6db4ef9125176a109ef5c97cf5eb4f">src</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

@@ -1,0 +1,5 @@
+<map id="LookForNextDepart" name="LookForNextDepart">
+<area shape="rect" id="node1" title="Funkcja szukająca następnej godziny odjazdu &quot;z miasta A do miasta B&quot; względem podanej godziny." alt="" coords="251,31,385,57"/>
+<area shape="rect" id="node2" href="$d3/d36/functions_8cpp.html#a520caa7ab9758f319fc4fd17b3d4792f" title="Funkcja, która na podstawie podanej drogi zlicza łączny czas jazdy (razem z czasem oczekiwania na odj..." alt="" coords="104,5,203,32"/>
+<area shape="rect" id="node3" href="$df/d0a/main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,31,56,57"/>
+</map>

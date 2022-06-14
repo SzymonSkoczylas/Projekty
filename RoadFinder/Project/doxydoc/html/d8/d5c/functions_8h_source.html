@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.3"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projekt na zaliczenie Szymon Skoczylas: Plik źródłowy Project/headers/functions.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Projekt na zaliczenie Szymon Skoczylas<span id="projectnumber">&#160;Efekt końcowy</span>
+   </div>
+   <div id="projectbrief">Opis projektu</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.9.3 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search",'Szukaj','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_ffd1f789ec7bd0a45fc6ad92579c5070.html">Project</a></li><li class="navelem"><a class="el" href="../../dir_5d251f00a933f30e4c44eb11396ac747.html">headers</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">functions.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d8/d5c/functions_8h.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef FUNCTIONS_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define FUNCTIONS_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="../../de/dc2/class_file_line.html">   14</a></span><span class="keyword">class </span><a class="code hl_class" href="../../de/dc2/class_file_line.html">FileLine</a> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">private</span>:    </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="../../de/dc2/class_file_line.html#a6e45a4449005fd6224882d0fb72f1ef5">   17</a></span>    std::string <a class="code hl_variable" href="../../de/dc2/class_file_line.html#a6e45a4449005fd6224882d0fb72f1ef5">m_departure</a>;            </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="../../de/dc2/class_file_line.html#a7b357ffea550d4fab5b1680769ec0093">   18</a></span>    std::string <a class="code hl_variable" href="../../de/dc2/class_file_line.html#a7b357ffea550d4fab5b1680769ec0093">m_arrival</a>;              </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="../../de/dc2/class_file_line.html#a0872898a7a5e9af66b27f40d41758c81">   19</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="../../de/dc2/class_file_line.html#a0872898a7a5e9af66b27f40d41758c81">m_duration</a>{};                   </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../de/dc2/class_file_line.html#a03c84f745fd92ec3fb2a0a881fe0d56d">   20</a></span>    std::array&lt;std::string,3&gt; <a class="code hl_variable" href="../../de/dc2/class_file_line.html#a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</a>;   </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="../../de/dc2/class_file_line.html#ae39a890c2d0614babc8c410a8b18a46e">   26</a></span>    std::string <a class="code hl_function" href="../../de/dc2/class_file_line.html#ae39a890c2d0614babc8c410a8b18a46e">GetCityName</a>(<span class="keyword">const</span> std::string &amp; <span class="keywordtype">boolean</span>)<span class="keyword"> const </span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        std::string city = <span class="keywordtype">boolean</span>==<span class="stringliteral">&quot;arrival&quot;</span>? <a class="code hl_variable" href="../../de/dc2/class_file_line.html#a7b357ffea550d4fab5b1680769ec0093">m_arrival</a> : <a class="code hl_variable" href="../../de/dc2/class_file_line.html#a6e45a4449005fd6224882d0fb72f1ef5">m_departure</a>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordflow">return</span> city;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="../../de/dc2/class_file_line.html#af9ab22eb596aa17e7a952777986e2000">   33</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="../../de/dc2/class_file_line.html#af9ab22eb596aa17e7a952777986e2000">GetDuration</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="../../de/dc2/class_file_line.html#a0872898a7a5e9af66b27f40d41758c81">m_duration</a>; }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="../../de/dc2/class_file_line.html#a3782624c3311a5964bb0b9104673ac7c">   36</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="../../de/dc2/class_file_line.html#a3782624c3311a5964bb0b9104673ac7c">GetNumberOfHoursOfDepartures</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="../../de/dc2/class_file_line.html#a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</a>.size(); }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="../../de/dc2/class_file_line.html#a8805d148e89dc8fca5b3d6b922f7aa77">   40</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="../../de/dc2/class_file_line.html#a8805d148e89dc8fca5b3d6b922f7aa77">GetHour</a>(<span class="keywordtype">short</span> n)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_function" href="../../de/dc2/class_file_line.html#af2923f728d370baad627563af13cc729">ConvertHour</a>(n); }</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="../../de/dc2/class_file_line.html#a377aa60cc56cb0c5e1d0e65340198cc0">   44</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../de/dc2/class_file_line.html#a377aa60cc56cb0c5e1d0e65340198cc0">GetFileLine</a>(<span class="keyword">const</span> std::string&amp; str) </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        std::stringstream ss;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        ss &lt;&lt; str;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        ss &gt;&gt; <a class="code hl_variable" href="../../de/dc2/class_file_line.html#a6e45a4449005fd6224882d0fb72f1ef5">m_departure</a> &gt;&gt; <a class="code hl_variable" href="../../de/dc2/class_file_line.html#a7b357ffea550d4fab5b1680769ec0093">m_arrival</a> &gt;&gt; <a class="code hl_variable" href="../../de/dc2/class_file_line.html#a0872898a7a5e9af66b27f40d41758c81">m_duration</a> &gt;&gt; <a class="code hl_variable" href="../../de/dc2/class_file_line.html#a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</a>[0] &gt;&gt; <a class="code hl_variable" href="../../de/dc2/class_file_line.html#a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</a>[1] &gt;&gt; <a class="code hl_variable" href="../../de/dc2/class_file_line.html#a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</a>[2];</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="../../de/dc2/class_file_line.html#af2923f728d370baad627563af13cc729">   53</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="../../de/dc2/class_file_line.html#af2923f728d370baad627563af13cc729">ConvertHour</a> (<span class="keyword">const</span> <span class="keywordtype">short</span> &amp; n)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        std::string hours;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        std::string minutes;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../de/dc2/class_file_line.html#a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</a>[n].size() == 5) </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            hours = <a class="code hl_variable" href="../../de/dc2/class_file_line.html#a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</a>[n].substr(0, 2);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            minutes = <a class="code hl_variable" href="../../de/dc2/class_file_line.html#a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</a>[n].substr(3, 2);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            hours = <a class="code hl_variable" href="../../de/dc2/class_file_line.html#a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</a>[n].substr(0, 1);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            minutes = <a class="code hl_variable" href="../../de/dc2/class_file_line.html#a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</a>[n].substr(2, 2);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        }</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordtype">int</span> h = std::stoi(hours);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordtype">int</span> m = std::stoi(minutes);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        h *= 60;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">return</span> h + m;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>};</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="../../df/d32/class_city.html">   75</a></span><span class="keyword">class </span><a class="code hl_class" href="../../df/d32/class_city.html">City</a></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>{</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="../../df/d32/class_city.html#ab99cdf24006dfd8fa7d570c961c56e03">   78</a></span>    std::string <a class="code hl_variable" href="../../df/d32/class_city.html#ab99cdf24006dfd8fa7d570c961c56e03">m_name</a>;                         </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="../../df/d32/class_city.html#ac55e9659d8402b1d648bca9103b4edaf">   79</a></span>    std::vector&lt;std::string&gt; <a class="code hl_variable" href="../../df/d32/class_city.html#ac55e9659d8402b1d648bca9103b4edaf">m_canTravelTo</a>;     </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="../../df/d32/class_city.html#ac7a6911d993a817e57fa63a330cb1fb5">   84</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../df/d32/class_city.html#ac7a6911d993a817e57fa63a330cb1fb5">SetName</a>(<span class="keyword">const</span> std::string &amp; str) { <a class="code hl_variable" href="../../df/d32/class_city.html#ab99cdf24006dfd8fa7d570c961c56e03">m_name</a> = str; }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="../../df/d32/class_city.html#a49bd317d61b097c4b806d15b2c6b83d8">   88</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../df/d32/class_city.html#a49bd317d61b097c4b806d15b2c6b83d8">CanTravel</a>(<span class="keyword">const</span> std::string &amp; str) { <a class="code hl_variable" href="../../df/d32/class_city.html#ac55e9659d8402b1d648bca9103b4edaf">m_canTravelTo</a>.push_back(str); }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="../../df/d32/class_city.html#a98b82853a2675ef3009cc594c46344d0">   91</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../df/d32/class_city.html#a98b82853a2675ef3009cc594c46344d0">ClearVec</a>() { <a class="code hl_variable" href="../../df/d32/class_city.html#ac55e9659d8402b1d648bca9103b4edaf">m_canTravelTo</a>.clear(); }</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>};</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>std::vector&lt;City&gt; <a class="code hl_function" href="../../d8/d5c/functions_8h.html#abae79917897174a3c69842beba6fb335">FillCityVec</a>(std::vector&lt;FileLine&gt; &amp; timetable);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d8/d5c/functions_8h.html#adff9f42478e20c2c819d66a7cf15d65e">FindRoute</a>(std::string goal, <span class="keyword">const</span> std::string&amp; from, <span class="keyword">const</span> std::vector&lt;City&gt;&amp; cities, std::vector&lt;std::string&gt;&amp; solution, std::vector&lt;std::vector&lt;std::string&gt;&gt;&amp; solutions);</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d8/d5c/functions_8h.html#aac008d0a41a438a256294eec5c711e58">Correction</a>(std::vector&lt;std::vector&lt;std::string&gt;&gt;&amp; roads, <span class="keyword">const</span> std::string&amp; goal);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>std::vector&lt;std::string&gt; <a class="code hl_function" href="../../d8/d5c/functions_8h.html#af03ece043d7189a2c9822bdb042deb5b">FastestRoad</a>(<span class="keyword">const</span> std::vector&lt;std::vector&lt;std::string&gt;&gt;&amp; roads, <span class="keyword">const</span> std::vector&lt;FileLine&gt;&amp; timetable);</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>std::string <a class="code hl_function" href="../../d8/d5c/functions_8h.html#a14e1ef21104a6ad48c88f21480f1310d">ConvertMinutesToHour</a>(<span class="keywordtype">int</span>&amp; minutes);</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d5c/functions_8h.html#ad7aebb26f6e8258f90fcfc49b6b1127e">LookForNextDepart</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp; lastHour, <span class="keyword">const</span> std::string&amp; departCity, <span class="keyword">const</span> std::string&amp; arriveCity,<span class="keyword">const</span> std::vector&lt;FileLine&gt;&amp; timetable);</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span> </div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d5c/functions_8h.html#a520caa7ab9758f319fc4fd17b3d4792f">GetTotalTime</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; road, <span class="keyword">const</span> std::vector&lt;FileLine&gt;&amp; timetable);</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span> </div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span><span class="preprocessor">#endif </span><span class="comment">//FUNCTIONS_H</span></div>
+<div class="ttc" id="aclass_city_html"><div class="ttname"><a href="../../df/d32/class_city.html">City</a></div><div class="ttdoc">Klasa zawierająca informację o nazwie miasta oraz wszystkich miast do których możemy z tego miasta do...</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d5c/functions_8h_source.html#l00075">functions.h:76</a></div></div>
+<div class="ttc" id="aclass_city_html_a49bd317d61b097c4b806d15b2c6b83d8"><div class="ttname"><a href="../../df/d32/class_city.html#a49bd317d61b097c4b806d15b2c6b83d8">City::CanTravel</a></div><div class="ttdeci">void CanTravel(const std::string &amp;str)</div><div class="ttdoc">Funkcja, która dopisuje do vectora zawierającego informację o miastach, do których możemy dojechać ko...</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d5c/functions_8h_source.html#l00088">functions.h:88</a></div></div>
+<div class="ttc" id="aclass_city_html_a98b82853a2675ef3009cc594c46344d0"><div class="ttname"><a href="../../df/d32/class_city.html#a98b82853a2675ef3009cc594c46344d0">City::ClearVec</a></div><div class="ttdeci">void ClearVec()</div><div class="ttdoc">Funkcja usuwająca wartości w vectorze m_canTravelTo.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d5c/functions_8h_source.html#l00091">functions.h:91</a></div></div>
+<div class="ttc" id="aclass_city_html_ab99cdf24006dfd8fa7d570c961c56e03"><div class="ttname"><a href="../../df/d32/class_city.html#ab99cdf24006dfd8fa7d570c961c56e03">City::m_name</a></div><div class="ttdeci">std::string m_name</div><div class="ttdoc">nazwa miasta</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d5c/functions_8h_source.html#l00078">functions.h:78</a></div></div>
+<div class="ttc" id="aclass_city_html_ac55e9659d8402b1d648bca9103b4edaf"><div class="ttname"><a href="../../df/d32/class_city.html#ac55e9659d8402b1d648bca9103b4edaf">City::m_canTravelTo</a></div><div class="ttdeci">std::vector&lt; std::string &gt; m_canTravelTo</div><div class="ttdoc">miasta, do których możemy z tego miasta dojechać</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d5c/functions_8h_source.html#l00079">functions.h:79</a></div></div>
+<div class="ttc" id="aclass_city_html_ac7a6911d993a817e57fa63a330cb1fb5"><div class="ttname"><a href="../../df/d32/class_city.html#ac7a6911d993a817e57fa63a330cb1fb5">City::SetName</a></div><div class="ttdeci">void SetName(const std::string &amp;str)</div><div class="ttdoc">Funkcja ustawiająca nazwę miasta.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d5c/functions_8h_source.html#l00084">functions.h:84</a></div></div>
+<div class="ttc" id="aclass_file_line_html"><div class="ttname"><a href="../../de/dc2/class_file_line.html">FileLine</a></div><div class="ttdoc">Klasa odpowiedzialna za przechowanie informacji pobranych z jednej linii z pliku rozkładu jazdy.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d5c/functions_8h_source.html#l00014">functions.h:15</a></div></div>
+<div class="ttc" id="aclass_file_line_html_a03c84f745fd92ec3fb2a0a881fe0d56d"><div class="ttname"><a href="../../de/dc2/class_file_line.html#a03c84f745fd92ec3fb2a0a881fe0d56d">FileLine::m_time</a></div><div class="ttdeci">std::array&lt; std::string, 3 &gt; m_time</div><div class="ttdoc">zmienna przechowująca informację o godzinach, o których możemy odjechać z tego przystanku</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d5c/functions_8h_source.html#l00020">functions.h:20</a></div></div>
+<div class="ttc" id="aclass_file_line_html_a0872898a7a5e9af66b27f40d41758c81"><div class="ttname"><a href="../../de/dc2/class_file_line.html#a0872898a7a5e9af66b27f40d41758c81">FileLine::m_duration</a></div><div class="ttdeci">int m_duration</div><div class="ttdoc">zmiennna przechowująca informację o czasie jazdy z miasta, z którego odjeżdzamy do miasta docelowego</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d5c/functions_8h_source.html#l00019">functions.h:19</a></div></div>
+<div class="ttc" id="aclass_file_line_html_a377aa60cc56cb0c5e1d0e65340198cc0"><div class="ttname"><a href="../../de/dc2/class_file_line.html#a377aa60cc56cb0c5e1d0e65340198cc0">FileLine::GetFileLine</a></div><div class="ttdeci">void GetFileLine(const std::string &amp;str)</div><div class="ttdoc">Funkcja która na podstawie linii z pliku rozkładu jazdy zapisze wartości do zmiennych klasy.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d5c/functions_8h_source.html#l00044">functions.h:44</a></div></div>
+<div class="ttc" id="aclass_file_line_html_a3782624c3311a5964bb0b9104673ac7c"><div class="ttname"><a href="../../de/dc2/class_file_line.html#a3782624c3311a5964bb0b9104673ac7c">FileLine::GetNumberOfHoursOfDepartures</a></div><div class="ttdeci">int GetNumberOfHoursOfDepartures() const</div><div class="ttdoc">Funkcja zwracająca informację o liczbie godzin, o których możemy rozpocząć podróż do miasta doceloweg...</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d5c/functions_8h_source.html#l00036">functions.h:36</a></div></div>
+<div class="ttc" id="aclass_file_line_html_a6e45a4449005fd6224882d0fb72f1ef5"><div class="ttname"><a href="../../de/dc2/class_file_line.html#a6e45a4449005fd6224882d0fb72f1ef5">FileLine::m_departure</a></div><div class="ttdeci">std::string m_departure</div><div class="ttdoc">zmienna przechowująca informację o miecie, z którego odjeżdzamy</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d5c/functions_8h_source.html#l00017">functions.h:17</a></div></div>
+<div class="ttc" id="aclass_file_line_html_a7b357ffea550d4fab5b1680769ec0093"><div class="ttname"><a href="../../de/dc2/class_file_line.html#a7b357ffea550d4fab5b1680769ec0093">FileLine::m_arrival</a></div><div class="ttdeci">std::string m_arrival</div><div class="ttdoc">zmienna przechowująca informację o mieście docelowego</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d5c/functions_8h_source.html#l00018">functions.h:18</a></div></div>
+<div class="ttc" id="aclass_file_line_html_a8805d148e89dc8fca5b3d6b922f7aa77"><div class="ttname"><a href="../../de/dc2/class_file_line.html#a8805d148e89dc8fca5b3d6b922f7aa77">FileLine::GetHour</a></div><div class="ttdeci">int GetHour(short n) const</div><div class="ttdoc">Funkcja zwracająca jedną z godzin, o której możemy rozpocząć podróż</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d5c/functions_8h_source.html#l00040">functions.h:40</a></div></div>
+<div class="ttc" id="aclass_file_line_html_ae39a890c2d0614babc8c410a8b18a46e"><div class="ttname"><a href="../../de/dc2/class_file_line.html#ae39a890c2d0614babc8c410a8b18a46e">FileLine::GetCityName</a></div><div class="ttdeci">std::string GetCityName(const std::string &amp;boolean) const</div><div class="ttdoc">Funkcja, która zwraca nazwę miasta (odjazdu albo docelowego) zależnie od podanej wartości parametru b...</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d5c/functions_8h_source.html#l00026">functions.h:26</a></div></div>
+<div class="ttc" id="aclass_file_line_html_af2923f728d370baad627563af13cc729"><div class="ttname"><a href="../../de/dc2/class_file_line.html#af2923f728d370baad627563af13cc729">FileLine::ConvertHour</a></div><div class="ttdeci">int ConvertHour(const short &amp;n) const</div><div class="ttdoc">Funkcja, która zwraca daną godzinę w postaci liczby minut w godzinie (np. 1:20 to 80)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d5c/functions_8h_source.html#l00053">functions.h:53</a></div></div>
+<div class="ttc" id="aclass_file_line_html_af9ab22eb596aa17e7a952777986e2000"><div class="ttname"><a href="../../de/dc2/class_file_line.html#af9ab22eb596aa17e7a952777986e2000">FileLine::GetDuration</a></div><div class="ttdeci">int GetDuration() const</div><div class="ttdoc">Funkcja zwracająca czas jazdy z miasta odjazdu do miasta docelowego.</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d5c/functions_8h_source.html#l00033">functions.h:33</a></div></div>
+<div class="ttc" id="afunctions_8h_html_a14e1ef21104a6ad48c88f21480f1310d"><div class="ttname"><a href="../../d8/d5c/functions_8h.html#a14e1ef21104a6ad48c88f21480f1310d">ConvertMinutesToHour</a></div><div class="ttdeci">std::string ConvertMinutesToHour(int &amp;minutes)</div><div class="ttdoc">Funkcja, która na podstawie liczby minut podanej w postaci int wygeneruje napis zawierający informacj...</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d36/functions_8cpp_source.html#l00173">functions.cpp:173</a></div></div>
+<div class="ttc" id="afunctions_8h_html_a520caa7ab9758f319fc4fd17b3d4792f"><div class="ttname"><a href="../../d8/d5c/functions_8h.html#a520caa7ab9758f319fc4fd17b3d4792f">GetTotalTime</a></div><div class="ttdeci">int GetTotalTime(const std::vector&lt; std::string &gt; &amp;road, const std::vector&lt; FileLine &gt; &amp;timetable)</div><div class="ttdoc">Funkcja, która na podstawie podanej drogi zlicza łączny czas jazdy (razem z czasem oczekiwania na odj...</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d36/functions_8cpp_source.html#l00204">functions.cpp:204</a></div></div>
+<div class="ttc" id="afunctions_8h_html_aac008d0a41a438a256294eec5c711e58"><div class="ttname"><a href="../../d8/d5c/functions_8h.html#aac008d0a41a438a256294eec5c711e58">Correction</a></div><div class="ttdeci">void Correction(std::vector&lt; std::vector&lt; std::string &gt; &gt; &amp;roads, const std::string &amp;goal)</div><div class="ttdoc">Funkcja korekcyjna dla funkcji FindRoute(). Jest potrzebna do optymalizacji wyników uzyskanych dzięki...</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d36/functions_8cpp_source.html#l00065">functions.cpp:65</a></div></div>
+<div class="ttc" id="afunctions_8h_html_abae79917897174a3c69842beba6fb335"><div class="ttname"><a href="../../d8/d5c/functions_8h.html#abae79917897174a3c69842beba6fb335">FillCityVec</a></div><div class="ttdeci">std::vector&lt; City &gt; FillCityVec(std::vector&lt; FileLine &gt; &amp;timetable)</div><div class="ttdoc">Funkcja, która na podstawie vectora klas FileLine tworzy vector klas City.</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d36/functions_8cpp_source.html#l00005">functions.cpp:5</a></div></div>
+<div class="ttc" id="afunctions_8h_html_ad7aebb26f6e8258f90fcfc49b6b1127e"><div class="ttname"><a href="../../d8/d5c/functions_8h.html#ad7aebb26f6e8258f90fcfc49b6b1127e">LookForNextDepart</a></div><div class="ttdeci">int LookForNextDepart(const int &amp;lastHour, const std::string &amp;departCity, const std::string &amp;arriveCity, const std::vector&lt; FileLine &gt; &amp;timetable)</div><div class="ttdoc">Funkcja szukająca następnej godziny odjazdu &quot;z miasta A do miasta B&quot; względem podanej godziny.</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d36/functions_8cpp_source.html#l00186">functions.cpp:186</a></div></div>
+<div class="ttc" id="afunctions_8h_html_adff9f42478e20c2c819d66a7cf15d65e"><div class="ttname"><a href="../../d8/d5c/functions_8h.html#adff9f42478e20c2c819d66a7cf15d65e">FindRoute</a></div><div class="ttdeci">void FindRoute(std::string goal, const std::string &amp;from, const std::vector&lt; City &gt; &amp;cities, std::vector&lt; std::string &gt; &amp;solution, std::vector&lt; std::vector&lt; std::string &gt; &gt; &amp;solutions)</div><div class="ttdoc">Funkcja, która szuka wszystkie możliwe drogi &quot;z miasta A do miasta B&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d36/functions_8cpp_source.html#l00089">functions.cpp:89</a></div></div>
+<div class="ttc" id="afunctions_8h_html_af03ece043d7189a2c9822bdb042deb5b"><div class="ttname"><a href="../../d8/d5c/functions_8h.html#af03ece043d7189a2c9822bdb042deb5b">FastestRoad</a></div><div class="ttdeci">std::vector&lt; std::string &gt; FastestRoad(const std::vector&lt; std::vector&lt; std::string &gt; &gt; &amp;roads, const std::vector&lt; FileLine &gt; &amp;timetable)</div><div class="ttdoc">Funkcja, która na podstawie kontenera roads, znajdzie najszybszą z dróg.</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d36/functions_8cpp_source.html#l00123">functions.cpp:123</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+</small></address>
+</body>
+</html>

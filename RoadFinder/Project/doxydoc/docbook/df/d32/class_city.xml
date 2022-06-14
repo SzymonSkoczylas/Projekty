@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_city" xml:lang="pl">
+<title>Dokumentacja klasy City</title>
+<indexterm><primary>City</primary></indexterm>
+<para>
+
+<para>Klasa zawierająca informację o nazwie miasta oraz wszystkich miast do których możemy z tego miasta dojechać </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;functions.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Metody publiczne    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_city_1ac7a6911d993a817e57fa63a330cb1fb5">SetName</link> (const std::string &amp;str)</para>
+
+<para>Funkcja ustawiająca nazwę miasta. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_city_1a49bd317d61b097c4b806d15b2c6b83d8">CanTravel</link> (const std::string &amp;str)</para>
+
+<para>Funkcja, która dopisuje do vectora zawierającego informację o miastach, do których możemy dojechać kolejne z miast. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_city_1a98b82853a2675ef3009cc594c46344d0">ClearVec</link> ()</para>
+
+<para>Funkcja usuwająca wartości w vectorze m_canTravelTo. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Atrybuty publiczne    </title>
+        <itemizedlist>
+            <listitem><para>std::string <link linkend="_class_city_1ab99cdf24006dfd8fa7d570c961c56e03">m_name</link></para>
+
+<para>nazwa miasta </para>
+</listitem>
+            <listitem><para>std::vector&lt; std::string &gt; <link linkend="_class_city_1ac55e9659d8402b1d648bca9103b4edaf">m_canTravelTo</link></para>
+
+<para>miasta, do których możemy z tego miasta dojechać </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Opis szczegółowy</title>
+
+<para>Klasa zawierająca informację o nazwie miasta oraz wszystkich miast do których możemy z tego miasta dojechać </para>
+<para>
+Definicja w linii <link linkend="_functions_8h_source_1l00075">75</link> pliku <link linkend="_functions_8h_source">functions.h</link>.</para>
+</section>
+<section>
+<title>Dokumentacja funkcji składowych</title>
+<anchor xml:id="_class_city_1a49bd317d61b097c4b806d15b2c6b83d8"/><section>
+    <title>CanTravel()</title>
+<indexterm><primary>CanTravel</primary><secondary>City</secondary></indexterm>
+<indexterm><primary>City</primary><secondary>CanTravel</secondary></indexterm>
+<para><computeroutput>void City::CanTravel (const std::string &amp; str)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Funkcja, która dopisuje do vectora zawierającego informację o miastach, do których możemy dojechać kolejne z miast. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parametry</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>str</entry><entry>
+<para>zmienna zawierające nazwę miasta, do którego możemy dojechać </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definicja w linii <link linkend="_functions_8h_source_1l00088">88</link> pliku <link linkend="_functions_8h_source">functions.h</link>.</para>
+</section>
+<anchor xml:id="_class_city_1a98b82853a2675ef3009cc594c46344d0"/><section>
+    <title>ClearVec()</title>
+<indexterm><primary>ClearVec</primary><secondary>City</secondary></indexterm>
+<indexterm><primary>City</primary><secondary>ClearVec</secondary></indexterm>
+<para><computeroutput>void City::ClearVec ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Funkcja usuwająca wartości w vectorze m_canTravelTo. </para>
+</para>
+<para>
+Definicja w linii <link linkend="_functions_8h_source_1l00091">91</link> pliku <link linkend="_functions_8h_source">functions.h</link>.</para>
+</section>
+<anchor xml:id="_class_city_1ac7a6911d993a817e57fa63a330cb1fb5"/><section>
+    <title>SetName()</title>
+<indexterm><primary>SetName</primary><secondary>City</secondary></indexterm>
+<indexterm><primary>City</primary><secondary>SetName</secondary></indexterm>
+<para><computeroutput>void City::SetName (const std::string &amp; str)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Funkcja ustawiająca nazwę miasta. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parametry</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>str</entry><entry>
+<para>zmienna która zawiera nazwę miasta </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definicja w linii <link linkend="_functions_8h_source_1l00084">84</link> pliku <link linkend="_functions_8h_source">functions.h</link>.</para>
+</section>
+</section>
+<section>
+<title>Dokumentacja atrybutów składowych</title>
+<anchor xml:id="_class_city_1ac55e9659d8402b1d648bca9103b4edaf"/><section>
+    <title>m_canTravelTo</title>
+<indexterm><primary>m_canTravelTo</primary><secondary>City</secondary></indexterm>
+<indexterm><primary>City</primary><secondary>m_canTravelTo</secondary></indexterm>
+<para><computeroutput>std::vector&lt;std::string&gt; City::m_canTravelTo</computeroutput></para><para>
+
+<para>miasta, do których możemy z tego miasta dojechać </para>
+</para>
+<para>
+Definicja w linii <link linkend="_functions_8h_source_1l00079">79</link> pliku <link linkend="_functions_8h_source">functions.h</link>.</para>
+</section>
+<anchor xml:id="_class_city_1ab99cdf24006dfd8fa7d570c961c56e03"/><section>
+    <title>m_name</title>
+<indexterm><primary>m_name</primary><secondary>City</secondary></indexterm>
+<indexterm><primary>City</primary><secondary>m_name</secondary></indexterm>
+<para><computeroutput>std::string City::m_name</computeroutput></para><para>
+
+<para>nazwa miasta </para>
+</para>
+<para>
+Definicja w linii <link linkend="_functions_8h_source_1l00078">78</link> pliku <link linkend="_functions_8h_source">functions.h</link>.</para>
+</section>
+<para>
+Dokumentacja dla tej klasy została wygenerowana z pliku:</para>
+Project/headers/<link linkend="_functions_8h">functions.h</link></section>
+</section>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_4d6db4ef9125176a109ef5c97cf5eb4f" xml:lang="pl">
+<title>Dokumentacja katalogu Project/Project/src</title>
+<indexterm><primary>Dokumentacja katalogu Project/Project/src</primary></indexterm>
+Wykres zależności katalogu dla src:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_4d6db4ef9125176a109ef5c97cf5eb4f_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Pliki    </title>
+        <itemizedlist>
+            <listitem><para>plik <link linkend="_main_8cpp">main.cpp</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

@@ -1,0 +1,318 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_file_line" xml:lang="pl">
+<title>Dokumentacja klasy FileLine</title>
+<indexterm><primary>FileLine</primary></indexterm>
+<para>
+
+<para>Klasa odpowiedzialna za przechowanie informacji pobranych z jednej linii z pliku rozkładu jazdy. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;functions.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Metody publiczne    </title>
+        <itemizedlist>
+            <listitem><para>std::string <link linkend="_class_file_line_1ae39a890c2d0614babc8c410a8b18a46e">GetCityName</link> (const std::string &amp;boolean) const</para>
+
+<para>Funkcja, która zwraca nazwę miasta (odjazdu albo docelowego) zależnie od podanej wartości parametru boolean. </para>
+</listitem>
+            <listitem><para>int <link linkend="_class_file_line_1af9ab22eb596aa17e7a952777986e2000">GetDuration</link> () const</para>
+
+<para>Funkcja zwracająca czas jazdy z miasta odjazdu do miasta docelowego. </para>
+</listitem>
+            <listitem><para>int <link linkend="_class_file_line_1a3782624c3311a5964bb0b9104673ac7c">GetNumberOfHoursOfDepartures</link> () const</para>
+
+<para>Funkcja zwracająca informację o liczbie godzin, o których możemy rozpocząć podróż do miasta docelowego. </para>
+</listitem>
+            <listitem><para>int <link linkend="_class_file_line_1a8805d148e89dc8fca5b3d6b922f7aa77">GetHour</link> (short n) const</para>
+
+<para>Funkcja zwracająca jedną z godzin, o której możemy rozpocząć podróż </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_file_line_1a377aa60cc56cb0c5e1d0e65340198cc0">GetFileLine</link> (const std::string &amp;str)</para>
+
+<para>Funkcja która na podstawie linii z pliku rozkładu jazdy zapisze wartości do zmiennych klasy. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Metody prywatne    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_class_file_line_1af2923f728d370baad627563af13cc729">ConvertHour</link> (const short &amp;n) const</para>
+
+<para>Funkcja, która zwraca daną godzinę w postaci liczby minut w godzinie (np. 1:20 to 80) </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Atrybuty prywatne    </title>
+        <itemizedlist>
+            <listitem><para>std::string <link linkend="_class_file_line_1a6e45a4449005fd6224882d0fb72f1ef5">m_departure</link></para>
+
+<para>zmienna przechowująca informację o miecie, z którego odjeżdzamy </para>
+</listitem>
+            <listitem><para>std::string <link linkend="_class_file_line_1a7b357ffea550d4fab5b1680769ec0093">m_arrival</link></para>
+
+<para>zmienna przechowująca informację o mieście docelowego </para>
+</listitem>
+            <listitem><para>int <link linkend="_class_file_line_1a0872898a7a5e9af66b27f40d41758c81">m_duration</link> {}</para>
+
+<para>zmiennna przechowująca informację o czasie jazdy z miasta, z którego odjeżdzamy do miasta docelowego 
+<literallayout>&#160;&#xa;</literallayout>
+ </para>
+</listitem>
+            <listitem><para>std::array&lt; std::string, 3 &gt; <link linkend="_class_file_line_1a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</link></para>
+
+<para>zmienna przechowująca informację o godzinach, o których możemy odjechać z tego przystanku </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Opis szczegółowy</title>
+
+<para>Klasa odpowiedzialna za przechowanie informacji pobranych z jednej linii z pliku rozkładu jazdy. </para>
+<para>
+Definicja w linii <link linkend="_functions_8h_source_1l00014">14</link> pliku <link linkend="_functions_8h_source">functions.h</link>.</para>
+</section>
+<section>
+<title>Dokumentacja funkcji składowych</title>
+<anchor xml:id="_class_file_line_1af2923f728d370baad627563af13cc729"/><section>
+    <title>ConvertHour()</title>
+<indexterm><primary>ConvertHour</primary><secondary>FileLine</secondary></indexterm>
+<indexterm><primary>FileLine</primary><secondary>ConvertHour</secondary></indexterm>
+<para><computeroutput>int FileLine::ConvertHour (const short &amp; n) const<computeroutput>[inline]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>Funkcja, która zwraca daną godzinę w postaci liczby minut w godzinie (np. 1:20 to 80) </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parametry</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>n</entry><entry>
+<para>zmienna na podstawie której funkcja wybiera godzinę </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definicja w linii <link linkend="_functions_8h_source_1l00053">53</link> pliku <link linkend="_functions_8h_source">functions.h</link>.</para>
+Oto graf wywoływań tej funkcji:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/dc2/class_file_line_af2923f728d370baad627563af13cc729_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_file_line_1ae39a890c2d0614babc8c410a8b18a46e"/><section>
+    <title>GetCityName()</title>
+<indexterm><primary>GetCityName</primary><secondary>FileLine</secondary></indexterm>
+<indexterm><primary>FileLine</primary><secondary>GetCityName</secondary></indexterm>
+<para><computeroutput>std::string FileLine::GetCityName (const std::string &amp; boolean) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Funkcja, która zwraca nazwę miasta (odjazdu albo docelowego) zależnie od podanej wartości parametru boolean. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parametry</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>boolean</entry><entry>
+<para>zmienna na podstawie której funkcja zwróci jedno z dwóch miast 
+<literallayout>&#160;&#xa;</literallayout>
+ </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Zwraca</title>
+
+<para>Funkcja zwraca string zawierający nazwę miasta </para>
+</formalpara>
+</para>
+<para>
+Definicja w linii <link linkend="_functions_8h_source_1l00026">26</link> pliku <link linkend="_functions_8h_source">functions.h</link>.</para>
+</section>
+<anchor xml:id="_class_file_line_1af9ab22eb596aa17e7a952777986e2000"/><section>
+    <title>GetDuration()</title>
+<indexterm><primary>GetDuration</primary><secondary>FileLine</secondary></indexterm>
+<indexterm><primary>FileLine</primary><secondary>GetDuration</secondary></indexterm>
+<para><computeroutput>int FileLine::GetDuration ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Funkcja zwracająca czas jazdy z miasta odjazdu do miasta docelowego. </para>
+</para>
+<para>
+Definicja w linii <link linkend="_functions_8h_source_1l00033">33</link> pliku <link linkend="_functions_8h_source">functions.h</link>.</para>
+</section>
+<anchor xml:id="_class_file_line_1a377aa60cc56cb0c5e1d0e65340198cc0"/><section>
+    <title>GetFileLine()</title>
+<indexterm><primary>GetFileLine</primary><secondary>FileLine</secondary></indexterm>
+<indexterm><primary>FileLine</primary><secondary>GetFileLine</secondary></indexterm>
+<para><computeroutput>void FileLine::GetFileLine (const std::string &amp; str)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Funkcja która na podstawie linii z pliku rozkładu jazdy zapisze wartości do zmiennych klasy. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parametry</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>str</entry><entry>
+<para>String, który zawiera jedną linijkę z pliku rozkładu jazdy </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definicja w linii <link linkend="_functions_8h_source_1l00044">44</link> pliku <link linkend="_functions_8h_source">functions.h</link>.</para>
+Oto graf wywoływań tej funkcji:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/dc2/class_file_line_a377aa60cc56cb0c5e1d0e65340198cc0_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_file_line_1a8805d148e89dc8fca5b3d6b922f7aa77"/><section>
+    <title>GetHour()</title>
+<indexterm><primary>GetHour</primary><secondary>FileLine</secondary></indexterm>
+<indexterm><primary>FileLine</primary><secondary>GetHour</secondary></indexterm>
+<para><computeroutput>int FileLine::GetHour (short n) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Funkcja zwracająca jedną z godzin, o której możemy rozpocząć podróż </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parametry</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>n</entry><entry>
+<para>zmienna na podstawie której funkcja zwróci godzinę </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definicja w linii <link linkend="_functions_8h_source_1l00040">40</link> pliku <link linkend="_functions_8h_source">functions.h</link>.</para>
+Oto graf wywołań dla tej funkcji:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../de/dc2/class_file_line_a8805d148e89dc8fca5b3d6b922f7aa77_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_file_line_1a3782624c3311a5964bb0b9104673ac7c"/><section>
+    <title>GetNumberOfHoursOfDepartures()</title>
+<indexterm><primary>GetNumberOfHoursOfDepartures</primary><secondary>FileLine</secondary></indexterm>
+<indexterm><primary>FileLine</primary><secondary>GetNumberOfHoursOfDepartures</secondary></indexterm>
+<para><computeroutput>int FileLine::GetNumberOfHoursOfDepartures ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Funkcja zwracająca informację o liczbie godzin, o których możemy rozpocząć podróż do miasta docelowego. </para>
+</para>
+<para>
+Definicja w linii <link linkend="_functions_8h_source_1l00036">36</link> pliku <link linkend="_functions_8h_source">functions.h</link>.</para>
+</section>
+</section>
+<section>
+<title>Dokumentacja atrybutów składowych</title>
+<anchor xml:id="_class_file_line_1a7b357ffea550d4fab5b1680769ec0093"/><section>
+    <title>m_arrival</title>
+<indexterm><primary>m_arrival</primary><secondary>FileLine</secondary></indexterm>
+<indexterm><primary>FileLine</primary><secondary>m_arrival</secondary></indexterm>
+<para><computeroutput>std::string FileLine::m_arrival<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>zmienna przechowująca informację o mieście docelowego </para>
+</para>
+<para>
+Definicja w linii <link linkend="_functions_8h_source_1l00018">18</link> pliku <link linkend="_functions_8h_source">functions.h</link>.</para>
+</section>
+<anchor xml:id="_class_file_line_1a6e45a4449005fd6224882d0fb72f1ef5"/><section>
+    <title>m_departure</title>
+<indexterm><primary>m_departure</primary><secondary>FileLine</secondary></indexterm>
+<indexterm><primary>FileLine</primary><secondary>m_departure</secondary></indexterm>
+<para><computeroutput>std::string FileLine::m_departure<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>zmienna przechowująca informację o miecie, z którego odjeżdzamy </para>
+</para>
+<para>
+Definicja w linii <link linkend="_functions_8h_source_1l00017">17</link> pliku <link linkend="_functions_8h_source">functions.h</link>.</para>
+</section>
+<anchor xml:id="_class_file_line_1a0872898a7a5e9af66b27f40d41758c81"/><section>
+    <title>m_duration</title>
+<indexterm><primary>m_duration</primary><secondary>FileLine</secondary></indexterm>
+<indexterm><primary>FileLine</primary><secondary>m_duration</secondary></indexterm>
+<para><computeroutput>int FileLine::m_duration {}<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>zmiennna przechowująca informację o czasie jazdy z miasta, z którego odjeżdzamy do miasta docelowego 
+<literallayout>&#160;&#xa;</literallayout>
+ </para>
+</para>
+<para>
+Definicja w linii <link linkend="_functions_8h_source_1l00019">19</link> pliku <link linkend="_functions_8h_source">functions.h</link>.</para>
+</section>
+<anchor xml:id="_class_file_line_1a03c84f745fd92ec3fb2a0a881fe0d56d"/><section>
+    <title>m_time</title>
+<indexterm><primary>m_time</primary><secondary>FileLine</secondary></indexterm>
+<indexterm><primary>FileLine</primary><secondary>m_time</secondary></indexterm>
+<para><computeroutput>std::array&lt;std::string,3&gt; FileLine::m_time<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>zmienna przechowująca informację o godzinach, o których możemy odjechać z tego przystanku </para>
+</para>
+<para>
+Definicja w linii <link linkend="_functions_8h_source_1l00020">20</link> pliku <link linkend="_functions_8h_source">functions.h</link>.</para>
+</section>
+<para>
+Dokumentacja dla tej klasy została wygenerowana z pliku:</para>
+Project/headers/<link linkend="_functions_8h">functions.h</link></section>
+</section>

@@ -1,0 +1,4 @@
+<map id="GetTotalTime" name="GetTotalTime">
+<area shape="rect" id="node1" title="Funkcja, która na podstawie podanej drogi zlicza łączny czas jazdy (razem z czasem oczekiwania na odj..." alt="" coords="5,5,104,32"/>
+<area shape="rect" id="node2" href="$d3/d36/functions_8cpp.html#ad7aebb26f6e8258f90fcfc49b6b1127e" title="Funkcja szukająca następnej godziny odjazdu &quot;z miasta A do miasta B&quot; względem podanej godziny." alt="" coords="152,5,287,32"/>
+</map>

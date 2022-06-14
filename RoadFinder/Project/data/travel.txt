@@ -1,0 +1,10 @@
+Katowice Tarnow
+Katowice Lodz
+Gliwice Jaslo
+Katowice Szczecin
+Lodz Poznan
+Katowice Wroclaw
+Gliwice Kielce
+Tarnow Kielce
+Krakow Kielce
+Lodz Wroclaw

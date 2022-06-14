@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_functions_8cpp_source" xml:lang="pl">
+<title>functions.cpp</title>
+<indexterm><primary>Project/headers/functions.cpp</primary></indexterm>
+Idź do dokumentacji tego pliku.<programlisting linenumbering="unnumbered"><anchor xml:id="_functions_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_functions_8h">functions.h</link>&quot;</emphasis>
+<anchor xml:id="_functions_8cpp_source_1l00002"/>00002 
+<anchor xml:id="_functions_8cpp_source_1l00003"/><link linkend="_functions_8cpp_1aa288b29498fa054951dbdca37510664b">00003</link> <emphasis role="preprocessor">#define&#32;MINUMUM_TIME_FOR_CHANGE&#32;5</emphasis>
+<anchor xml:id="_functions_8cpp_source_1l00004"/>00004 
+<anchor xml:id="_functions_8cpp_source_1l00005"/><link linkend="_functions_8cpp_1abae79917897174a3c69842beba6fb335">00005</link> std::vector&lt;City&gt;&#32;<link linkend="_functions_8cpp_1abae79917897174a3c69842beba6fb335">FillCityVec</link>(std::vector&lt;FileLine&gt;&#32;&amp;&#32;timetable)
+<anchor xml:id="_functions_8cpp_source_1l00006"/>00006 {
+<anchor xml:id="_functions_8cpp_source_1l00007"/>00007 &#32;&#32;&#32;&#32;std::vector&lt;City&gt;&#32;vec;
+<anchor xml:id="_functions_8cpp_source_1l00008"/>00008 &#32;&#32;&#32;&#32;std::string&#32;temp;
+<anchor xml:id="_functions_8cpp_source_1l00009"/>00009 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;cond&#32;=&#32;0;
+<anchor xml:id="_functions_8cpp_source_1l00010"/>00010 &#32;&#32;&#32;&#32;std::unique_ptr&lt;City&gt;&#32;city&#32;=&#32;std::make_unique&lt;City&gt;();
+<anchor xml:id="_functions_8cpp_source_1l00011"/>00011 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">auto</emphasis>&#32;it&#32;=&#32;timetable.begin();&#32;it&#32;!=&#32;timetable.end();&#32;it++)
+<anchor xml:id="_functions_8cpp_source_1l00012"/>00012 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00013"/>00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;temp&#32;=&#32;it-&gt;GetCityName(<emphasis role="stringliteral">&quot;departure&quot;</emphasis>);
+<anchor xml:id="_functions_8cpp_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">auto</emphasis>&#32;jt&#32;=&#32;vec.begin();&#32;jt&#32;!=&#32;vec.end();&#32;jt++)
+<anchor xml:id="_functions_8cpp_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00016"/>00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(jt-&gt;m_name&#32;==&#32;temp)
+<anchor xml:id="_functions_8cpp_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cond&#32;=&#32;1;
+<anchor xml:id="_functions_8cpp_source_1l00018"/>00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(cond&#32;==&#32;0)
+<anchor xml:id="_functions_8cpp_source_1l00020"/>00020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;city-&gt;SetName(temp);
+<anchor xml:id="_functions_8cpp_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">auto</emphasis>&#32;jt&#32;=&#32;timetable.begin();&#32;jt&#32;!=&#32;timetable.end();&#32;jt++)
+<anchor xml:id="_functions_8cpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(jt-&gt;GetCityName(<emphasis role="stringliteral">&quot;departure&quot;</emphasis>)&#32;==&#32;temp)
+<anchor xml:id="_functions_8cpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;city-&gt;CanTravel(jt-&gt;GetCityName(<emphasis role="stringliteral">&quot;arrival&quot;</emphasis>));
+<anchor xml:id="_functions_8cpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;vec.push_back(*city);
+<anchor xml:id="_functions_8cpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;city-&gt;ClearVec();
+<anchor xml:id="_functions_8cpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cond&#32;=&#32;0;
+<anchor xml:id="_functions_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">auto</emphasis>&#32;it&#32;=&#32;timetable.begin();&#32;it&#32;!=&#32;timetable.end();&#32;it++)
+<anchor xml:id="_functions_8cpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cond&#32;=&#32;1;
+<anchor xml:id="_functions_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;temp&#32;=&#32;it-&gt;GetCityName(<emphasis role="stringliteral">&quot;arrival&quot;</emphasis>);
+<anchor xml:id="_functions_8cpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">auto</emphasis>&#32;jt&#32;=&#32;vec.begin();&#32;jt&#32;!=&#32;vec.end();&#32;jt++)
+<anchor xml:id="_functions_8cpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(jt-&gt;m_name&#32;==&#32;temp)
+<anchor xml:id="_functions_8cpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cond&#32;=&#32;0;
+<anchor xml:id="_functions_8cpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(cond)
+<anchor xml:id="_functions_8cpp_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;city-&gt;SetName(temp);
+<anchor xml:id="_functions_8cpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;vec.push_back(*city);
+<anchor xml:id="_functions_8cpp_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00046"/>00046 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00047"/>00047 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;vec;
+<anchor xml:id="_functions_8cpp_source_1l00048"/>00048 }
+<anchor xml:id="_functions_8cpp_source_1l00049"/>00049 
+<anchor xml:id="_functions_8cpp_source_1l00054"/><link linkend="_functions_8cpp_1a6523726a3e2822d792e823e8f11e45b3">00054</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_functions_8cpp_1a6523726a3e2822d792e823e8f11e45b3">IfDuplicates</link>(<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;std::string&gt;&amp;&#32;vec,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;city)
+<anchor xml:id="_functions_8cpp_source_1l00055"/>00055 {
+<anchor xml:id="_functions_8cpp_source_1l00056"/>00056 &#32;&#32;&#32;&#32;std::string&#32;str;
+<anchor xml:id="_functions_8cpp_source_1l00057"/>00057 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">auto</emphasis>&#32;it&#32;=&#32;vec.begin();&#32;it&#32;!=&#32;vec.end();&#32;it++)
+<anchor xml:id="_functions_8cpp_source_1l00058"/>00058 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;str&#32;=&#32;*it;
+<anchor xml:id="_functions_8cpp_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(str&#32;==&#32;city)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_functions_8cpp_source_1l00061"/>00061 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00062"/>00062 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_functions_8cpp_source_1l00063"/>00063 }
+<anchor xml:id="_functions_8cpp_source_1l00064"/>00064 
+<anchor xml:id="_functions_8cpp_source_1l00065"/><link linkend="_functions_8cpp_1aac008d0a41a438a256294eec5c711e58">00065</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_functions_8cpp_1aac008d0a41a438a256294eec5c711e58">Correction</link>(std::vector&lt;std::vector&lt;std::string&gt;&gt;&#32;&amp;&#32;roads,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;&#32;goal)
+<anchor xml:id="_functions_8cpp_source_1l00066"/>00066 {
+<anchor xml:id="_functions_8cpp_source_1l00067"/>00067 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=0;i&lt;roads.size();i++)
+<anchor xml:id="_functions_8cpp_source_1l00068"/>00068 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::reverse(roads[i].begin(),&#32;roads[i].end());
+<anchor xml:id="_functions_8cpp_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(roads[i].back()&#32;!=&#32;goal)
+<anchor xml:id="_functions_8cpp_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;roads[i].clear();
+<anchor xml:id="_functions_8cpp_source_1l00072"/>00072 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00073"/>00073 
+<anchor xml:id="_functions_8cpp_source_1l00074"/>00074 &#32;&#32;&#32;&#32;<emphasis role="keyword">auto</emphasis>&#32;end&#32;=&#32;roads.end();
+<anchor xml:id="_functions_8cpp_source_1l00075"/>00075 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">auto</emphasis>&#32;it&#32;=&#32;roads.begin();&#32;it&#32;!=&#32;end;&#32;it++)
+<anchor xml:id="_functions_8cpp_source_1l00076"/>00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;end&#32;=&#32;std::remove(it&#32;+&#32;1,&#32;end,&#32;*it);
+<anchor xml:id="_functions_8cpp_source_1l00077"/>00077 &#32;&#32;&#32;&#32;roads.erase(end,&#32;roads.end());
+<anchor xml:id="_functions_8cpp_source_1l00078"/>00078 
+<anchor xml:id="_functions_8cpp_source_1l00079"/>00079 &#32;&#32;&#32;&#32;<emphasis role="keyword">auto</emphasis>&#32;it&#32;=&#32;roads.begin();
+<anchor xml:id="_functions_8cpp_source_1l00080"/>00080 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;roads.size();&#32;i++)
+<anchor xml:id="_functions_8cpp_source_1l00081"/>00081 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(roads[i].empty()&#32;==&#32;<emphasis role="keyword">true</emphasis>)
+<anchor xml:id="_functions_8cpp_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;it&#32;+=&#32;i;
+<anchor xml:id="_functions_8cpp_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;roads.erase(it);
+<anchor xml:id="_functions_8cpp_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00087"/>00087 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00088"/>00088 }
+<anchor xml:id="_functions_8cpp_source_1l00089"/><link linkend="_functions_8cpp_1adff9f42478e20c2c819d66a7cf15d65e">00089</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_functions_8cpp_1adff9f42478e20c2c819d66a7cf15d65e">FindRoute</link>(std::string&#32;goal,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;&#32;from,<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;City&gt;&amp;&#32;cities,&#32;std::vector&lt;std::string&gt;&amp;&#32;solution,&#32;std::vector&lt;std::vector&lt;std::string&gt;&gt;&amp;&#32;solutions)
+<anchor xml:id="_functions_8cpp_source_1l00090"/>00090 {
+<anchor xml:id="_functions_8cpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(goal&#32;==&#32;from)
+<anchor xml:id="_functions_8cpp_source_1l00092"/>00092 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;solution.push_back(from);
+<anchor xml:id="_functions_8cpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;solutions.push_back(solution);
+<anchor xml:id="_functions_8cpp_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;solution.clear();
+<anchor xml:id="_functions_8cpp_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="_functions_8cpp_source_1l00097"/>00097 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00098"/>00098 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">auto</emphasis>&#32;it&#32;=&#32;cities.begin();&#32;it&#32;!=&#32;cities.end();&#32;it++)
+<anchor xml:id="_functions_8cpp_source_1l00099"/>00099 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;condition&#32;=&#32;<link linkend="_functions_8cpp_1a6523726a3e2822d792e823e8f11e45b3">IfDuplicates</link>(solution,&#32;it-&gt;m_name);
+<anchor xml:id="_functions_8cpp_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!condition)
+<anchor xml:id="_functions_8cpp_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">auto</emphasis>&#32;jt&#32;=&#32;it-&gt;m_canTravelTo.begin();&#32;jt&#32;!=&#32;it-&gt;m_canTravelTo.end();&#32;jt++)
+<anchor xml:id="_functions_8cpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(*jt&#32;==&#32;goal)
+<anchor xml:id="_functions_8cpp_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;std::string&gt;::iterator&#32;ix;
+<anchor xml:id="_functions_8cpp_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;condition&#32;=&#32;<link linkend="_functions_8cpp_1a6523726a3e2822d792e823e8f11e45b3">IfDuplicates</link>(solution,&#32;*jt);
+<anchor xml:id="_functions_8cpp_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(condition)
+<anchor xml:id="_functions_8cpp_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">auto</emphasis>&#32;ix&#32;=&#32;std::find(solution.begin(),&#32;solution.end(),&#32;goal);
+<anchor xml:id="_functions_8cpp_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;solution.erase(ix,&#32;solution.end());
+<anchor xml:id="_functions_8cpp_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;solution.push_back(goal);
+<anchor xml:id="_functions_8cpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_functions_8cpp_1adff9f42478e20c2c819d66a7cf15d65e">FindRoute</link>(it-&gt;m_name,&#32;from,&#32;cities,&#32;solution,&#32;solutions);
+<anchor xml:id="_functions_8cpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00119"/>00119 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00120"/>00120 &#32;&#32;&#32;&#32;solution.clear();
+<anchor xml:id="_functions_8cpp_source_1l00121"/>00121 }
+<anchor xml:id="_functions_8cpp_source_1l00122"/>00122 
+<anchor xml:id="_functions_8cpp_source_1l00123"/><link linkend="_functions_8cpp_1af03ece043d7189a2c9822bdb042deb5b">00123</link> std::vector&lt;std::string&gt;&#32;<link linkend="_functions_8cpp_1af03ece043d7189a2c9822bdb042deb5b">FastestRoad</link>(<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;std::vector&lt;std::string&gt;&gt;&amp;&#32;roads,<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;FileLine&gt;&#32;&amp;&#32;timetable)
+<anchor xml:id="_functions_8cpp_source_1l00124"/>00124 {
+<anchor xml:id="_functions_8cpp_source_1l00125"/>00125 &#32;&#32;&#32;&#32;std::vector&lt;std::string&gt;&#32;temp;
+<anchor xml:id="_functions_8cpp_source_1l00126"/>00126 &#32;&#32;&#32;&#32;std::vector&lt;std::string&gt;&#32;sol;
+<anchor xml:id="_functions_8cpp_source_1l00127"/>00127 &#32;&#32;&#32;&#32;std::vector&lt;FileLine&gt;::iterator&#32;ptr;
+<anchor xml:id="_functions_8cpp_source_1l00128"/>00128 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;FirstCity&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_functions_8cpp_source_1l00129"/>00129 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;hourOfDepartFromLastCity;
+<anchor xml:id="_functions_8cpp_source_1l00130"/>00130 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;time{};
+<anchor xml:id="_functions_8cpp_source_1l00131"/>00131 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;tempTime&#32;=&#32;1441;
+<anchor xml:id="_functions_8cpp_source_1l00132"/>00132 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">auto</emphasis>&#32;it&#32;=&#32;roads.begin();&#32;it&#32;!=&#32;roads.end();&#32;it++)
+<anchor xml:id="_functions_8cpp_source_1l00133"/>00133 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;time&#32;=&#32;0;
+<anchor xml:id="_functions_8cpp_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;temp&#32;=&#32;*it;
+<anchor xml:id="_functions_8cpp_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">size_t</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;temp.size()&#32;-&#32;1;&#32;i++)
+<anchor xml:id="_functions_8cpp_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">auto</emphasis>&#32;jt&#32;=&#32;timetable.begin();&#32;jt&#32;!=&#32;timetable.end();&#32;jt++)
+<anchor xml:id="_functions_8cpp_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((jt-&gt;GetCityName(<emphasis role="stringliteral">&quot;departure&quot;</emphasis>)&#32;==&#32;temp[i])&#32;&amp;&amp;&#32;(jt-&gt;GetCityName(<emphasis role="stringliteral">&quot;arrival&quot;</emphasis>)&#32;==&#32;temp[i&#32;+&#32;1]))
+<anchor xml:id="_functions_8cpp_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;time&#32;+=&#32;jt-&gt;GetDuration();
+<anchor xml:id="_functions_8cpp_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(FirstCity)
+<anchor xml:id="_functions_8cpp_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hourOfDepartFromLastCity&#32;=&#32;jt-&gt;GetHour(0);
+<anchor xml:id="_functions_8cpp_source_1l00146"/>00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hourOfDepartFromLastCity&#32;+=&#32;jt-&gt;GetDuration();
+<anchor xml:id="_functions_8cpp_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;FirstCity&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_functions_8cpp_source_1l00148"/>00148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00149"/>00149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="_functions_8cpp_source_1l00150"/>00150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00151"/>00151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;jt-&gt;GetNumberOfHoursOfDepartures();&#32;i++)
+<anchor xml:id="_functions_8cpp_source_1l00152"/>00152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(jt-&gt;GetHour(i)&#32;&gt;&#32;(hourOfDepartFromLastCity+<link linkend="_functions_8cpp_1aa288b29498fa054951dbdca37510664b">MINUMUM_TIME_FOR_CHANGE</link>))
+<anchor xml:id="_functions_8cpp_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00155"/>00155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;time&#32;+=&#32;jt-&gt;GetHour(i)&#32;-&#32;hourOfDepartFromLastCity;
+<anchor xml:id="_functions_8cpp_source_1l00156"/>00156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hourOfDepartFromLastCity&#32;=&#32;jt-&gt;GetHour(i);
+<anchor xml:id="_functions_8cpp_source_1l00157"/>00157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hourOfDepartFromLastCity&#32;+=&#32;jt-&gt;GetDuration();
+<anchor xml:id="_functions_8cpp_source_1l00158"/>00158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">goto</emphasis>&#32;foundNextHour;
+<anchor xml:id="_functions_8cpp_source_1l00159"/>00159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00160"/>00160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00161"/>00161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}foundNextHour:;
+<anchor xml:id="_functions_8cpp_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(time&#32;&lt;&#32;tempTime)
+<anchor xml:id="_functions_8cpp_source_1l00166"/>00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sol&#32;=&#32;temp;
+<anchor xml:id="_functions_8cpp_source_1l00167"/>00167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;tempTime&#32;=&#32;time;
+<anchor xml:id="_functions_8cpp_source_1l00168"/>00168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;FirstCity&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_functions_8cpp_source_1l00169"/>00169 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00170"/>00170 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;sol;
+<anchor xml:id="_functions_8cpp_source_1l00171"/>00171 }
+<anchor xml:id="_functions_8cpp_source_1l00172"/>00172 
+<anchor xml:id="_functions_8cpp_source_1l00173"/><link linkend="_functions_8cpp_1a14e1ef21104a6ad48c88f21480f1310d">00173</link> std::string&#32;<link linkend="_functions_8cpp_1a14e1ef21104a6ad48c88f21480f1310d">ConvertMinutesToHour</link>(<emphasis role="keywordtype">int</emphasis>&#32;&amp;&#32;minutes)
+<anchor xml:id="_functions_8cpp_source_1l00174"/>00174 {
+<anchor xml:id="_functions_8cpp_source_1l00175"/>00175 &#32;&#32;&#32;&#32;std::string&#32;hours;
+<anchor xml:id="_functions_8cpp_source_1l00176"/>00176 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;temp&#32;=&#32;minutes&#32;%&#32;60;
+<anchor xml:id="_functions_8cpp_source_1l00177"/>00177 &#32;&#32;&#32;&#32;minutes&#32;-=&#32;temp;
+<anchor xml:id="_functions_8cpp_source_1l00178"/>00178 &#32;&#32;&#32;&#32;minutes&#32;/=&#32;60;
+<anchor xml:id="_functions_8cpp_source_1l00179"/>00179 &#32;&#32;&#32;&#32;hours&#32;=&#32;std::to_string(minutes);
+<anchor xml:id="_functions_8cpp_source_1l00180"/>00180 &#32;&#32;&#32;&#32;hours&#32;+=&#32;<emphasis role="charliteral">&apos;:&apos;</emphasis>;
+<anchor xml:id="_functions_8cpp_source_1l00181"/>00181 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(temp&#32;&lt;&#32;10)&#32;hours+=<emphasis role="charliteral">&apos;0&apos;</emphasis>;
+<anchor xml:id="_functions_8cpp_source_1l00182"/>00182 &#32;&#32;&#32;&#32;hours&#32;+=&#32;std::to_string(temp);
+<anchor xml:id="_functions_8cpp_source_1l00183"/>00183 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;hours;
+<anchor xml:id="_functions_8cpp_source_1l00184"/>00184 }
+<anchor xml:id="_functions_8cpp_source_1l00185"/>00185 
+<anchor xml:id="_functions_8cpp_source_1l00186"/><link linkend="_functions_8cpp_1ad7aebb26f6e8258f90fcfc49b6b1127e">00186</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_functions_8cpp_1ad7aebb26f6e8258f90fcfc49b6b1127e">LookForNextDepart</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;&amp;&#32;lastHour,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;&#32;departCity,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;&#32;arriveCity,<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;FileLine&gt;&#32;&amp;&#32;timetable)
+<anchor xml:id="_functions_8cpp_source_1l00187"/>00187 {
+<anchor xml:id="_functions_8cpp_source_1l00188"/>00188 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;cond=<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="_functions_8cpp_source_1l00189"/>00189 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">auto</emphasis>&#32;it&#32;=&#32;timetable.begin();&#32;it&#32;!=&#32;timetable.end();&#32;it++)
+<anchor xml:id="_functions_8cpp_source_1l00190"/>00190 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00191"/>00191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((it-&gt;GetCityName(<emphasis role="stringliteral">&quot;departure&quot;</emphasis>)&#32;==&#32;departCity)&#32;&amp;&amp;&#32;(it-&gt;GetCityName(<emphasis role="stringliteral">&quot;arrival&quot;</emphasis>)&#32;==&#32;arriveCity))
+<anchor xml:id="_functions_8cpp_source_1l00192"/>00192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00193"/>00193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;it-&gt;GetNumberOfHoursOfDepartures();&#32;i++)
+<anchor xml:id="_functions_8cpp_source_1l00194"/>00194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00195"/>00195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cond&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="_functions_8cpp_source_1l00196"/>00196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(lastHour&#32;&lt;&#32;(it-&gt;GetHour(i)&#32;-&#32;<link linkend="_functions_8cpp_1aa288b29498fa054951dbdca37510664b">MINUMUM_TIME_FOR_CHANGE</link>))
+<anchor xml:id="_functions_8cpp_source_1l00197"/>00197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;it-&gt;GetHour(i);
+<anchor xml:id="_functions_8cpp_source_1l00198"/>00198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00199"/>00199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(cond&#32;==&#32;<emphasis role="keyword">true</emphasis>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;it-&gt;GetHour(0);
+<anchor xml:id="_functions_8cpp_source_1l00200"/>00200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00201"/>00201 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00202"/>00202 }
+<anchor xml:id="_functions_8cpp_source_1l00203"/>00203 
+<anchor xml:id="_functions_8cpp_source_1l00204"/><link linkend="_functions_8cpp_1a520caa7ab9758f319fc4fd17b3d4792f">00204</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_functions_8cpp_1a520caa7ab9758f319fc4fd17b3d4792f">GetTotalTime</link>(<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;std::string&gt;&amp;&#32;road,&#32;<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;FileLine&gt;&amp;&#32;timetable)
+<anchor xml:id="_functions_8cpp_source_1l00205"/>00205 {
+<anchor xml:id="_functions_8cpp_source_1l00206"/>00206 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;departHour{};
+<anchor xml:id="_functions_8cpp_source_1l00207"/>00207 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;arriveHour{};
+<anchor xml:id="_functions_8cpp_source_1l00208"/>00208 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;changeTimeMinutes{};
+<anchor xml:id="_functions_8cpp_source_1l00209"/>00209 
+<anchor xml:id="_functions_8cpp_source_1l00210"/>00210 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;totalTime{};
+<anchor xml:id="_functions_8cpp_source_1l00211"/>00211 
+<anchor xml:id="_functions_8cpp_source_1l00212"/>00212 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">auto</emphasis>&#32;it&#32;=&#32;road.begin();&#32;it&#32;!=&#32;road.end()&#32;-&#32;1;&#32;it++)
+<anchor xml:id="_functions_8cpp_source_1l00213"/>00213 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00214"/>00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(it&#32;!=&#32;road.end()&#32;-&#32;2)
+<anchor xml:id="_functions_8cpp_source_1l00215"/>00215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00216"/>00216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">auto</emphasis>&#32;jt&#32;=&#32;timetable.begin();&#32;jt&#32;!=&#32;timetable.end();&#32;jt++)
+<anchor xml:id="_functions_8cpp_source_1l00217"/>00217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00218"/>00218 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((jt-&gt;GetCityName(<emphasis role="stringliteral">&quot;departure&quot;</emphasis>)&#32;==&#32;*it)&#32;&amp;&amp;&#32;(jt-&gt;GetCityName(<emphasis role="stringliteral">&quot;arrival&quot;</emphasis>)&#32;==&#32;*(it&#32;+&#32;1)))
+<anchor xml:id="_functions_8cpp_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00220"/>00220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(it&#32;==&#32;road.begin())
+<anchor xml:id="_functions_8cpp_source_1l00221"/>00221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;departHour&#32;=&#32;jt-&gt;GetHour(0);
+<anchor xml:id="_functions_8cpp_source_1l00222"/>00222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="_functions_8cpp_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;departHour&#32;=&#32;<link linkend="_functions_8cpp_1ad7aebb26f6e8258f90fcfc49b6b1127e">LookForNextDepart</link>(arriveHour,&#32;*it,&#32;*(it&#32;+&#32;1),&#32;timetable);
+<anchor xml:id="_functions_8cpp_source_1l00224"/>00224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;arriveHour&#32;=&#32;departHour&#32;+&#32;jt-&gt;GetDuration();
+<anchor xml:id="_functions_8cpp_source_1l00225"/>00225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;changeTimeMinutes&#32;=&#32;<link linkend="_functions_8cpp_1ad7aebb26f6e8258f90fcfc49b6b1127e">LookForNextDepart</link>(arriveHour,&#32;*(it&#32;+&#32;1),&#32;*(it&#32;+&#32;2),&#32;timetable)&#32;-&#32;arriveHour;
+<anchor xml:id="_functions_8cpp_source_1l00226"/>00226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(changeTimeMinutes&#32;&lt;&#32;0)
+<anchor xml:id="_functions_8cpp_source_1l00227"/>00227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00228"/>00228 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">auto</emphasis>&#32;temp&#32;=&#32;<link linkend="_functions_8cpp_1ad7aebb26f6e8258f90fcfc49b6b1127e">LookForNextDepart</link>(arriveHour,&#32;*(it&#32;+&#32;1),&#32;*(it&#32;+&#32;2),&#32;timetable);
+<anchor xml:id="_functions_8cpp_source_1l00229"/>00229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;minutesInDay&#32;=&#32;1440;
+<anchor xml:id="_functions_8cpp_source_1l00230"/>00230 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;changeTimeMinutes&#32;=&#32;minutesInDay&#32;-&#32;arriveHour&#32;+&#32;temp;
+<anchor xml:id="_functions_8cpp_source_1l00231"/>00231 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00232"/>00232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;totalTime&#32;+=&#32;jt-&gt;GetDuration()&#32;+&#32;changeTimeMinutes;
+<anchor xml:id="_functions_8cpp_source_1l00233"/>00233 
+<anchor xml:id="_functions_8cpp_source_1l00234"/>00234 
+<anchor xml:id="_functions_8cpp_source_1l00235"/>00235 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">goto</emphasis>&#32;foundCity;
+<anchor xml:id="_functions_8cpp_source_1l00236"/>00236 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00237"/>00237 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}foundCity:;
+<anchor xml:id="_functions_8cpp_source_1l00238"/>00238 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00239"/>00239 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(it&#32;==&#32;road.end()&#32;-&#32;2)
+<anchor xml:id="_functions_8cpp_source_1l00240"/>00240 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00241"/>00241 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">auto</emphasis>&#32;jt&#32;=&#32;timetable.begin();&#32;jt&#32;!=&#32;timetable.end();&#32;jt++)
+<anchor xml:id="_functions_8cpp_source_1l00242"/>00242 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00243"/>00243 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;((jt-&gt;GetCityName(<emphasis role="stringliteral">&quot;departure&quot;</emphasis>)&#32;==&#32;*it)&#32;&amp;&amp;&#32;(jt-&gt;GetCityName(<emphasis role="stringliteral">&quot;arrival&quot;</emphasis>)&#32;==&#32;*(it&#32;+&#32;1)))
+<anchor xml:id="_functions_8cpp_source_1l00244"/>00244 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8cpp_source_1l00245"/>00245 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;totalTime&#32;+=&#32;jt-&gt;GetDuration();
+<anchor xml:id="_functions_8cpp_source_1l00246"/>00246 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;totalTime;
+<anchor xml:id="_functions_8cpp_source_1l00247"/>00247 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00248"/>00248 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00249"/>00249 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00250"/>00250 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8cpp_source_1l00251"/>00251 }
+</programlisting></section>

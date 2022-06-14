@@ -1,0 +1,230 @@
+\hypertarget{class_file_line}{}\doxysection{Dokumentacja klasy File\+Line}
+\label{class_file_line}\index{FileLine@{FileLine}}
+
+
+Klasa odpowiedzialna za przechowanie informacji pobranych z jednej linii z pliku rozkładu jazdy.  
+
+
+
+
+{\ttfamily \#include $<$functions.\+h$>$}
+
+\doxysubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_file_line_ae39a890c2d0614babc8c410a8b18a46e}{Get\+City\+Name}} (const std\+::string \&boolean) const
+\begin{DoxyCompactList}\small\item\em Funkcja, która zwraca nazwę miasta (odjazdu albo docelowego) zależnie od podanej wartości parametru boolean. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_file_line_af9ab22eb596aa17e7a952777986e2000}{Get\+Duration}} () const
+\begin{DoxyCompactList}\small\item\em Funkcja zwracająca czas jazdy z miasta odjazdu do miasta docelowego. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_file_line_a3782624c3311a5964bb0b9104673ac7c}{Get\+Number\+Of\+Hours\+Of\+Departures}} () const
+\begin{DoxyCompactList}\small\item\em Funkcja zwracająca informację o liczbie godzin, o których możemy rozpocząć podróż do miasta docelowego. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_file_line_a8805d148e89dc8fca5b3d6b922f7aa77}{Get\+Hour}} (short n) const
+\begin{DoxyCompactList}\small\item\em Funkcja zwracająca jedną z godzin, o której możemy rozpocząć podróż \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_file_line_a377aa60cc56cb0c5e1d0e65340198cc0}{Get\+File\+Line}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Funkcja która na podstawie linii z pliku rozkładu jazdy zapisze wartości do zmiennych klasy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Metody prywatne}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_file_line_af2923f728d370baad627563af13cc729}{Convert\+Hour}} (const short \&n) const
+\begin{DoxyCompactList}\small\item\em Funkcja, która zwraca daną godzinę w postaci liczby minut w godzinie (np. 1\+:20 to 80) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Atrybuty prywatne}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_file_line_a6e45a4449005fd6224882d0fb72f1ef5}{m\+\_\+departure}}
+\begin{DoxyCompactList}\small\item\em zmienna przechowująca informację o miecie, z którego odjeżdzamy \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_file_line_a7b357ffea550d4fab5b1680769ec0093}{m\+\_\+arrival}}
+\begin{DoxyCompactList}\small\item\em zmienna przechowująca informację o mieście docelowego \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_file_line_a0872898a7a5e9af66b27f40d41758c81}{m\+\_\+duration}} \{\}
+\begin{DoxyCompactList}\small\item\em zmiennna przechowująca informację o czasie jazdy z miasta, z którego odjeżdzamy do miasta docelowego ~\newline
+ \end{DoxyCompactList}\item 
+std\+::array$<$ std\+::string, 3 $>$ \mbox{\hyperlink{class_file_line_a03c84f745fd92ec3fb2a0a881fe0d56d}{m\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em zmienna przechowująca informację o godzinach, o których możemy odjechać z tego przystanku \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Klasa odpowiedzialna za przechowanie informacji pobranych z jednej linii z pliku rozkładu jazdy. 
+
+Definicja w linii \mbox{\hyperlink{functions_8h_source_l00014}{14}} pliku \mbox{\hyperlink{functions_8h_source}{functions.\+h}}.
+
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\mbox{\Hypertarget{class_file_line_af2923f728d370baad627563af13cc729}\label{class_file_line_af2923f728d370baad627563af13cc729}} 
+\index{FileLine@{FileLine}!ConvertHour@{ConvertHour}}
+\index{ConvertHour@{ConvertHour}!FileLine@{FileLine}}
+\doxysubsubsection{\texorpdfstring{ConvertHour()}{ConvertHour()}}
+{\footnotesize\ttfamily int File\+Line\+::\+Convert\+Hour (\begin{DoxyParamCaption}\item[{const short \&}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Funkcja, która zwraca daną godzinę w postaci liczby minut w godzinie (np. 1\+:20 to 80) 
+
+
+\begin{DoxyParams}{Parametry}
+{\em n} & zmienna na podstawie której funkcja wybiera godzinę \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{functions_8h_source_l00053}{53}} pliku \mbox{\hyperlink{functions_8h_source}{functions.\+h}}.
+
+Oto graf wywoływań tej funkcji\+:
+% FIG 0
+\mbox{\Hypertarget{class_file_line_ae39a890c2d0614babc8c410a8b18a46e}\label{class_file_line_ae39a890c2d0614babc8c410a8b18a46e}} 
+\index{FileLine@{FileLine}!GetCityName@{GetCityName}}
+\index{GetCityName@{GetCityName}!FileLine@{FileLine}}
+\doxysubsubsection{\texorpdfstring{GetCityName()}{GetCityName()}}
+{\footnotesize\ttfamily std\+::string File\+Line\+::\+Get\+City\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{boolean }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Funkcja, która zwraca nazwę miasta (odjazdu albo docelowego) zależnie od podanej wartości parametru boolean. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em boolean} & zmienna na podstawie której funkcja zwróci jedno z dwóch miast ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+Funkcja zwraca string zawierający nazwę miasta 
+\end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{functions_8h_source_l00026}{26}} pliku \mbox{\hyperlink{functions_8h_source}{functions.\+h}}.
+
+\mbox{\Hypertarget{class_file_line_af9ab22eb596aa17e7a952777986e2000}\label{class_file_line_af9ab22eb596aa17e7a952777986e2000}} 
+\index{FileLine@{FileLine}!GetDuration@{GetDuration}}
+\index{GetDuration@{GetDuration}!FileLine@{FileLine}}
+\doxysubsubsection{\texorpdfstring{GetDuration()}{GetDuration()}}
+{\footnotesize\ttfamily int File\+Line\+::\+Get\+Duration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Funkcja zwracająca czas jazdy z miasta odjazdu do miasta docelowego. 
+
+
+
+Definicja w linii \mbox{\hyperlink{functions_8h_source_l00033}{33}} pliku \mbox{\hyperlink{functions_8h_source}{functions.\+h}}.
+
+\mbox{\Hypertarget{class_file_line_a377aa60cc56cb0c5e1d0e65340198cc0}\label{class_file_line_a377aa60cc56cb0c5e1d0e65340198cc0}} 
+\index{FileLine@{FileLine}!GetFileLine@{GetFileLine}}
+\index{GetFileLine@{GetFileLine}!FileLine@{FileLine}}
+\doxysubsubsection{\texorpdfstring{GetFileLine()}{GetFileLine()}}
+{\footnotesize\ttfamily void File\+Line\+::\+Get\+File\+Line (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Funkcja która na podstawie linii z pliku rozkładu jazdy zapisze wartości do zmiennych klasy. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em str} & String, który zawiera jedną linijkę z pliku rozkładu jazdy \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{functions_8h_source_l00044}{44}} pliku \mbox{\hyperlink{functions_8h_source}{functions.\+h}}.
+
+Oto graf wywoływań tej funkcji\+:
+% FIG 1
+\mbox{\Hypertarget{class_file_line_a8805d148e89dc8fca5b3d6b922f7aa77}\label{class_file_line_a8805d148e89dc8fca5b3d6b922f7aa77}} 
+\index{FileLine@{FileLine}!GetHour@{GetHour}}
+\index{GetHour@{GetHour}!FileLine@{FileLine}}
+\doxysubsubsection{\texorpdfstring{GetHour()}{GetHour()}}
+{\footnotesize\ttfamily int File\+Line\+::\+Get\+Hour (\begin{DoxyParamCaption}\item[{short}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Funkcja zwracająca jedną z godzin, o której możemy rozpocząć podróż 
+
+
+\begin{DoxyParams}{Parametry}
+{\em n} & zmienna na podstawie której funkcja zwróci godzinę \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{functions_8h_source_l00040}{40}} pliku \mbox{\hyperlink{functions_8h_source}{functions.\+h}}.
+
+Oto graf wywołań dla tej funkcji\+:
+% FIG 2
+\mbox{\Hypertarget{class_file_line_a3782624c3311a5964bb0b9104673ac7c}\label{class_file_line_a3782624c3311a5964bb0b9104673ac7c}} 
+\index{FileLine@{FileLine}!GetNumberOfHoursOfDepartures@{GetNumberOfHoursOfDepartures}}
+\index{GetNumberOfHoursOfDepartures@{GetNumberOfHoursOfDepartures}!FileLine@{FileLine}}
+\doxysubsubsection{\texorpdfstring{GetNumberOfHoursOfDepartures()}{GetNumberOfHoursOfDepartures()}}
+{\footnotesize\ttfamily int File\+Line\+::\+Get\+Number\+Of\+Hours\+Of\+Departures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Funkcja zwracająca informację o liczbie godzin, o których możemy rozpocząć podróż do miasta docelowego. 
+
+
+
+Definicja w linii \mbox{\hyperlink{functions_8h_source_l00036}{36}} pliku \mbox{\hyperlink{functions_8h_source}{functions.\+h}}.
+
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\mbox{\Hypertarget{class_file_line_a7b357ffea550d4fab5b1680769ec0093}\label{class_file_line_a7b357ffea550d4fab5b1680769ec0093}} 
+\index{FileLine@{FileLine}!m\_arrival@{m\_arrival}}
+\index{m\_arrival@{m\_arrival}!FileLine@{FileLine}}
+\doxysubsubsection{\texorpdfstring{m\_arrival}{m\_arrival}}
+{\footnotesize\ttfamily std\+::string File\+Line\+::m\+\_\+arrival\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+zmienna przechowująca informację o mieście docelowego 
+
+
+
+Definicja w linii \mbox{\hyperlink{functions_8h_source_l00018}{18}} pliku \mbox{\hyperlink{functions_8h_source}{functions.\+h}}.
+
+\mbox{\Hypertarget{class_file_line_a6e45a4449005fd6224882d0fb72f1ef5}\label{class_file_line_a6e45a4449005fd6224882d0fb72f1ef5}} 
+\index{FileLine@{FileLine}!m\_departure@{m\_departure}}
+\index{m\_departure@{m\_departure}!FileLine@{FileLine}}
+\doxysubsubsection{\texorpdfstring{m\_departure}{m\_departure}}
+{\footnotesize\ttfamily std\+::string File\+Line\+::m\+\_\+departure\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+zmienna przechowująca informację o miecie, z którego odjeżdzamy 
+
+
+
+Definicja w linii \mbox{\hyperlink{functions_8h_source_l00017}{17}} pliku \mbox{\hyperlink{functions_8h_source}{functions.\+h}}.
+
+\mbox{\Hypertarget{class_file_line_a0872898a7a5e9af66b27f40d41758c81}\label{class_file_line_a0872898a7a5e9af66b27f40d41758c81}} 
+\index{FileLine@{FileLine}!m\_duration@{m\_duration}}
+\index{m\_duration@{m\_duration}!FileLine@{FileLine}}
+\doxysubsubsection{\texorpdfstring{m\_duration}{m\_duration}}
+{\footnotesize\ttfamily int File\+Line\+::m\+\_\+duration \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+zmiennna przechowująca informację o czasie jazdy z miasta, z którego odjeżdzamy do miasta docelowego ~\newline
+ 
+
+
+
+Definicja w linii \mbox{\hyperlink{functions_8h_source_l00019}{19}} pliku \mbox{\hyperlink{functions_8h_source}{functions.\+h}}.
+
+\mbox{\Hypertarget{class_file_line_a03c84f745fd92ec3fb2a0a881fe0d56d}\label{class_file_line_a03c84f745fd92ec3fb2a0a881fe0d56d}} 
+\index{FileLine@{FileLine}!m\_time@{m\_time}}
+\index{m\_time@{m\_time}!FileLine@{FileLine}}
+\doxysubsubsection{\texorpdfstring{m\_time}{m\_time}}
+{\footnotesize\ttfamily std\+::array$<$std\+::string,3$>$ File\+Line\+::m\+\_\+time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+zmienna przechowująca informację o godzinach, o których możemy odjechać z tego przystanku 
+
+
+
+Definicja w linii \mbox{\hyperlink{functions_8h_source_l00020}{20}} pliku \mbox{\hyperlink{functions_8h_source}{functions.\+h}}.
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z pliku\+:\begin{DoxyCompactItemize}
+\item 
+Project/headers/\mbox{\hyperlink{functions_8h}{functions.\+h}}\end{DoxyCompactItemize}

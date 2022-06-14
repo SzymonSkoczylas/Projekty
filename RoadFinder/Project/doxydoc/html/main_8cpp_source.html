@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.3"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projekt na zaliczenie Szymon Skoczylas: Plik ÅºrÃ³dÅ‚owy Project/Project/src/main.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Projekt na zaliczenie Szymon Skoczylas<span id="projectnumber">&#160;Efekt koÅ„cowy</span>
+   </div>
+   <div id="projectbrief">Opis projektu</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.9.3 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Szukaj','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_ffd1f789ec7bd0a45fc6ad92579c5070.html">Project</a></li><li class="navelem"><a class="el" href="dir_0250499be9f5c23570b2916ce3fd0131.html">Project</a></li><li class="navelem"><a class="el" href="dir_4d6db4ef9125176a109ef5c97cf5eb4f.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">main.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="main_8cpp.html">IdÅº do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="functions_8h.html">functions.h</a>&quot;</span> </div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">    3</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>()</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>{</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    std::ifstream inFileTimetable(<span class="stringliteral">&quot;..\\data\\timetable.txt&quot;</span>);</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    std::ifstream inFileTravel(<span class="stringliteral">&quot;..\\data\\travel.txt&quot;</span>);</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    std::ofstream toSolutionFile(<span class="stringliteral">&quot;..\\data\\solution.txt&quot;</span>);</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    std::string line;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <a class="code hl_class" href="class_file_line.html">FileLine</a> fline;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    std::vector&lt;FileLine&gt; timetable;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    std::vector&lt;City&gt; cities;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordflow">while</span> (std::getline(inFileTimetable, line))</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        fline.<a class="code hl_function" href="class_file_line.html#a377aa60cc56cb0c5e1d0e65340198cc0">GetFileLine</a>(line);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        timetable.push_back(fline);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    }</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    cities = <a class="code hl_function" href="functions_8cpp.html#abae79917897174a3c69842beba6fb335">FillCityVec</a>(timetable);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">struct </span>{ std::string a; std::string b; } traveler;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">auto</span>&amp; [departCity, arriveCity] = traveler;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    std::stringstream ss;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    std::vector&lt;std::string&gt; temp;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    std::vector&lt;std::string&gt; fastest;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    std::vector&lt;std::vector&lt;std::string&gt;&gt; roads;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">int</span> time{};</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">int</span> totalTime{};</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">int</span> departHour{};</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">int</span> arriveHour{};</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">int</span> changeTimeMinutes{};</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    std::string changeTime{};</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">while</span> (std::getline(inFileTravel, line))</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        ss &lt;&lt; line;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        ss &gt;&gt; departCity &gt;&gt; arriveCity;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <a class="code hl_function" href="functions_8cpp.html#adff9f42478e20c2c819d66a7cf15d65e">FindRoute</a>(arriveCity, departCity, cities, temp, roads); </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">if</span> (!roads.empty())</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <a class="code hl_function" href="functions_8cpp.html#aac008d0a41a438a256294eec5c711e58">Correction</a>(roads, arriveCity); </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            fastest = <a class="code hl_function" href="functions_8cpp.html#af03ece043d7189a2c9822bdb042deb5b">FastestRoad</a>(roads, timetable); </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            totalTime = <a class="code hl_function" href="functions_8cpp.html#a520caa7ab9758f319fc4fd17b3d4792f">GetTotalTime</a>(fastest, timetable); </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            toSolutionFile &lt;&lt; departCity &lt;&lt; <span class="stringliteral">&quot; --&gt; &quot;</span> &lt;&lt; arriveCity &lt;&lt; <span class="stringliteral">&quot; (czas: &quot;</span> &lt;&lt;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                <a class="code hl_function" href="functions_8cpp.html#a14e1ef21104a6ad48c88f21480f1310d">ConvertMinutesToHour</a>(totalTime) &lt;&lt; <span class="stringliteral">&quot;, przesiadki: &quot;</span> &lt;&lt; fastest.size() - 2 &lt;&lt; <span class="stringliteral">&quot;)\n&quot;</span> &lt;&lt;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                <span class="stringliteral">&quot;-----------------------------------------------------\n&quot;</span>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = fastest.begin(); it != fastest.end() - 1; it++)</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                    <span class="keywordflow">if</span> (fastest.size() != 2)</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                    {</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                        <span class="keywordflow">if</span> (it != fastest.end() - 2)</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                        {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                            <span class="keywordflow">for</span> (<span class="keyword">auto</span> jt = timetable.begin(); jt != timetable.end(); jt++)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                            {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                                <span class="keywordflow">if</span> ((jt-&gt;GetCityName(<span class="stringliteral">&quot;departure&quot;</span>) == *it) &amp;&amp; (jt-&gt;GetCityName(<span class="stringliteral">&quot;arrival&quot;</span>) == *(it + 1)))</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                                {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                                    <span class="keywordflow">if</span> (it == fastest.begin())</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                                        departHour = jt-&gt;GetHour(0);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                                    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                                        departHour = <a class="code hl_function" href="functions_8cpp.html#ad7aebb26f6e8258f90fcfc49b6b1127e">LookForNextDepart</a>(arriveHour, *it, *(it + 1), timetable);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                                    arriveHour = departHour + jt-&gt;GetDuration();</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                                    changeTimeMinutes = <a class="code hl_function" href="functions_8cpp.html#ad7aebb26f6e8258f90fcfc49b6b1127e">LookForNextDepart</a>(arriveHour, *(it + 1), *(it + 2), timetable) - arriveHour;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                                    <span class="keyword">auto</span> temp1 = arriveHour;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                                    <span class="keyword">auto</span> temp2 = departHour;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                                    <span class="keyword">auto</span> temp3 = changeTimeMinutes;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                                    <span class="keywordflow">if</span> (temp3 &lt; 0) temp3 *= -1;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                                    changeTime = <a class="code hl_function" href="functions_8cpp.html#a14e1ef21104a6ad48c88f21480f1310d">ConvertMinutesToHour</a>(temp3);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                                    toSolutionFile &lt;&lt; jt-&gt;GetCityName(<span class="stringliteral">&quot;departure&quot;</span>) &lt;&lt; <span class="stringliteral">&quot; (&quot;</span> &lt;&lt; <a class="code hl_function" href="functions_8cpp.html#a14e1ef21104a6ad48c88f21480f1310d">ConvertMinutesToHour</a>(temp2) &lt;&lt;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                                        <span class="stringliteral">&quot;) --&gt; &quot;</span> &lt;&lt; jt-&gt;GetCityName(<span class="stringliteral">&quot;arrival&quot;</span>) &lt;&lt; <span class="stringliteral">&quot; (&quot;</span> &lt;&lt; <a class="code hl_function" href="functions_8cpp.html#a14e1ef21104a6ad48c88f21480f1310d">ConvertMinutesToHour</a>(temp1) &lt;&lt;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                                        <span class="stringliteral">&quot;), przesiadka za &quot;</span> &lt;&lt; changeTime &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                                    <span class="keywordflow">goto</span> foundCity;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                                }</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                            }foundCity:;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                        }</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (it == fastest.end() - 2)</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                        {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                            <span class="keywordflow">for</span> (<span class="keyword">auto</span> jt = timetable.begin(); jt != timetable.end(); jt++)</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                            {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                                <span class="keywordflow">if</span> ((jt-&gt;GetCityName(<span class="stringliteral">&quot;departure&quot;</span>) == *it) &amp;&amp; (jt-&gt;GetCityName(<span class="stringliteral">&quot;arrival&quot;</span>) == *(it + 1)))</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                                {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                                    departHour = changeTimeMinutes + arriveHour;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                                    arriveHour = departHour + jt-&gt;GetDuration();</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                                    toSolutionFile &lt;&lt; jt-&gt;GetCityName(<span class="stringliteral">&quot;departure&quot;</span>) &lt;&lt; <span class="stringliteral">&quot; (&quot;</span> &lt;&lt; <a class="code hl_function" href="functions_8cpp.html#a14e1ef21104a6ad48c88f21480f1310d">ConvertMinutesToHour</a>(departHour) &lt;&lt;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                                        <span class="stringliteral">&quot;) --&gt; &quot;</span> &lt;&lt; jt-&gt;GetCityName(<span class="stringliteral">&quot;arrival&quot;</span>) &lt;&lt; <span class="stringliteral">&quot; (&quot;</span> &lt;&lt; <a class="code hl_function" href="functions_8cpp.html#a14e1ef21104a6ad48c88f21480f1310d">ConvertMinutesToHour</a>(arriveHour) &lt;&lt; <span class="stringliteral">&quot;)\n\n&quot;</span>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                                    <span class="keywordflow">goto</span> loopEnd;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                                }</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                            }loopEnd:;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>                        }</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                    }</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                    {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                        <span class="keywordflow">for</span> (<span class="keyword">auto</span> jt = timetable.begin(); jt != timetable.end(); jt++)</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                        {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                            <span class="keywordflow">if</span> ((jt-&gt;GetCityName(<span class="stringliteral">&quot;departure&quot;</span>) == *it) &amp;&amp; (jt-&gt;GetCityName(<span class="stringliteral">&quot;arrival&quot;</span>) == *(it + 1)))</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                            {</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                                departHour = jt-&gt;GetHour(0);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                                arriveHour = departHour + jt-&gt;GetDuration();</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                                toSolutionFile &lt;&lt; jt-&gt;GetCityName(<span class="stringliteral">&quot;departure&quot;</span>) &lt;&lt; <span class="stringliteral">&quot; (&quot;</span> &lt;&lt; <a class="code hl_function" href="functions_8cpp.html#a14e1ef21104a6ad48c88f21480f1310d">ConvertMinutesToHour</a>(departHour) &lt;&lt;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                                    <span class="stringliteral">&quot;) --&gt; &quot;</span> &lt;&lt; jt-&gt;GetCityName(<span class="stringliteral">&quot;arrival&quot;</span>) &lt;&lt; <span class="stringliteral">&quot; (&quot;</span> &lt;&lt; <a class="code hl_function" href="functions_8cpp.html#a14e1ef21104a6ad48c88f21480f1310d">ConvertMinutesToHour</a>(arriveHour) &lt;&lt; <span class="stringliteral">&quot;)\n\n&quot;</span>;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                            }</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                        }</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                    }</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                }</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            toSolutionFile &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            roads.clear();</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        }</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>            toSolutionFile &lt;&lt; departCity &lt;&lt; <span class="stringliteral">&quot; --&gt; &quot;</span> &lt;&lt; arriveCity &lt;&lt; <span class="stringliteral">&quot; - taka droga nie istnieje!!!\n\n&quot;</span>;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        ss.clear();</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    }</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    std::cin.get();</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>}</div>
+<div class="ttc" id="aclass_file_line_html"><div class="ttname"><a href="class_file_line.html">FileLine</a></div><div class="ttdoc">Klasa FileLine odpowiedzialna za przechowywanie informacji pobranych z jednej linii z pliku rozk³adu ...</div><div class="ttdef"><b>Definition:</b> <a href="functions_8h_source.html#l00014">functions.h:15</a></div></div>
+<div class="ttc" id="aclass_file_line_html_a377aa60cc56cb0c5e1d0e65340198cc0"><div class="ttname"><a href="class_file_line.html#a377aa60cc56cb0c5e1d0e65340198cc0">FileLine::GetFileLine</a></div><div class="ttdeci">void GetFileLine(const std::string &amp;str)</div><div class="ttdoc">Funkcja która na podstawie linii z pliku rozk³adu jazdy zapisze wartoœci do zmiennych klasy.</div><div class="ttdef"><b>Definition:</b> <a href="functions_8h_source.html#l00044">functions.h:44</a></div></div>
+<div class="ttc" id="afunctions_8cpp_html_a14e1ef21104a6ad48c88f21480f1310d"><div class="ttname"><a href="functions_8cpp.html#a14e1ef21104a6ad48c88f21480f1310d">ConvertMinutesToHour</a></div><div class="ttdeci">std::string ConvertMinutesToHour(int &amp;minutes)</div><div class="ttdoc">Funkcja, która na podstawie liczby minut podanej w postaci int wygeneruje napis zawieraj¹cy informacje o...</div><div class="ttdef"><b>Definition:</b> <a href="functions_8cpp_source.html#l00200">functions.cpp:200</a></div></div>
+<div class="ttc" id="afunctions_8cpp_html_a520caa7ab9758f319fc4fd17b3d4792f"><div class="ttname"><a href="functions_8cpp.html#a520caa7ab9758f319fc4fd17b3d4792f">GetTotalTime</a></div><div class="ttdeci">int GetTotalTime(const std::vector&lt; std::string &gt; &amp;road, const std::vector&lt; FileLine &gt; &amp;timetable)</div><div class="ttdoc">Funkcja, która na podstawie podanej drogi zlicza ³¹czny czas jazdy (razem z czasem oczekiwania na odjazd...</div><div class="ttdef"><b>Definition:</b> <a href="functions_8cpp_source.html#l00236">functions.cpp:236</a></div></div>
+<div class="ttc" id="afunctions_8cpp_html_aac008d0a41a438a256294eec5c711e58"><div class="ttname"><a href="functions_8cpp.html#aac008d0a41a438a256294eec5c711e58">Correction</a></div><div class="ttdeci">void Correction(std::vector&lt; std::vector&lt; std::string &gt; &gt; &amp;roads, const std::string &amp;goal)</div><div class="ttdoc">Funkcja korekcyjna dla funkcji FindRoute. Jest potrzebna do optymalizacji wyników uzyskanych dziêki funkcj...</div><div class="ttdef"><b>Definition:</b> <a href="functions_8cpp_source.html#l00091">functions.cpp:91</a></div></div>
+<div class="ttc" id="afunctions_8cpp_html_abae79917897174a3c69842beba6fb335"><div class="ttname"><a href="functions_8cpp.html#abae79917897174a3c69842beba6fb335">FillCityVec</a></div><div class="ttdeci">std::vector&lt; City &gt; FillCityVec(std::vector&lt; FileLine &gt; &amp;timetable)</div><div class="ttdoc">Funkcja, która na podstawie vectora klas FileLine tworzy vector klas City.</div><div class="ttdef"><b>Definition:</b> <a href="functions_8cpp_source.html#l00005">functions.cpp:5</a></div></div>
+<div class="ttc" id="afunctions_8cpp_html_ad7aebb26f6e8258f90fcfc49b6b1127e"><div class="ttname"><a href="functions_8cpp.html#ad7aebb26f6e8258f90fcfc49b6b1127e">LookForNextDepart</a></div><div class="ttdeci">int LookForNextDepart(const int &amp;lastHour, const std::string &amp;departCity, const std::string &amp;arriveCity, const std::vector&lt; FileLine &gt; &amp;timetable)</div><div class="ttdoc">Funkcja szukaj¹ca nastêpnej godziny odjazdu &quot;z miasta A do miasta B&quot; wzglêdem podanej godziny.</div><div class="ttdef"><b>Definition:</b> <a href="functions_8cpp_source.html#l00213">functions.cpp:213</a></div></div>
+<div class="ttc" id="afunctions_8cpp_html_adff9f42478e20c2c819d66a7cf15d65e"><div class="ttname"><a href="functions_8cpp.html#adff9f42478e20c2c819d66a7cf15d65e">FindRoute</a></div><div class="ttdeci">void FindRoute(std::string goal, const std::string &amp;from, const std::vector&lt; City &gt; &amp;cities, std::vector&lt; std::string &gt; &amp;solution, std::vector&lt; std::vector&lt; std::string &gt; &gt; &amp;solutions)</div><div class="ttdoc">Funkcja, która szuka wszystkich mo¿liwych dróg &quot;z miasta A do miasta B&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="functions_8cpp_source.html#l00115">functions.cpp:115</a></div></div>
+<div class="ttc" id="afunctions_8cpp_html_af03ece043d7189a2c9822bdb042deb5b"><div class="ttname"><a href="functions_8cpp.html#af03ece043d7189a2c9822bdb042deb5b">FastestRoad</a></div><div class="ttdeci">std::vector&lt; std::string &gt; FastestRoad(const std::vector&lt; std::vector&lt; std::string &gt; &gt; &amp;roads, const std::vector&lt; FileLine &gt; &amp;timetable)</div><div class="ttdoc">Funkcja, która na podstawie kontenera roads, znajdzie najszybsz¹ z dróg.</div><div class="ttdef"><b>Definition:</b> <a href="functions_8cpp_source.html#l00149">functions.cpp:149</a></div></div>
+<div class="ttc" id="afunctions_8h_html"><div class="ttname"><a href="functions_8h.html">functions.h</a></div></div>
+<div class="ttc" id="amain_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00003">main.cpp:3</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+</small></address>
+</body>
+</html>

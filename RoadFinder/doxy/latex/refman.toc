@@ -1,0 +1,54 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\babel@toc {polish}{}\relax 
+\contentsline {chapter}{\numberline {1}Indeks klas}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Lista klas}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Indeks plików}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Lista plików}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Dokumentacja klas}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Dokumentacja klasy City}{5}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Opis szczegółowy}{5}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Dokumentacja funkcji składowych}{5}{subsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.2.1}CanTravel()}{5}{subsubsection.3.1.2.1}%
+\contentsline {subsubsection}{\numberline {3.1.2.2}ClearVec()}{6}{subsubsection.3.1.2.2}%
+\contentsline {subsubsection}{\numberline {3.1.2.3}SetName()}{6}{subsubsection.3.1.2.3}%
+\contentsline {subsection}{\numberline {3.1.3}Dokumentacja atrybutów składowych}{6}{subsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.3.1}m\_canTravelTo}{6}{subsubsection.3.1.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.3.2}m\_name}{7}{subsubsection.3.1.3.2}%
+\contentsline {section}{\numberline {3.2}Dokumentacja klasy File\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Line}{7}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Opis szczegółowy}{8}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Dokumentacja funkcji składowych}{8}{subsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.1}ConvertHour()}{8}{subsubsection.3.2.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2.2}GetCityName()}{8}{subsubsection.3.2.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.3}GetDuration()}{9}{subsubsection.3.2.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.2.4}GetFileLine()}{9}{subsubsection.3.2.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.2.5}GetHour()}{9}{subsubsection.3.2.2.5}%
+\contentsline {subsubsection}{\numberline {3.2.2.6}GetNumberOfHoursOfDepartures()}{9}{subsubsection.3.2.2.6}%
+\contentsline {subsection}{\numberline {3.2.3}Dokumentacja atrybutów składowych}{10}{subsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.3.1}m\_arrival}{10}{subsubsection.3.2.3.1}%
+\contentsline {subsubsection}{\numberline {3.2.3.2}m\_departure}{10}{subsubsection.3.2.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.3.3}m\_duration}{10}{subsubsection.3.2.3.3}%
+\contentsline {subsubsection}{\numberline {3.2.3.4}m\_time}{10}{subsubsection.3.2.3.4}%
+\contentsline {chapter}{\numberline {4}Dokumentacja plików}{11}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Dokumentacja pliku Project/headers/functions.cpp}{11}{section.4.1}%
+\contentsline {section}{\numberline {4.2}functions.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{11}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Dokumentacja pliku Project/headers/functions.h}{14}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Dokumentacja funkcji}{15}{subsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.1.1}ConvertMinutesToHour()}{15}{subsubsection.4.3.1.1}%
+\contentsline {subsubsection}{\numberline {4.3.1.2}Correction()}{15}{subsubsection.4.3.1.2}%
+\contentsline {paragraph}{\numberline {4.3.1.2.1}Element usuwający}{16}{paragraph.4.3.1.2.1}%
+\contentsline {paragraph}{\numberline {4.3.1.2.2}Element usuwający duplikaty z vectora dróg}{16}{paragraph.4.3.1.2.2}%
+\contentsline {subsubsection}{\numberline {4.3.1.3}FastestRoad()}{16}{subsubsection.4.3.1.3}%
+\contentsline {paragraph}{\numberline {4.3.1.3.1}Algorytm sprawdzający, która z dróg jest najszybsza}{16}{paragraph.4.3.1.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.1.4}FillCityVec()}{17}{subsubsection.4.3.1.4}%
+\contentsline {subsubsection}{\numberline {4.3.1.5}FindRoute()}{17}{subsubsection.4.3.1.5}%
+\contentsline {paragraph}{\numberline {4.3.1.5.1}Element szukający pasujące miasta}{18}{paragraph.4.3.1.5.1}%
+\contentsline {paragraph}{\numberline {4.3.1.5.2}Warunek końca rekurencji}{18}{paragraph.4.3.1.5.2}%
+\contentsline {subsubsection}{\numberline {4.3.1.6}GetTotalTime()}{18}{subsubsection.4.3.1.6}%
+\contentsline {subsubsection}{\numberline {4.3.1.7}LookForNextDepart()}{18}{subsubsection.4.3.1.7}%
+\contentsline {paragraph}{\numberline {4.3.1.7.1}Algorytm szukający następnej godziny}{19}{paragraph.4.3.1.7.1}%
+\contentsline {section}{\numberline {4.4}functions.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{19}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Dokumentacja pliku Project/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Project/src/main.cpp}{20}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Dokumentacja funkcji}{20}{subsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.1.1}main()}{21}{subsubsection.4.5.1.1}%
+\contentsline {section}{\numberline {4.6}main.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{21}{section.4.6}%
+\contentsline {chapter}{Indeks}{25}{section*.9}%

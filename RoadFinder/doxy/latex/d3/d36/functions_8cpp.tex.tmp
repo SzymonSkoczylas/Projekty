@@ -1,0 +1,366 @@
+\hypertarget{functions_8cpp}{}\doxysection{Dokumentacja pliku Project/headers/functions.cpp}
+\label{functions_8cpp}\index{Project/headers/functions.cpp@{Project/headers/functions.cpp}}
+{\ttfamily \#include \char`\"{}functions.\+h\char`\"{}}\newline
+Wykres zależności załączania dla functions.\+cpp\+:
+% FIG 0
+\doxysubsection*{Definicje}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{functions_8cpp_aa288b29498fa054951dbdca37510664b}{MINUMUM\+\_\+\+TIME\+\_\+\+FOR\+\_\+\+CHANGE}}~5
+\end{DoxyCompactItemize}
+\doxysubsection*{Funkcje}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_city}{City}} $>$ \mbox{\hyperlink{functions_8cpp_abae79917897174a3c69842beba6fb335}{Fill\+City\+Vec}} (std\+::vector$<$ \mbox{\hyperlink{class_file_line}{File\+Line}} $>$ \&timetable)
+\begin{DoxyCompactList}\small\item\em Funkcja, która na podstawie vectora klas \mbox{\hyperlink{class_file_line}{File\+Line}} tworzy vector klas \mbox{\hyperlink{class_city}{City}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{functions_8cpp_a6523726a3e2822d792e823e8f11e45b3}{If\+Duplicates}} (const std\+::vector$<$ std\+::string $>$ \&vec, const std\+::string \&city)
+\begin{DoxyCompactList}\small\item\em Funkcja sprawdzająca czy w danej drodze nie wystąpiło już dane miasto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{functions_8cpp_aac008d0a41a438a256294eec5c711e58}{Correction}} (std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ \&roads, const std\+::string \&goal)
+\begin{DoxyCompactList}\small\item\em Funkcja korekcyjna dla funkcji \mbox{\hyperlink{functions_8h_adff9f42478e20c2c819d66a7cf15d65e}{Find\+Route()}}. Jest potrzebna do optymalizacji wyników uzyskanych dzięki funkcji Find\+Route. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{functions_8cpp_adff9f42478e20c2c819d66a7cf15d65e}{Find\+Route}} (std\+::string goal, const std\+::string \&from, const std\+::vector$<$ \mbox{\hyperlink{class_city}{City}} $>$ \&cities, std\+::vector$<$ std\+::string $>$ \&solution, std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ \&solutions)
+\begin{DoxyCompactList}\small\item\em Funkcja, która szuka wszystkie możliwe drogi \char`\"{}z miasta A do miasta B\char`\"{}. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{functions_8cpp_af03ece043d7189a2c9822bdb042deb5b}{Fastest\+Road}} (const std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ \&roads, const std\+::vector$<$ \mbox{\hyperlink{class_file_line}{File\+Line}} $>$ \&timetable)
+\begin{DoxyCompactList}\small\item\em Funkcja, która na podstawie kontenera roads, znajdzie najszybszą z dróg. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{functions_8cpp_a14e1ef21104a6ad48c88f21480f1310d}{Convert\+Minutes\+To\+Hour}} (int \&minutes)
+\begin{DoxyCompactList}\small\item\em Funkcja, która na podstawie liczby minut podanej w postaci int wygeneruje napis zawierający informacje o tym jaka to jest godzina. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{functions_8cpp_ad7aebb26f6e8258f90fcfc49b6b1127e}{Look\+For\+Next\+Depart}} (const int \&last\+Hour, const std\+::string \&depart\+City, const std\+::string \&arrive\+City, const std\+::vector$<$ \mbox{\hyperlink{class_file_line}{File\+Line}} $>$ \&timetable)
+\begin{DoxyCompactList}\small\item\em Funkcja szukająca następnej godziny odjazdu \char`\"{}z miasta A do miasta B\char`\"{} względem podanej godziny. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{functions_8cpp_a520caa7ab9758f319fc4fd17b3d4792f}{Get\+Total\+Time}} (const std\+::vector$<$ std\+::string $>$ \&road, const std\+::vector$<$ \mbox{\hyperlink{class_file_line}{File\+Line}} $>$ \&timetable)
+\begin{DoxyCompactList}\small\item\em Funkcja, która na podstawie podanej drogi liczy łączny czas jazdy (razem z czasem oczekiwania na odjazd) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentacja definicji}
+\mbox{\Hypertarget{functions_8cpp_aa288b29498fa054951dbdca37510664b}\label{functions_8cpp_aa288b29498fa054951dbdca37510664b}} 
+\index{functions.cpp@{functions.cpp}!MINUMUM\_TIME\_FOR\_CHANGE@{MINUMUM\_TIME\_FOR\_CHANGE}}
+\index{MINUMUM\_TIME\_FOR\_CHANGE@{MINUMUM\_TIME\_FOR\_CHANGE}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{MINUMUM\_TIME\_FOR\_CHANGE}{MINUMUM\_TIME\_FOR\_CHANGE}}
+{\footnotesize\ttfamily \#define MINUMUM\+\_\+\+TIME\+\_\+\+FOR\+\_\+\+CHANGE~5}
+
+
+
+Definicja w linii \mbox{\hyperlink{functions_8cpp_source_l00003}{3}} pliku \mbox{\hyperlink{functions_8cpp_source}{functions.\+cpp}}.
+
+
+
+\doxysubsection{Dokumentacja funkcji}
+\mbox{\Hypertarget{functions_8cpp_a14e1ef21104a6ad48c88f21480f1310d}\label{functions_8cpp_a14e1ef21104a6ad48c88f21480f1310d}} 
+\index{functions.cpp@{functions.cpp}!ConvertMinutesToHour@{ConvertMinutesToHour}}
+\index{ConvertMinutesToHour@{ConvertMinutesToHour}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{ConvertMinutesToHour()}{ConvertMinutesToHour()}}
+{\footnotesize\ttfamily std\+::string Convert\+Minutes\+To\+Hour (\begin{DoxyParamCaption}\item[{int \&}]{minutes }\end{DoxyParamCaption})}
+
+
+
+Funkcja, która na podstawie liczby minut podanej w postaci int wygeneruje napis zawierający informacje o tym jaka to jest godzina. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em minutes} & liczba minut \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{functions_8cpp_source_l00170}{170}} pliku \mbox{\hyperlink{functions_8cpp_source}{functions.\+cpp}}.
+
+Oto graf wywoływań tej funkcji\+:
+% FIG 1
+\mbox{\Hypertarget{functions_8cpp_aac008d0a41a438a256294eec5c711e58}\label{functions_8cpp_aac008d0a41a438a256294eec5c711e58}} 
+\index{functions.cpp@{functions.cpp}!Correction@{Correction}}
+\index{Correction@{Correction}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{Correction()}{Correction()}}
+{\footnotesize\ttfamily void Correction (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ \&}]{roads,  }\item[{const std\+::string \&}]{goal }\end{DoxyParamCaption})}
+
+
+
+Funkcja korekcyjna dla funkcji \mbox{\hyperlink{functions_8h_adff9f42478e20c2c819d66a7cf15d65e}{Find\+Route()}}. Jest potrzebna do optymalizacji wyników uzyskanych dzięki funkcji Find\+Route. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em roads} & Vector przechowujący wszystki drogi(które są vectorami stringów) \\
+\hline
+{\em goal} & Parametr zawierający nazwę miasta docelowego Vector przechowujący wszystkie drogi aktualnie zawiera parę niechcianych wyników. Wszystkie drogi, które nie kończą się miastem docelowym zostaną usunięte z vectora \\
+\hline
+\end{DoxyParams}
+\hypertarget{functions_8h_autotoc_md2}{}\doxyparagraph{Element usuwający}\label{functions_8h_autotoc_md2}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//aktualnie wszystkie drogi są w kolejności od miasta docelowego do miasta, z którego odjeżdzamy}}
+\DoxyCodeLine{\textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=0;i<roads.size();i++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    std::reverse(roads[i].begin(), roads[i].end());  \textcolor{comment}{//odwracamy miasta i teraz są w kolejności od miasta, z którego odjeżdzamy do miasta docelowego}}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (roads[i].back() != goal)}
+\DoxyCodeLine{        roads[i].clear();   \textcolor{comment}{//jeśli droga nie kończy się na mieście docelowonym usuwamy całą zawartość vectora}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{comment}{//Pod koniec funkcji elementy puste zostają usunięte z vectora dróg}}
+
+\end{DoxyCode}
+ \hypertarget{functions_8h_autotoc_md3}{}\doxyparagraph{Element usuwający duplikaty z vectora dróg}\label{functions_8h_autotoc_md3}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto} end = roads.end();}
+\DoxyCodeLine{\textcolor{keywordflow}{for} (\textcolor{keyword}{auto} it = roads.begin(); it != end; it++)}
+\DoxyCodeLine{    end = std::remove(it + 1, end, *it);}
+\DoxyCodeLine{roads.erase(end, roads.end());}
+
+\end{DoxyCode}
+ \begin{DoxySeeAlso}{Zobacz również}
+\mbox{\hyperlink{functions_8h_adff9f42478e20c2c819d66a7cf15d65e}{Find\+Route()}} 
+\end{DoxySeeAlso}
+
+
+Definicja w linii \mbox{\hyperlink{functions_8cpp_source_l00065}{65}} pliku \mbox{\hyperlink{functions_8cpp_source}{functions.\+cpp}}.
+
+Oto graf wywoływań tej funkcji\+:
+% FIG 2
+\mbox{\Hypertarget{functions_8cpp_af03ece043d7189a2c9822bdb042deb5b}\label{functions_8cpp_af03ece043d7189a2c9822bdb042deb5b}} 
+\index{functions.cpp@{functions.cpp}!FastestRoad@{FastestRoad}}
+\index{FastestRoad@{FastestRoad}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{FastestRoad()}{FastestRoad()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Fastest\+Road (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ \&}]{roads,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{class_file_line}{File\+Line}} $>$ \&}]{timetable }\end{DoxyParamCaption})}
+
+
+
+Funkcja, która na podstawie kontenera roads, znajdzie najszybszą z dróg. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em roads} & kontener zawierający wszystkie połączenia \char`\"{}z miasta A do miasta B\char`\"{} \\
+\hline
+{\em timetable} & kontener zawierający informację o wszystkiech połączeniach (takie jak czas jazdy, godziny odjazdu etc.) \\
+\hline
+\end{DoxyParams}
+\hypertarget{functions_8h_autotoc_md4}{}\doxyparagraph{Algorytm sprawdzający, która z dróg jest najszybsza}\label{functions_8h_autotoc_md4}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int} hourOfDepartFromLastCity; \textcolor{comment}{// zmienna potrzebna do przechowania informacji o godzinie, o której podróżnik będzie w mieście, do którego przyjedzie}}
+\DoxyCodeLine{\textcolor{keywordflow}{for} (\textcolor{keyword}{auto} it = roads.begin(); it != roads.end(); it++)}
+\DoxyCodeLine{   \{}
+\DoxyCodeLine{    time = 0; \textcolor{comment}{// zerowanie zmiennej, która służy do liczenia łącznego czasu podróży}}
+\DoxyCodeLine{    temp = *it; }
+\DoxyCodeLine{    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < temp.size() -\/ 1; i++)}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jt = timetable.begin(); jt != timetable.end(); jt++)}
+\DoxyCodeLine{        \{}
+\DoxyCodeLine{            \textcolor{keywordflow}{if} ((jt-\/>GetCityName(\textcolor{stringliteral}{"{}departure"{}}) == temp[i]) \&\& (jt-\/>GetCityName(\textcolor{stringliteral}{"{}arrival"{}}) == temp[i + 1]))}
+\DoxyCodeLine{            \{}
+\DoxyCodeLine{                time += jt-\/>GetDuration(); \textcolor{comment}{// dodanie do sumy czasu podróży szacownego czasu podróży "{}z miasta A do miasta B"{} }}
+\DoxyCodeLine{                \textcolor{keywordflow}{if} (FirstCity)}
+\DoxyCodeLine{                \{}
+\DoxyCodeLine{                    hourOfDepartFromLastCity = jt-\/>GetHour(0);     \textcolor{comment}{// jeżeli to pierwsze miasto z drogi zaczynamy od pierwszej godziny, o której możemy odjechać}}
+\DoxyCodeLine{                    hourOfDepartFromLastCity += jt-\/>GetDuration(); \textcolor{comment}{// dodajemy to znalezionej godziny czas podróży}}
+\DoxyCodeLine{                    FirstCity = \textcolor{keyword}{false};}
+\DoxyCodeLine{                \}}
+\DoxyCodeLine{                \textcolor{keywordflow}{else}}
+\DoxyCodeLine{                \{}
+\DoxyCodeLine{                    \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < jt-\/>GetNumberOfHoursOfDepartures(); i++)}
+\DoxyCodeLine{                    \{}
+\DoxyCodeLine{                        \textcolor{keywordflow}{if} (jt-\/>GetHour(i) > (hourOfDepartFromLastCity+\mbox{\hyperlink{functions_8cpp_aa288b29498fa054951dbdca37510664b}{MINUMUM\_TIME\_FOR\_CHANGE}})) \textcolor{comment}{// jeżeli to nie pierwsze miasto z drogi szukamy następnej}}
+\DoxyCodeLine{                        \{                                                                        \textcolor{comment}{// najwcześniejszej godziny (uwzględniając czas na przesiadkę)}}
+\DoxyCodeLine{                            time += jt-\/>GetHour(i) -\/ hourOfDepartFromLastCity;}
+\DoxyCodeLine{                            hourOfDepartFromLastCity = jt-\/>GetHour(i);}
+\DoxyCodeLine{                            hourOfDepartFromLastCity += jt-\/>GetDuration();}
+\DoxyCodeLine{                            \textcolor{keywordflow}{goto} foundNextHour; \textcolor{comment}{// jeżeli następna godzina odjazdu została odnaleziona szukamy od razu godziny dla następnej pary miast}}
+\DoxyCodeLine{                        \}}
+\DoxyCodeLine{                    \}}
+\DoxyCodeLine{                \}}
+\DoxyCodeLine{            foundNextHour:;}
+\DoxyCodeLine{            \}}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (time < tempTime)}
+\DoxyCodeLine{        sol = temp;}
+\DoxyCodeLine{    tempTime = time; \textcolor{comment}{// dodatkowa zmienna potrzebna do porównania czasów}}
+\DoxyCodeLine{    FirstCity = \textcolor{keyword}{true};}
+\DoxyCodeLine{   \}}
+
+\end{DoxyCode}
+ 
+
+Definicja w linii \mbox{\hyperlink{functions_8cpp_source_l00120}{120}} pliku \mbox{\hyperlink{functions_8cpp_source}{functions.\+cpp}}.
+
+Oto graf wywoływań tej funkcji\+:
+% FIG 3
+\mbox{\Hypertarget{functions_8cpp_abae79917897174a3c69842beba6fb335}\label{functions_8cpp_abae79917897174a3c69842beba6fb335}} 
+\index{functions.cpp@{functions.cpp}!FillCityVec@{FillCityVec}}
+\index{FillCityVec@{FillCityVec}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{FillCityVec()}{FillCityVec()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_city}{City}} $>$ Fill\+City\+Vec (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_file_line}{File\+Line}} $>$ \&}]{timetable }\end{DoxyParamCaption})}
+
+
+
+Funkcja, która na podstawie vectora klas \mbox{\hyperlink{class_file_line}{File\+Line}} tworzy vector klas \mbox{\hyperlink{class_city}{City}}. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em timetable} & Gotowy kontener zawierający informację o każdej linii pliku rozkładu jazdy przechowywanej w postaci klasy \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{functions_8cpp_source_l00005}{5}} pliku \mbox{\hyperlink{functions_8cpp_source}{functions.\+cpp}}.
+
+Oto graf wywoływań tej funkcji\+:
+% FIG 4
+\mbox{\Hypertarget{functions_8cpp_adff9f42478e20c2c819d66a7cf15d65e}\label{functions_8cpp_adff9f42478e20c2c819d66a7cf15d65e}} 
+\index{functions.cpp@{functions.cpp}!FindRoute@{FindRoute}}
+\index{FindRoute@{FindRoute}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{FindRoute()}{FindRoute()}}
+{\footnotesize\ttfamily void Find\+Route (\begin{DoxyParamCaption}\item[{std\+::string}]{goal,  }\item[{const std\+::string \&}]{from,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{class_city}{City}} $>$ \&}]{cities,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{solution,  }\item[{std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ \&}]{solutions }\end{DoxyParamCaption})}
+
+
+
+Funkcja, która szuka wszystkie możliwe drogi \char`\"{}z miasta A do miasta B\char`\"{}. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em goal} & zmienna przechowująca nazwę miasta docelowego \\
+\hline
+{\em from} & zmienna przechowująca nazwę miasta odjazdu \\
+\hline
+{\em cities} & kontener klas zawierający wszystkie połączenia między miastami \\
+\hline
+{\em solution} & zmienna tymczasowa, która jest potrzebna do poprawnego działania algorytmu, zawiera jedną drogę (wariacja połączeń miast) \\
+\hline
+{\em solutions} & kontener, który zostanie zwrócony. Zawiera wszystkie połączenia \char`\"{}z miasta A do miasta B\char`\"{}, które będą korygowane w funkcji \mbox{\hyperlink{functions_8h_aac008d0a41a438a256294eec5c711e58}{Correction()}}\\
+\hline
+\end{DoxyParams}
+Funkcja jest rekurencyjna. Algorytm szuka wszystkich miast, które mogą dojechać do danego miasta, do którego chcemy dojechać. Następnie szuka wszystkich możliwych miast, z których możemy dojechać do miasta, które jest w stanie dojechać do pierwotnego miasta docelowego etc. \hypertarget{functions_8h_autotoc_md0}{}\doxyparagraph{Element szukający pasujące miasta}\label{functions_8h_autotoc_md0}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for} (\textcolor{keyword}{auto} it = cities.begin(); it != cities.end(); it++)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{keywordtype}{bool} condition = \mbox{\hyperlink{functions_8cpp_a6523726a3e2822d792e823e8f11e45b3}{IfDuplicates}}(solution, it-\/>m\_name); \textcolor{comment}{//Funkcja IfDuplicates() zwraca true jeśli w vectorze, w którym zapisujemy naszą aktualną drogę}}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (!condition)                                      \textcolor{comment}{//znajduje się już miasto do którego chcemy dojechać }}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jt = it-\/>m\_canTravelTo.begin(); jt != it-\/>m\_canTravelTo.end(); jt++)}
+\DoxyCodeLine{        \{}
+\DoxyCodeLine{            \textcolor{keywordflow}{if} (*jt == goal)}
+\DoxyCodeLine{            \{}
+\DoxyCodeLine{                solution.push\_back(goal);}
+\DoxyCodeLine{                \mbox{\hyperlink{functions_8cpp_adff9f42478e20c2c819d66a7cf15d65e}{FindRoute}}(it-\/>m\_name, from, cities, solution, solutions);}
+\DoxyCodeLine{            \}}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ \hypertarget{functions_8h_autotoc_md1}{}\doxyparagraph{Warunek końca rekurencji}\label{functions_8h_autotoc_md1}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if} (goal == from)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{ solution.push\_back(from);}
+\DoxyCodeLine{ solutions.push\_back(solution);}
+\DoxyCodeLine{ solution.clear();}
+\DoxyCodeLine{ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ Funkcja zawiera w efekcie końcowym parę wyników, które nie są potrzebne dla działania programu i są korygowane w funkcji \mbox{\hyperlink{functions_8h_aac008d0a41a438a256294eec5c711e58}{Correction()}} \begin{DoxySeeAlso}{Zobacz również}
+\mbox{\hyperlink{functions_8h_aac008d0a41a438a256294eec5c711e58}{Correction()}} 
+\end{DoxySeeAlso}
+
+
+Definicja w linii \mbox{\hyperlink{functions_8cpp_source_l00089}{89}} pliku \mbox{\hyperlink{functions_8cpp_source}{functions.\+cpp}}.
+
+Oto graf wywołań dla tej funkcji\+:
+% FIG 5
+Oto graf wywoływań tej funkcji\+:
+% FIG 6
+\mbox{\Hypertarget{functions_8cpp_a520caa7ab9758f319fc4fd17b3d4792f}\label{functions_8cpp_a520caa7ab9758f319fc4fd17b3d4792f}} 
+\index{functions.cpp@{functions.cpp}!GetTotalTime@{GetTotalTime}}
+\index{GetTotalTime@{GetTotalTime}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{GetTotalTime()}{GetTotalTime()}}
+{\footnotesize\ttfamily int Get\+Total\+Time (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{road,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{class_file_line}{File\+Line}} $>$ \&}]{timetable }\end{DoxyParamCaption})}
+
+
+
+Funkcja, która na podstawie podanej drogi liczy łączny czas jazdy (razem z czasem oczekiwania na odjazd) 
+
+
+\begin{DoxyParams}{Parametry}
+{\em road} & dane połączenie \char`\"{}z miasta A do miasta B\char`\"{} \\
+\hline
+{\em timetable} & zawierający informację o wszystkich połączeniach (takie jak czas jazdy, godziny odjazdu etc.) \\
+\hline
+\end{DoxyParams}
+
+
+Definicja w linii \mbox{\hyperlink{functions_8cpp_source_l00201}{201}} pliku \mbox{\hyperlink{functions_8cpp_source}{functions.\+cpp}}.
+
+Oto graf wywołań dla tej funkcji\+:
+% FIG 7
+Oto graf wywoływań tej funkcji\+:
+% FIG 8
+\mbox{\Hypertarget{functions_8cpp_a6523726a3e2822d792e823e8f11e45b3}\label{functions_8cpp_a6523726a3e2822d792e823e8f11e45b3}} 
+\index{functions.cpp@{functions.cpp}!IfDuplicates@{IfDuplicates}}
+\index{IfDuplicates@{IfDuplicates}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{IfDuplicates()}{IfDuplicates()}}
+{\footnotesize\ttfamily bool If\+Duplicates (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{vec,  }\item[{const std\+::string \&}]{city }\end{DoxyParamCaption})}
+
+
+
+Funkcja sprawdzająca czy w danej drodze nie wystąpiło już dane miasto. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em vec} & dana droga \\
+\hline
+{\em city} & miasto, które sprawdzamy, czy już nie wystąpiło \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+wartość true jeśli miasto występuje, false jeśli przeciwnie 
+\end{DoxyReturn}
+
+
+Definicja w linii \mbox{\hyperlink{functions_8cpp_source_l00054}{54}} pliku \mbox{\hyperlink{functions_8cpp_source}{functions.\+cpp}}.
+
+Oto graf wywoływań tej funkcji\+:
+% FIG 9
+\mbox{\Hypertarget{functions_8cpp_ad7aebb26f6e8258f90fcfc49b6b1127e}\label{functions_8cpp_ad7aebb26f6e8258f90fcfc49b6b1127e}} 
+\index{functions.cpp@{functions.cpp}!LookForNextDepart@{LookForNextDepart}}
+\index{LookForNextDepart@{LookForNextDepart}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{LookForNextDepart()}{LookForNextDepart()}}
+{\footnotesize\ttfamily int Look\+For\+Next\+Depart (\begin{DoxyParamCaption}\item[{const int \&}]{last\+Hour,  }\item[{const std\+::string \&}]{depart\+City,  }\item[{const std\+::string \&}]{arrive\+City,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{class_file_line}{File\+Line}} $>$ \&}]{timetable }\end{DoxyParamCaption})}
+
+
+
+Funkcja szukająca następnej godziny odjazdu \char`\"{}z miasta A do miasta B\char`\"{} względem podanej godziny. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em last\+Hour} & informacja o godzinie, od której chcemy znaleść kolejną godzinę odjazdu \\
+\hline
+{\em depart\+City} & miasto, z którego odjeżdzamy \\
+\hline
+{\em arrive\+City} & miasto docelowe \\
+\hline
+{\em timetable} & zawierający informację o wszystkich połączeniach (takie jak czas jazdy, godziny odjazdu etc.) \\
+\hline
+\end{DoxyParams}
+\hypertarget{functions_8h_autotoc_md5}{}\doxyparagraph{Algorytm szukający następnej godziny}\label{functions_8h_autotoc_md5}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{bool} cond=\textcolor{keyword}{false};}
+\DoxyCodeLine{   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} it = timetable.begin(); it != timetable.end(); it++)}
+\DoxyCodeLine{   \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} ((it-\/>GetCityName(\textcolor{stringliteral}{"{}departure"{}}) == departCity) \&\& (it-\/>GetCityName(\textcolor{stringliteral}{"{}arrival"{}}) == arriveCity))}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{        \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < it-\/>GetNumberOfHoursOfDepartures(); i++)}
+\DoxyCodeLine{        \{}
+\DoxyCodeLine{            cond = \textcolor{keyword}{true}; \textcolor{comment}{// jeżeli funkcja nie skończy się po wykonaniu tej pętli to znaczy, że w danym dniu już nie ma odjazdów}}
+\DoxyCodeLine{            \textcolor{keywordflow}{if} (lastHour < (it-\/>GetHour(i) -\/ \mbox{\hyperlink{functions_8cpp_aa288b29498fa054951dbdca37510664b}{MINUMUM\_TIME\_FOR\_CHANGE}}))}
+\DoxyCodeLine{                \textcolor{keywordflow}{return} it-\/>GetHour(i);}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{        \textcolor{keywordflow}{if} (cond == \textcolor{keyword}{true}) \textcolor{keywordflow}{return} it-\/>GetHour(0); \textcolor{comment}{// funkcja zwraca pierwszą godzinę, z której można odjechać (czyli trzeba czekać do następnego dnia)}}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{   \}}
+
+\end{DoxyCode}
+ 
+
+Definicja w linii \mbox{\hyperlink{functions_8cpp_source_l00183}{183}} pliku \mbox{\hyperlink{functions_8cpp_source}{functions.\+cpp}}.
+
+Oto graf wywoływań tej funkcji\+:
+% FIG 10

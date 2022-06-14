@@ -1,0 +1,52 @@
+Katowice --> Tarnow (czas: 4:35, przesiadki: 1)
+-----------------------------------------------------
+Katowice (10:15) --> Krakow (11:25), przesiadka za 2:05
+Krakow (13:30) --> Tarnow (14:50)
+
+Katowice --> Lodz (czas: 4:25, przesiadki: 1)
+-----------------------------------------------------
+Katowice (9:50) --> Czestochowa (11:00), przesiadka za 1:35
+Czestochowa (12:35) --> Lodz (14:15)
+
+Gliwice --> Jaslo (czas: 7:30, przesiadki: 3)
+-----------------------------------------------------
+Gliwice (8:30) --> Katowice (9:00), przesiadka za 1:15
+Katowice (10:15) --> Krakow (11:25), przesiadka za 2:05
+Krakow (13:30) --> Tarnow (14:50), przesiadka za 0:10
+Tarnow (15:00) --> Jaslo (16:00)
+
+Katowice --> Szczecin - DROGA NIE ISTNIEJE
+
+Lodz --> Poznan (czas: 2:40, przesiadki: 0)
+-----------------------------------------------------
+Lodz (7:00) --> Poznan (9:40)
+
+Katowice --> Wroclaw (czas: 6:55, przesiadki: 1)
+-----------------------------------------------------
+Katowice (9:15) --> Gliwice (9:45), przesiadka za 4:15
+Gliwice (14:00) --> Wroclaw (16:10)
+
+Gliwice --> Kielce (czas: 21:45, przesiadki: 4)
+-----------------------------------------------------
+Gliwice (8:30) --> Katowice (9:00), przesiadka za 1:15
+Katowice (10:15) --> Krakow (11:25), przesiadka za 2:05
+Krakow (13:30) --> Tarnow (14:50), przesiadka za 0:10
+Tarnow (15:00) --> Jaslo (16:00), przesiadka za 10:00
+Jaslo (6:00) --> Kielce (6:15)
+
+Tarnow --> Kielce (czas: 17:45, przesiadki: 1)
+-----------------------------------------------------
+Tarnow (12:30) --> Jaslo (13:30), przesiadka za 7:30
+Jaslo (6:00) --> Kielce (6:15)
+
+Krakow --> Kielce (czas: 18:55, przesiadki: 2)
+-----------------------------------------------------
+Krakow (11:20) --> Tarnow (12:40), przesiadka za 2:20
+Tarnow (15:00) --> Jaslo (16:00), przesiadka za 10:00
+Jaslo (6:00) --> Kielce (6:15)
+
+Lodz --> Wroclaw (czas: 4:15, przesiadki: 1)
+-----------------------------------------------------
+Lodz (7:00) --> Poznan (9:40), przesiadka za 1:20
+Poznan (11:00) --> Wroclaw (11:15)
+

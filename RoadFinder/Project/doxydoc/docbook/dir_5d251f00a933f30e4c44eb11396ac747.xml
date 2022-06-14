@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_5d251f00a933f30e4c44eb11396ac747" xml:lang="pl">
+<title>Dokumentacja katalogu Project/headers</title>
+<indexterm><primary>Dokumentacja katalogu Project/headers</primary></indexterm>
+Wykres zależności katalogu dla headers:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_5d251f00a933f30e4c44eb11396ac747_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Pliki    </title>
+        <itemizedlist>
+            <listitem><para>plik <link linkend="_functions_8cpp">functions.cpp</link></para>
+</listitem>
+            <listitem><para>plik <link linkend="_functions_8h">functions.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

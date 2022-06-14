@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_annotated" xml:lang="pl">
+<title>Lista klas</title>
+Tutaj znajdują się klasy, struktury, unie i interfejsy wraz z ich krótkimi opisami:<link linkend="_class_city">City</link>
+<para>Klasa zawierająca informację o nazwie miasta oraz wszystkich miast do których możemy z tego miasta dojechać </para>
+<link linkend="_class_file_line">FileLine</link>
+<para>Klasa odpowiedzialna za przechowanie informacji pobranych z jednej linii z pliku rozkładu jazdy </para>
+</section>

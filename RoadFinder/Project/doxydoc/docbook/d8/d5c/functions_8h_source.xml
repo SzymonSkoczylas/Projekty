@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_functions_8h_source" xml:lang="pl">
+<title>functions.h</title>
+<indexterm><primary>Project/headers/functions.h</primary></indexterm>
+Idź do dokumentacji tego pliku.<programlisting linenumbering="unnumbered"><anchor xml:id="_functions_8h_source_1l00001"/>00001 <emphasis role="preprocessor">#ifndef&#32;FUNCTIONS_H</emphasis>
+<anchor xml:id="_functions_8h_source_1l00002"/>00002 <emphasis role="preprocessor">#define&#32;FUNCTIONS_H</emphasis>
+<anchor xml:id="_functions_8h_source_1l00003"/>00003 
+<anchor xml:id="_functions_8h_source_1l00004"/>00004 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+<anchor xml:id="_functions_8h_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&lt;fstream&gt;</emphasis>
+<anchor xml:id="_functions_8h_source_1l00006"/>00006 <emphasis role="preprocessor">#include&#32;&lt;sstream&gt;</emphasis>
+<anchor xml:id="_functions_8h_source_1l00007"/>00007 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+<anchor xml:id="_functions_8h_source_1l00008"/>00008 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+<anchor xml:id="_functions_8h_source_1l00009"/>00009 <emphasis role="preprocessor">#include&#32;&lt;algorithm&gt;</emphasis>
+<anchor xml:id="_functions_8h_source_1l00010"/>00010 <emphasis role="preprocessor">#include&#32;&lt;memory&gt;</emphasis>
+<anchor xml:id="_functions_8h_source_1l00011"/>00011 <emphasis role="preprocessor">#include&#32;&lt;array&gt;</emphasis>
+<anchor xml:id="_functions_8h_source_1l00012"/>00012 
+<anchor xml:id="_functions_8h_source_1l00014"/><link linkend="_class_file_line">00014</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_file_line">FileLine</link>&#32;
+<anchor xml:id="_functions_8h_source_1l00015"/>00015 {
+<anchor xml:id="_functions_8h_source_1l00016"/>00016 <emphasis role="keyword">private</emphasis>:&#32;&#32;&#32;&#32;
+<anchor xml:id="_functions_8h_source_1l00017"/><link linkend="_class_file_line_1a6e45a4449005fd6224882d0fb72f1ef5">00017</link> &#32;&#32;&#32;&#32;std::string&#32;<link linkend="_class_file_line_1a6e45a4449005fd6224882d0fb72f1ef5">m_departure</link>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_functions_8h_source_1l00018"/><link linkend="_class_file_line_1a7b357ffea550d4fab5b1680769ec0093">00018</link> &#32;&#32;&#32;&#32;std::string&#32;<link linkend="_class_file_line_1a7b357ffea550d4fab5b1680769ec0093">m_arrival</link>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_functions_8h_source_1l00019"/><link linkend="_class_file_line_1a0872898a7a5e9af66b27f40d41758c81">00019</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_file_line_1a0872898a7a5e9af66b27f40d41758c81">m_duration</link>{};&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_functions_8h_source_1l00020"/><link linkend="_class_file_line_1a03c84f745fd92ec3fb2a0a881fe0d56d">00020</link> &#32;&#32;&#32;&#32;std::array&lt;std::string,3&gt;&#32;<link linkend="_class_file_line_1a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</link>;&#32;&#32;&#32;
+<anchor xml:id="_functions_8h_source_1l00021"/>00021 <emphasis role="keyword">public</emphasis>:
+<anchor xml:id="_functions_8h_source_1l00022"/>00022 
+<anchor xml:id="_functions_8h_source_1l00026"/><link linkend="_class_file_line_1ae39a890c2d0614babc8c410a8b18a46e">00026</link> &#32;&#32;&#32;&#32;std::string&#32;<link linkend="_class_file_line_1ae39a890c2d0614babc8c410a8b18a46e">GetCityName</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;&#32;<emphasis role="keywordtype">boolean</emphasis>)<emphasis role="keyword">&#32;const&#32;</emphasis>
+<anchor xml:id="_functions_8h_source_1l00027"/>00027 <emphasis role="keyword">&#32;&#32;&#32;&#32;</emphasis>{
+<anchor xml:id="_functions_8h_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;city&#32;=&#32;<emphasis role="keywordtype">boolean</emphasis>==<emphasis role="stringliteral">&quot;arrival&quot;</emphasis>?&#32;<link linkend="_class_file_line_1a7b357ffea550d4fab5b1680769ec0093">m_arrival</link>&#32;:&#32;<link linkend="_class_file_line_1a6e45a4449005fd6224882d0fb72f1ef5">m_departure</link>;
+<anchor xml:id="_functions_8h_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;city;
+<anchor xml:id="_functions_8h_source_1l00030"/>00030 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8h_source_1l00031"/>00031 
+<anchor xml:id="_functions_8h_source_1l00033"/><link linkend="_class_file_line_1af9ab22eb596aa17e7a952777986e2000">00033</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_file_line_1af9ab22eb596aa17e7a952777986e2000">GetDuration</link>()<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_file_line_1a0872898a7a5e9af66b27f40d41758c81">m_duration</link>;&#32;}
+<anchor xml:id="_functions_8h_source_1l00034"/>00034 
+<anchor xml:id="_functions_8h_source_1l00036"/><link linkend="_class_file_line_1a3782624c3311a5964bb0b9104673ac7c">00036</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_file_line_1a3782624c3311a5964bb0b9104673ac7c">GetNumberOfHoursOfDepartures</link>()<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_file_line_1a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</link>.size();&#32;}
+<anchor xml:id="_functions_8h_source_1l00037"/>00037 
+<anchor xml:id="_functions_8h_source_1l00040"/><link linkend="_class_file_line_1a8805d148e89dc8fca5b3d6b922f7aa77">00040</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_file_line_1a8805d148e89dc8fca5b3d6b922f7aa77">GetHour</link>(<emphasis role="keywordtype">short</emphasis>&#32;n)<emphasis role="keyword">&#32;const&#32;</emphasis>{&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_file_line_1af2923f728d370baad627563af13cc729">ConvertHour</link>(n);&#32;}
+<anchor xml:id="_functions_8h_source_1l00041"/>00041 
+<anchor xml:id="_functions_8h_source_1l00044"/><link linkend="_class_file_line_1a377aa60cc56cb0c5e1d0e65340198cc0">00044</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_file_line_1a377aa60cc56cb0c5e1d0e65340198cc0">GetFileLine</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;str)&#32;
+<anchor xml:id="_functions_8h_source_1l00045"/>00045 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8h_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;ss;
+<anchor xml:id="_functions_8h_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ss&#32;&lt;&lt;&#32;str;
+<anchor xml:id="_functions_8h_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ss&#32;&gt;&gt;&#32;<link linkend="_class_file_line_1a6e45a4449005fd6224882d0fb72f1ef5">m_departure</link>&#32;&gt;&gt;&#32;<link linkend="_class_file_line_1a7b357ffea550d4fab5b1680769ec0093">m_arrival</link>&#32;&gt;&gt;&#32;<link linkend="_class_file_line_1a0872898a7a5e9af66b27f40d41758c81">m_duration</link>&#32;&gt;&gt;&#32;<link linkend="_class_file_line_1a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</link>[0]&#32;&gt;&gt;&#32;<link linkend="_class_file_line_1a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</link>[1]&#32;&gt;&gt;&#32;<link linkend="_class_file_line_1a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</link>[2];
+<anchor xml:id="_functions_8h_source_1l00049"/>00049 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8h_source_1l00050"/>00050 <emphasis role="keyword">private</emphasis>:
+<anchor xml:id="_functions_8h_source_1l00053"/><link linkend="_class_file_line_1af2923f728d370baad627563af13cc729">00053</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_file_line_1af2923f728d370baad627563af13cc729">ConvertHour</link>&#32;(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;&amp;&#32;n)<emphasis role="keyword">&#32;const</emphasis>
+<anchor xml:id="_functions_8h_source_1l00054"/>00054 <emphasis role="keyword">&#32;&#32;&#32;&#32;</emphasis>{
+<anchor xml:id="_functions_8h_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;hours;
+<anchor xml:id="_functions_8h_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;minutes;
+<anchor xml:id="_functions_8h_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_file_line_1a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</link>[n].size()&#32;==&#32;5)&#32;
+<anchor xml:id="_functions_8h_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8h_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hours&#32;=&#32;<link linkend="_class_file_line_1a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</link>[n].substr(0,&#32;2);
+<anchor xml:id="_functions_8h_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;minutes&#32;=&#32;<link linkend="_class_file_line_1a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</link>[n].substr(3,&#32;2);
+<anchor xml:id="_functions_8h_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8h_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="_functions_8h_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_functions_8h_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hours&#32;=&#32;<link linkend="_class_file_line_1a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</link>[n].substr(0,&#32;1);
+<anchor xml:id="_functions_8h_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;minutes&#32;=&#32;<link linkend="_class_file_line_1a03c84f745fd92ec3fb2a0a881fe0d56d">m_time</link>[n].substr(2,&#32;2);
+<anchor xml:id="_functions_8h_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8h_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;h&#32;=&#32;std::stoi(hours);
+<anchor xml:id="_functions_8h_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;m&#32;=&#32;std::stoi(minutes);
+<anchor xml:id="_functions_8h_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;h&#32;*=&#32;60;
+<anchor xml:id="_functions_8h_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;h&#32;+&#32;m;
+<anchor xml:id="_functions_8h_source_1l00071"/>00071 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_functions_8h_source_1l00072"/>00072 };
+<anchor xml:id="_functions_8h_source_1l00073"/>00073 
+<anchor xml:id="_functions_8h_source_1l00075"/><link linkend="_class_city">00075</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_city">City</link>
+<anchor xml:id="_functions_8h_source_1l00076"/>00076 {
+<anchor xml:id="_functions_8h_source_1l00077"/>00077 <emphasis role="keyword">public</emphasis>:
+<anchor xml:id="_functions_8h_source_1l00078"/><link linkend="_class_city_1ab99cdf24006dfd8fa7d570c961c56e03">00078</link> &#32;&#32;&#32;&#32;std::string&#32;<link linkend="_class_city_1ab99cdf24006dfd8fa7d570c961c56e03">m_name</link>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_functions_8h_source_1l00079"/><link linkend="_class_city_1ac55e9659d8402b1d648bca9103b4edaf">00079</link> &#32;&#32;&#32;&#32;std::vector&lt;std::string&gt;&#32;<link linkend="_class_city_1ac55e9659d8402b1d648bca9103b4edaf">m_canTravelTo</link>;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_functions_8h_source_1l00080"/>00080 <emphasis role="keyword">public</emphasis>:
+<anchor xml:id="_functions_8h_source_1l00081"/>00081 
+<anchor xml:id="_functions_8h_source_1l00084"/><link linkend="_class_city_1ac7a6911d993a817e57fa63a330cb1fb5">00084</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_city_1ac7a6911d993a817e57fa63a330cb1fb5">SetName</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;&#32;str)&#32;{&#32;<link linkend="_class_city_1ab99cdf24006dfd8fa7d570c961c56e03">m_name</link>&#32;=&#32;str;&#32;}
+<anchor xml:id="_functions_8h_source_1l00085"/>00085 
+<anchor xml:id="_functions_8h_source_1l00088"/><link linkend="_class_city_1a49bd317d61b097c4b806d15b2c6b83d8">00088</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_city_1a49bd317d61b097c4b806d15b2c6b83d8">CanTravel</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&#32;&amp;&#32;str)&#32;{&#32;<link linkend="_class_city_1ac55e9659d8402b1d648bca9103b4edaf">m_canTravelTo</link>.push_back(str);&#32;}
+<anchor xml:id="_functions_8h_source_1l00089"/>00089 
+<anchor xml:id="_functions_8h_source_1l00091"/><link linkend="_class_city_1a98b82853a2675ef3009cc594c46344d0">00091</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_city_1a98b82853a2675ef3009cc594c46344d0">ClearVec</link>()&#32;{&#32;<link linkend="_class_city_1ac55e9659d8402b1d648bca9103b4edaf">m_canTravelTo</link>.clear();&#32;}
+<anchor xml:id="_functions_8h_source_1l00092"/>00092 };
+<anchor xml:id="_functions_8h_source_1l00093"/>00093 
+<anchor xml:id="_functions_8h_source_1l00097"/>00097 std::vector&lt;City&gt;&#32;<link linkend="_functions_8h_1abae79917897174a3c69842beba6fb335">FillCityVec</link>(std::vector&lt;FileLine&gt;&#32;&amp;&#32;timetable);
+<anchor xml:id="_functions_8h_source_1l00098"/>00098 
+<anchor xml:id="_functions_8h_source_1l00146"/>00146 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_functions_8h_1adff9f42478e20c2c819d66a7cf15d65e">FindRoute</link>(std::string&#32;goal,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;from,&#32;<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;City&gt;&amp;&#32;cities,&#32;std::vector&lt;std::string&gt;&amp;&#32;solution,&#32;std::vector&lt;std::vector&lt;std::string&gt;&gt;&amp;&#32;solutions);
+<anchor xml:id="_functions_8h_source_1l00147"/>00147 
+<anchor xml:id="_functions_8h_source_1l00172"/>00172 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_functions_8h_1aac008d0a41a438a256294eec5c711e58">Correction</link>(std::vector&lt;std::vector&lt;std::string&gt;&gt;&amp;&#32;roads,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;goal);
+<anchor xml:id="_functions_8h_source_1l00173"/>00173 
+<anchor xml:id="_functions_8h_source_1l00174"/>00174 
+<anchor xml:id="_functions_8h_source_1l00221"/>00221 std::vector&lt;std::string&gt;&#32;<link linkend="_functions_8h_1af03ece043d7189a2c9822bdb042deb5b">FastestRoad</link>(<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;std::vector&lt;std::string&gt;&gt;&amp;&#32;roads,&#32;<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;FileLine&gt;&amp;&#32;timetable);
+<anchor xml:id="_functions_8h_source_1l00222"/>00222 
+<anchor xml:id="_functions_8h_source_1l00226"/>00226 std::string&#32;<link linkend="_functions_8h_1a14e1ef21104a6ad48c88f21480f1310d">ConvertMinutesToHour</link>(<emphasis role="keywordtype">int</emphasis>&amp;&#32;minutes);
+<anchor xml:id="_functions_8h_source_1l00227"/>00227 
+<anchor xml:id="_functions_8h_source_1l00250"/>00250 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_functions_8h_1ad7aebb26f6e8258f90fcfc49b6b1127e">LookForNextDepart</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;&amp;&#32;lastHour,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;departCity,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;arriveCity,<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;FileLine&gt;&amp;&#32;timetable);
+<anchor xml:id="_functions_8h_source_1l00251"/>00251 
+<anchor xml:id="_functions_8h_source_1l00255"/>00255 <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_functions_8h_1a520caa7ab9758f319fc4fd17b3d4792f">GetTotalTime</link>(<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;std::string&gt;&amp;&#32;road,&#32;<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;FileLine&gt;&amp;&#32;timetable);
+<anchor xml:id="_functions_8h_source_1l00256"/>00256 
+<anchor xml:id="_functions_8h_source_1l00257"/>00257 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//FUNCTIONS_H</emphasis>
+</programlisting></section>

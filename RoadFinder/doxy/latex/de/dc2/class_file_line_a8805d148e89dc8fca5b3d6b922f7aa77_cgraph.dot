@@ -1,0 +1,10 @@
+digraph "FileLine::GetHour"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="FileLine::GetHour",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Funkcja zwracająca jedną z godzin, o której możemy rozpocząć podróż"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="FileLine::ConvertHour",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/dc2/class_file_line.html#af2923f728d370baad627563af13cc729",tooltip="Funkcja, która zwraca daną godzinę w postaci liczby minut w godzinie (np. 1:20 to 80)"];
+}

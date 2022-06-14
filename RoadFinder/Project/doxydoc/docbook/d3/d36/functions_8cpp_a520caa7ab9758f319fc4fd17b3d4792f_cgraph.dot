@@ -1,0 +1,10 @@
+digraph "GetTotalTime"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="GetTotalTime",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Funkcja, która na podstawie podanej drogi zlicza łączny czas jazdy (razem z czasem oczekiwania na odj..."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="LookForNextDepart",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d3/d36/functions_8cpp.html#ad7aebb26f6e8258f90fcfc49b6b1127e",tooltip="Funkcja szukająca następnej godziny odjazdu \"z miasta A do miasta B\" względem podanej godziny."];
+}
