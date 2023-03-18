@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Semestr 0",
+        "subjects": [
+            "Nazwa przedmiotu",
+            "EiM"
+        ]
+    },
+    {
+        "name": "Semestr 1",
+        "subjects": [
+            "Nazwa przedmiotu"
+        ]
+    },
+    {
+        "name": "Semestr 2",
+        "subjects": []
+    },
+    {
+        "name": "Semestr 3",
+        "subjects": []
+    }
+]

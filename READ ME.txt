@@ -1,0 +1,4 @@
+W folderze Organizer Studenta są przekopiowane dema z DearImGui
+Żeby zobaczyć projekt należy wejść w examples >> imgui_examples.sln
+Sam projekt aktualnie otwierany jest przy pomocy example_glfw_vulkan
+a w samym folderze znajdują się plik app.cpp, gdzie pisana jest aplikacja
