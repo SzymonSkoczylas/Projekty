@@ -2,22 +2,32 @@
     {
         "name": "Semestr 0",
         "subjects": [
-            "Nazwa przedmiotu",
-            "EiM"
+            {
+                "name": "EiM",
+                "passes": [
+                    {
+                        "deadline": "sd",
+                        "name": "Kolos"
+                    }
+                ]
+            },
+            {
+                "name": "Nazwa przedmiotu",
+                "passes": []
+            }
         ]
     },
     {
         "name": "Semestr 1",
         "subjects": [
-            "Nazwa przedmiotu"
+            {
+                "name": "Nazwa przedmiotu",
+                "passes": []
+            },
+            {
+                "name": "EiM",
+                "passes": []
+            }
         ]
-    },
-    {
-        "name": "Semestr 2",
-        "subjects": []
-    },
-    {
-        "name": "Semestr 3",
-        "subjects": []
     }
 ]

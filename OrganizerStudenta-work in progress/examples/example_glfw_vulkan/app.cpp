@@ -9,6 +9,7 @@
 #include <nlohmann/json.hpp>
 #include <regex>
 #include <algorithm>
+#include <ctime>
 
 using json = nlohmann::json;
 
@@ -34,10 +35,27 @@ namespace MyApp {
     //**********  Variables  ***************
     //**************************************
 
+    struct Pass {
+        std::string name;
+        std::string deadline;
+    };
+
+    struct Subject {
+        std::string name;
+        std::vector<Pass> passes;
+        Subject(const std::string& nameS)
+            {name = nameS;}
+        void AddPass(const std::string& name, const std::string& deadlineString)
+        {
+            passes.push_back({name,deadlineString});
+        }
+    };
+
     struct Sem {
         std::string name; // f.e "Semestr 0"
-        std::vector<std::string> subjects;
-        Sem(const std::string& n) { name = n; }
+        std::vector<Subject> subjects;
+        Sem(const std::string& n)
+            { name = n; }
     };
     static std::vector<Sem> semy;
     static std::string currentSem = "";  //trackuje ktory semestr jest klikniety w rozwijanej liscie na pasku menu
@@ -90,9 +108,11 @@ namespace MyApp {
                 if (semester.name == currentSem)
                     for (auto it = semester.subjects.begin(); it != semester.subjects.end(); it++)
                     {
-                        ImGui::Text(it->c_str());
+                        ImGui::Text(it->name.c_str());
                         ImGui::SameLine();
-                        ImGui::Button("Dodaj zaliczenie");
+                        ImGui::Text("\t");
+                        ImGui::SameLine();
+                        ImGui::Button("+");
                     }
             ImGui::TreePop();
         }
@@ -104,14 +124,20 @@ namespace MyApp {
         // Load 
         std::ifstream input_file("semesters.json");
         json semesters_json;
-        input_file >> semesters_json;
-        // Iterate
-        for (auto& semester : semesters_json) {
-            Sem sem(semester["name"]);
-            for (auto& subject : semester["subjects"]) {
-                sem.subjects.push_back(subject);
+        if (input_file.peek() != std::ifstream::traits_type::eof())
+        {
+            input_file >> semesters_json;
+            // Iterate
+            for (auto& semester : semesters_json) {
+                Sem sem(semester["name"]);
+                for (auto& subject : semester["subjects"]) {
+                    Subject s(subject["name"]);
+                    for (auto& pass : subject["passes"])
+                        s.AddPass(pass["name"], pass["deadline"]);
+                    sem.subjects.push_back(s);
+                }
+                semy.push_back(sem);
             }
-            semy.push_back(sem);
         }
     }
 
@@ -122,7 +148,7 @@ namespace MyApp {
         for (auto it = semy.begin(); it != semy.end(); it++)
             if (it->name == currentSem)
                 for (auto jt = it->subjects.begin(); jt != it->subjects.end(); jt++)
-                    if (*jt == nameOfSubject)
+                    if (jt->name == nameOfSubject)
                         return false;
         return true;
     }
@@ -145,7 +171,12 @@ namespace MyApp {
     {
         json semesters = LoadSemesters();
         json& semester = semesters[semester_index];
-        semester["subjects"].push_back(subject_name);
+        Subject s(subject_name);
+        json jsonSubject;
+        json jsonPasses = json::array();
+        jsonSubject["name"] = s.name;
+        jsonSubject["passes"] = jsonPasses;
+        semester["subjects"].push_back(jsonSubject);
         SaveSemesters(semesters);
     }
 
@@ -201,7 +232,8 @@ namespace MyApp {
                 if (semy[i].name == currentSem)
                     if (DoesSubjectNotExist(MyBuff))
                     {
-                        semy[i].subjects.push_back(MyBuff);    //dodanie przedmiotu do wybranego obecnie semestru
+                        Subject s(MyBuff);
+                        semy[i].subjects.push_back(s);    //dodanie przedmiotu do wybranego obecnie semestru
                         AddSubjectToSemester(i, MyBuff);
                         subject_added_window = true;
                         disable_main_window = false;
@@ -265,6 +297,13 @@ namespace MyApp {
                     json jsonSem;
                     jsonSem["name"] = sem.name;
                     json jsonSubjects = json::array();
+                    for (auto& sub : sem.subjects)
+                    {
+                        json jsonPasses = json::array();
+                        for (auto& pass : sub.passes)
+                            jsonPasses.push_back({ {"name",pass.name},{"deadline",pass.deadline} });
+                        jsonSubjects.push_back({ {"name",sub.name,},{"passes", jsonPasses}});
+                    }
                     jsonSem["subjects"] = jsonSubjects;
                     jsonVector.push_back(jsonSem);
                 }
